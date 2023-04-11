@@ -18,12 +18,20 @@ struct StudentConnectCodeView: View
     {
         VStack
         {
-            Button("Main/Connect Code"){/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/}
-            .padding()
-            .frame(width: 250.0, height: 75.0)
-            .background(.black)
-            .foregroundColor(.white)
-            .cornerRadius(20)
+            Button(action: {
+                withAnimation {
+                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .mainStudent}
+            }){
+                Text("Main/Connect Code")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding()
+                    .frame(width: 250.0, height: 75.0)
+                    .background(.black)
+                    .foregroundColor(.white)
+                    .cornerRadius(20)
+            }
             
             Text("Connect Code")
                 .padding(.top, 20)
