@@ -41,7 +41,11 @@ struct StudentMainView: View {
             .cornerRadius(6)
             .padding(.bottom, 10)
                         
-            Button(action: {}){
+            Button(action: {
+                withAnimation {
+            //make button show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .studentConnectCode}
+            }){
                 Text(thirdButtonName)
                     .foregroundColor(.black)
                     .frame(width: 335, height: 30, alignment: .center)

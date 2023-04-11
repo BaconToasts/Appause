@@ -18,6 +18,7 @@
 		3197738C29E51FA300596D4C /* TeacherConnectCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738B29E51FA300596D4C /* TeacherConnectCodeView.swift */; };
 		3197738E29E51FF100596D4C /* TeacherMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738D29E51FF100596D4C /* TeacherMainView.swift */; };
 		3197739029E5203B00596D4C /* TeacherMasterControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */; };
+		31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3197738B29E51FA300596D4C /* TeacherConnectCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherConnectCodeView.swift; sourceTree = "<group>"; };
 		3197738D29E51FF100596D4C /* TeacherMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherMainView.swift; sourceTree = "<group>"; };
 		3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherMasterControlView.swift; sourceTree = "<group>"; };
+		31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConnectCodeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				3197738929E51F5A00596D4C /* StudentMainView.swift */,
 				3197738D29E51FF100596D4C /* TeacherMainView.swift */,
 				3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */,
+				31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */,
 				3197738429E51EF500596D4C /* LoginView.swift */,
 				3197737829E51DF200596D4C /* Assets.xcassets */,
 				3197737A29E51DF200596D4C /* Preview Content */,
@@ -169,6 +172,7 @@
 				3197738529E51EF500596D4C /* LoginView.swift in Sources */,
 				3197738C29E51FA300596D4C /* TeacherConnectCodeView.swift in Sources */,
 				3197739029E5203B00596D4C /* TeacherMasterControlView.swift in Sources */,
+				31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */,
 				3197738A29E51F5A00596D4C /* StudentMainView.swift in Sources */,
 				3197738329E51E7400596D4C /* EULAView.swift in Sources */,
 			);

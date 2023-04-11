@@ -127,8 +127,21 @@ struct TeacherMainView: View {
             }
             .background(otherbtnColor)
             .cornerRadius(cornerRadius)
+            .padding(.bottom, 200)
+            Button(action: {
+                withAnimation {
+                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .logout}
+            }){
+                Text("Logout")
+                    .foregroundColor(.black)
+                    .fontWeight(.bold)
+            }
+            .padding()
+            .background(Color.red)
+            .cornerRadius(200)
         }
-        .padding(.bottom, 200)
+        .padding()
         
     }
 }
