@@ -12,12 +12,13 @@ struct TeacherMainView: View {
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState
     @State private var mainbtnColor: Color = Color.black
-    @State private var otherbtnColor: Color = Color.gray.opacity(0.2)
+    @State private var borderColor: Color = Color.black
     @State private var btnAlignment: Alignment = .center
-    @State private var cornerRadius: CGFloat = 5
+    @State private var fontWeight:  Font.Weight = .bold
+    @State private var cornerRadius: CGFloat = 6
     @State private var frameWidth: CGFloat = 300
-    @State private var frameHeight: CGFloat = 50
-    @State private var fontStyle: Font = .title2
+    @State private var frameHeight: CGFloat = 20
+    
     
     var body: some View {
         VStack{
@@ -25,57 +26,66 @@ struct TeacherMainView: View {
             // create Main button
             Button(action:{})
             {
-                Text("Main")
-                    .font(fontStyle)
+                Text("MAIN")
+                    .fontWeight(fontWeight)
                     .background(Color.black)
                     .foregroundColor(.white)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
             }
-            .background(mainbtnColor)
-            .cornerRadius(cornerRadius)
             .padding()
+            .background(mainbtnColor)
+            .border(borderColor, width: 5)
+            .cornerRadius(100)
+            .padding(.bottom, 30)
+            
             // create Requests button
             Button(action:{})
             {
                 (Text(Image(systemName: "bell")) +
                  Text("   Requests   ") +
                  Text(Image(systemName: "hand.raised")))
-                .font(fontStyle)
+                .fontWeight(fontWeight)
                 .foregroundColor(.black)
                 .frame(width: frameWidth,
                        height: frameHeight,
                        alignment: btnAlignment)
             }
-            .background(otherbtnColor)
+            .padding()
+            .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
+            .padding(.bottom, 10)
             
             // create Whitelist button
             Button(action:{})
             {
                 (Text("   Whitelist  ") + Text(Image(systemName: "bookmark.slash")))
-                    .font(fontStyle)
+                    .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
             }
-            .background(otherbtnColor)
+            .padding()
+            .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
+            .padding(.bottom, 10)
             
             // create Manage Users button
             Button(action:{})
             {
-                (Text(" Manage Users ") + Text(Image(systemName: "person")) + Text(Image(systemName: "person")))
-                    .font(fontStyle)
+                (Text("  Manage Users ") + Text(Image(systemName: "person")) + Text(Image(systemName: "person")))
+                    .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
             }
-            .background(otherbtnColor)
+            .padding()
+            .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
+            .padding(.bottom, 10)
             
             // create Connect Code button
             Button(action:{
@@ -86,27 +96,32 @@ struct TeacherMainView: View {
             })
             {
                 Text("Connect Code")
-                    .font(fontStyle)
+                    .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
             }
-            .background(otherbtnColor)
+            .padding()
+            .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
+            .padding(.bottom, 10)
             
             // create Settings button
             Button(action:{})
             {
                 (Text("     Settings  ") + Text(Image(systemName: "gear")))
-                    .font(fontStyle)
+                    .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
             }
-            .background(otherbtnColor)
+            .padding()
+            .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
+            .padding(.bottom, 10)
+                       
             
             
             // create Master Control button
@@ -117,7 +132,7 @@ struct TeacherMainView: View {
             })
             {
                 (Text(" Master Control  ") + Text(Image(systemName: "lock")))
-                    .font(fontStyle)
+                    .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
@@ -125,9 +140,11 @@ struct TeacherMainView: View {
                 
                 
             }
-            .background(otherbtnColor)
+            .padding()
+            .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 200)
+            
             Button(action: {
                 withAnimation {
                     //show nextView .whateverViewYouWantToShow defined in ContentView Enum
