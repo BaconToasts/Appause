@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3197737529E51DF000596D4C /* Project190BackupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197737429E51DF000596D4C /* Project190BackupApp.swift */; };
+		3197737529E51DF000596D4C /* Project190App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197737429E51DF000596D4C /* Project190App.swift */; };
 		3197737729E51DF000596D4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197737629E51DF000596D4C /* ContentView.swift */; };
 		3197737929E51DF200596D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3197737829E51DF200596D4C /* Assets.xcassets */; };
 		3197737C29E51DF200596D4C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3197737B29E51DF200596D4C /* Preview Assets.xcassets */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3197737129E51DF000596D4C /* Project190Backup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project190Backup.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3197737429E51DF000596D4C /* Project190BackupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190BackupApp.swift; sourceTree = "<group>"; };
+		3197737129E51DF000596D4C /* Project190.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project190.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3197737429E51DF000596D4C /* Project190BApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190App.swift; sourceTree = "<group>"; };
 		3197737629E51DF000596D4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3197737829E51DF200596D4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3197737B29E51DF200596D4C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		3197736829E51DF000596D4C = {
 			isa = PBXGroup;
 			children = (
-				3197737329E51DF000596D4C /* Project190Backup */,
+				3197737329E51DF000596D4C /* Project190 */,
 				3197737229E51DF000596D4C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,15 +59,15 @@
 		3197737229E51DF000596D4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3197737129E51DF000596D4C /* Project190Backup.app */,
+				3197737129E51DF000596D4C /* Project190.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3197737329E51DF000596D4C /* Project190Backup */ = {
+		3197737329E51DF000596D4C /* Project190 */ = {
 			isa = PBXGroup;
 			children = (
-				3197737429E51DF000596D4C /* Project190BackupApp.swift */,
+				3197737429E51DF000596D4C /* Project190App.swift */,
 				3197737629E51DF000596D4C /* ContentView.swift */,
 				3197738229E51E7400596D4C /* EULAView.swift */,
 				3197738B29E51FA300596D4C /* TeacherConnectCodeView.swift */,
@@ -79,7 +79,7 @@
 				3197737829E51DF200596D4C /* Assets.xcassets */,
 				3197737A29E51DF200596D4C /* Preview Content */,
 			);
-			path = Project190Backup;
+			path = Project190;
 			sourceTree = "<group>";
 		};
 		3197737A29E51DF200596D4C /* Preview Content */ = {
@@ -93,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3197737029E51DF000596D4C /* Project190Backup */ = {
+		3197737029E51DF000596D4C /* Project190 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3197737F29E51DF200596D4C /* Build configuration list for PBXNativeTarget "Project190Backup" */;
+			buildConfigurationList = 3197737F29E51DF200596D4C /* Build configuration list for PBXNativeTarget "Project190" */;
 			buildPhases = (
 				3197736D29E51DF000596D4C /* Sources */,
 				3197736E29E51DF000596D4C /* Frameworks */,
@@ -105,12 +105,12 @@
 			);
 			dependencies = (
 			);
-			name = Project190Backup;
+			name = Project190;
 			packageProductDependencies = (
 				3197738729E51F2E00596D4C /* KeychainSwift */,
 			);
-			productName = Project190Backup;
-			productReference = 3197737129E51DF000596D4C /* Project190Backup.app */;
+			productName = Project190;
+			productReference = 3197737129E51DF000596D4C /* Project190.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -128,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3197736C29E51DF000596D4C /* Build configuration list for PBXProject "Project190Backup" */;
+			buildConfigurationList = 3197736C29E51DF000596D4C /* Build configuration list for PBXProject "Project190" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -144,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3197737029E51DF000596D4C /* Project190Backup */,
+				3197737029E51DF000596D4C /* Project190 */,
 			);
 		};
 /* End PBXProject section */
@@ -167,7 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3197737729E51DF000596D4C /* ContentView.swift in Sources */,
-				3197737529E51DF000596D4C /* Project190BackupApp.swift in Sources */,
+				3197737529E51DF000596D4C /* Project190App.swift in Sources */,
 				3197738E29E51FF100596D4C /* TeacherMainView.swift in Sources */,
 				3197738529E51EF500596D4C /* LoginView.swift in Sources */,
 				3197738C29E51FA300596D4C /* TeacherConnectCodeView.swift in Sources */,
@@ -302,7 +302,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Project190Backup/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Project190/Preview Content\"";
 				DEVELOPMENT_TEAM = WZ7F65C4AU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -317,7 +317,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = csus.Project190Backup;
+				PRODUCT_BUNDLE_IDENTIFIER = csus.Project190;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -332,7 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Project190Backup/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Project190/Preview Content\"";
 				DEVELOPMENT_TEAM = WZ7F65C4AU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -347,7 +347,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = csus.Project190Backup;
+				PRODUCT_BUNDLE_IDENTIFIER = csus.Project190;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -358,7 +358,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3197736C29E51DF000596D4C /* Build configuration list for PBXProject "Project190Backup" */ = {
+		3197736C29E51DF000596D4C /* Build configuration list for PBXProject "Project190" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3197737D29E51DF200596D4C /* Debug */,
@@ -367,7 +367,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3197737F29E51DF200596D4C /* Build configuration list for PBXNativeTarget "Project190Backup" */ = {
+		3197737F29E51DF200596D4C /* Build configuration list for PBXNativeTarget "Project190" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3197738029E51DF200596D4C /* Debug */,
