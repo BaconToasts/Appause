@@ -28,7 +28,7 @@ struct TeacherMainView: View {
             {
                 Text("MAIN")
                     .fontWeight(fontWeight)
-                    .background(Color.black)
+                    .background(.black)
                     .foregroundColor(.white)
                     .frame(width: frameWidth,
                            height: frameHeight,
