@@ -19,11 +19,12 @@
 		3197738E29E51FF100596D4C /* TeacherMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738D29E51FF100596D4C /* TeacherMainView.swift */; };
 		3197739029E5203B00596D4C /* TeacherMasterControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */; };
 		31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */; };
+		7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3197737129E51DF000596D4C /* Project190.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project190.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3197737429E51DF000596D4C /* Project190BApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190App.swift; sourceTree = "<group>"; };
+		3197737429E51DF000596D4C /* Project190App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190App.swift; sourceTree = "<group>"; };
 		3197737629E51DF000596D4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3197737829E51DF200596D4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3197737B29E51DF200596D4C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -34,6 +35,7 @@
 		3197738D29E51FF100596D4C /* TeacherMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherMainView.swift; sourceTree = "<group>"; };
 		3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherMasterControlView.swift; sourceTree = "<group>"; };
 		31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConnectCodeView.swift; sourceTree = "<group>"; };
+		7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				3197737429E51DF000596D4C /* Project190App.swift */,
 				3197737629E51DF000596D4C /* ContentView.swift */,
+				7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */,
 				3197738229E51E7400596D4C /* EULAView.swift */,
 				3197738B29E51FA300596D4C /* TeacherConnectCodeView.swift */,
 				3197738929E51F5A00596D4C /* StudentMainView.swift */,
@@ -173,6 +176,7 @@
 				3197738C29E51FA300596D4C /* TeacherConnectCodeView.swift in Sources */,
 				3197739029E5203B00596D4C /* TeacherMasterControlView.swift in Sources */,
 				31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */,
+				7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */,
 				3197738A29E51F5A00596D4C /* StudentMainView.swift in Sources */,
 				3197738329E51E7400596D4C /* EULAView.swift in Sources */,
 			);
