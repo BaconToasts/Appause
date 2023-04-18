@@ -96,7 +96,7 @@ struct TeacherMainView: View {
             .cornerRadius(cornerRadius)
             
             // create Settings button
-            Button(action:{})
+            Button(action:{withAnimation{showNextView = .teacherSettings}})
             {
                 (Text("     Settings  ") + Text(Image(systemName: "gear")))
                     .font(fontStyle)
