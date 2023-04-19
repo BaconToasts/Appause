@@ -22,10 +22,20 @@ struct TeacherMasterControlView: View {
             }){// Text displaying our current path
                 Text("MAIN / MASTER CONTROL")
                     .padding()
+                    .fontWeight(.bold)
                     .background(.black)
                     .foregroundColor(.white)
-                    .cornerRadius(5)
+                    .frame(width: 300,
+                           height: 20,
+                           alignment: .center)
+                    
             }
+            .padding()
+            .background(.black)
+            .border(.black, width: 5)
+            .cornerRadius(100)
+            .padding(.bottom, 30)
+            
             //spacer to push button above it to the top. The higher the height value
             // the more it is pushed to the top. Lower closer to center
             Spacer().frame(height:500)
@@ -72,7 +82,7 @@ struct TeacherMasterControlView_Previews: PreviewProvider {
     @State static private var showNextView: DisplayState = .teacherMasterControl
     
     static var previews: some View {
-        TeacherConnectCodeView(showNextView: $showNextView)
+        TeacherMasterControlView(showNextView: $showNextView)
     }
     
 }

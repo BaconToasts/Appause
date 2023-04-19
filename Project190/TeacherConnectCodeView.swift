@@ -28,12 +28,21 @@ struct TeacherConnectCodeView: View {
                     showNextView = .mainTeacher}
             }){
                 //button defining text enclosed by brackets
-                Text("Main / Connect Code")
+                Text("MAIN / CONNECT CODE")
                     .padding()
+                    .fontWeight(.bold)
                     .background(Color.black)
                     .foregroundColor(.white)
-                    .cornerRadius(5)
+                    .frame(width: 300,
+                           height: 20,
+                           alignment: .center)
             }
+            .padding()
+            .background(Color.black)
+            .border(Color.black, width: 5)
+            .cornerRadius(100)
+            .padding(.bottom, 30)
+            
             Text("Connect Code")
                 .font(.title)
                 .padding(.top, 25)
@@ -56,9 +65,10 @@ struct TeacherConnectCodeView: View {
             }) {
                 Text("Generate New Code")
                     .padding()
+                    .fontWeight(.bold)
                     .background(Color.black)
                     .foregroundColor(.white)
-                    .cornerRadius(5)
+                    .cornerRadius(100)
             }
             .padding(.bottom, 400)
         }
