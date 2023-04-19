@@ -55,7 +55,7 @@ struct StudentMainView: View {
             .border(Color.black, width: 5)
             .cornerRadius(6)
             .padding(.bottom, 10)
-            Button(action: {}){
+            Button(action: {withAnimation {showNextView = .studentSettings}}){
                 Text(fourthButtonName)
                     .foregroundColor(.black)
                     .frame(width: 300, height: 20, alignment: .center)

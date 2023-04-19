@@ -108,7 +108,7 @@ struct TeacherMainView: View {
             .padding(.bottom, 10)
             
             // create Settings button
-            Button(action:{})
+            Button(action:{withAnimation{showNextView = .teacherSettings}})
             {
                 (Text("     Settings  ") + Text(Image(systemName: "gear")))
                     .fontWeight(fontWeight)
