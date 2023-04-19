@@ -27,6 +27,7 @@ struct StudentSettingsView: View{
             .background(mainButtonColor)
             .cornerRadius(100)
             .padding(.bottom, 200)
+            
             Button(action:{}){
                 Text(secondButton).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
             }
@@ -34,6 +35,7 @@ struct StudentSettingsView: View{
             .border(borderColor, width: 5)
             .cornerRadius(6)
             .padding(.bottom, 10)
+            
             Button(action:{}){
                 Text(thirdButton).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
             }

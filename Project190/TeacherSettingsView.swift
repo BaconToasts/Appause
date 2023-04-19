@@ -9,7 +9,7 @@ import SwiftUI
 struct TeacherSettingsView: View{
     @Binding var showNextView: DisplayState
     
-    @State var firstButton = "Main/Settings"
+    @State var firstButton = "Main / Settings"
     @State var secondButton = "Change Password"
     @State var thirdButton = "Enable FaceID"
     @State var fourthButton = "Disable Bluetooth"

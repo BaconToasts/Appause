@@ -13,6 +13,7 @@ struct TeacherMainView: View {
     @Binding var showNextView: DisplayState
     @State private var mainbtnColor: Color = Color.black
     @State private var borderColor: Color = Color.black
+    @State private var btnColor: Color = Color.gray.opacity(0.25)
     @State private var btnAlignment: Alignment = .center
     @State private var fontWeight:  Font.Weight = .bold
     @State private var cornerRadius: CGFloat = 6
@@ -43,16 +44,21 @@ struct TeacherMainView: View {
             // create Requests button
             Button(action:{})
             {
-                (Text(Image(systemName: "bell")) +
-                 Text("   Requests   ") +
-                 Text(Image(systemName: "hand.raised")))
-                .fontWeight(fontWeight)
-                .foregroundColor(.black)
-                .frame(width: frameWidth,
-                       height: frameHeight,
-                       alignment: btnAlignment)
+              Text("Requests")
+                    .padding(.leading, 25)
+                    .fontWeight(fontWeight)
+                    .foregroundColor(.black)
+                    .frame(width: frameWidth,
+                           height: frameHeight,
+                           alignment: btnAlignment)
+                
+                Image(systemName: "hand.raised")
+                    .fontWeight(fontWeight)
+                    .imageScale(.large)
+                    .foregroundColor(.black)
             }
             .padding()
+            .background(btnColor)
             .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 10)
@@ -60,14 +66,21 @@ struct TeacherMainView: View {
             // create Whitelist button
             Button(action:{})
             {
-                (Text("   Whitelist  ") + Text(Image(systemName: "bookmark.slash")))
+                Text("Whitelist")
+                    .padding(.leading, 20)
                     .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
+                
+                Image(systemName: "bookmark.slash")
+                    .fontWeight(fontWeight)
+                    .imageScale(.large)
+                    .foregroundColor(.black)
             }
             .padding()
+            .background(btnColor)
             .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 10)
@@ -75,14 +88,22 @@ struct TeacherMainView: View {
             // create Manage Users button
             Button(action:{})
             {
-                (Text("  Manage Users ") + Text(Image(systemName: "person")) + Text(Image(systemName: "person")))
+                Text("Manage Users")
+                    .padding(.leading, 25)
                     .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
+                
+                Image(systemName: "person")
+                    .fontWeight(fontWeight)
+                    .imageScale(.large)
+                    .foregroundColor(.black)
+            
             }
             .padding()
+            .background(btnColor)
             .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 10)
@@ -98,11 +119,12 @@ struct TeacherMainView: View {
                 Text("Connect Code")
                     .fontWeight(fontWeight)
                     .foregroundColor(.black)
-                    .frame(width: frameWidth,
-                           height: frameHeight,
+                    .frame(width: frameWidth + 35,
+                           height: frameHeight + 5,
                            alignment: btnAlignment)
             }
             .padding()
+            .background(btnColor)
             .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 10)
@@ -110,14 +132,21 @@ struct TeacherMainView: View {
             // create Settings button
             Button(action:{withAnimation{showNextView = .teacherSettings}})
             {
-                (Text("     Settings  ") + Text(Image(systemName: "gear")))
+                Text("Settings")
+                    .padding(.leading, 25)
                     .fontWeight(fontWeight)
                     .foregroundColor(.black)
                     .frame(width: frameWidth,
                            height: frameHeight,
                            alignment: btnAlignment)
+                
+                Image(systemName: "gear")
+                    .fontWeight(fontWeight)
+                    .imageScale(.large)
+                    .foregroundColor(.black)
             }
             .padding()
+            .background(btnColor)
             .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 10)
@@ -131,19 +160,25 @@ struct TeacherMainView: View {
             showNextView = .teacherMasterControl}
             })
             {
-                (Text(" Master Control  ") + Text(Image(systemName: "lock")))
+                Text("Master Control")
+                    .padding(.leading, 25)
                     .fontWeight(fontWeight)
                     .foregroundColor(.black)
-                    .frame(width: frameWidth,
+                    .frame(width: frameWidth + 5,
                            height: frameHeight,
                            alignment: btnAlignment)
                 
+                Image(systemName: "lock")
+                    .fontWeight(fontWeight)
+                    .imageScale(.large)
+                    .foregroundColor(.black)
                 
             }
             .padding()
+            .background(btnColor)
             .border(borderColor, width: 5)
             .cornerRadius(cornerRadius)
-            .padding(.bottom, 200)
+            .padding(.bottom, 100)
             
             Button(action: {
                 withAnimation {
