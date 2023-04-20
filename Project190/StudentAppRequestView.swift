@@ -61,7 +61,7 @@ struct StudentAppRequestView: View {
     
     var body: some View {
         VStack {
-            Text("Main / Requests / Admin")
+            Text("Main / Requests / " + adminName)
                 .padding()
                 .background(Color.black)
                 .foregroundColor(.white)
