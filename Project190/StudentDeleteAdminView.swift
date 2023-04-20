@@ -32,7 +32,7 @@ struct StudentDeleteAdminView: View{
                 .padding()
                 .background(mainButtonColor)
                 .cornerRadius(6)
-                .padding(.trailing, 10110)
+                .padding(.trailing, 100)
                 .padding(.bottom, 250)
                 Button(action:{}){
                     Text(thirdButton).fontWeight(.bold).foregroundColor(mainButtonColor).frame(width:50)
