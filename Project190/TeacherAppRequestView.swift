@@ -2,35 +2,15 @@
 //  StudentRequestView.swift
 //
 //
-//  Created by user on 4/6/23.
+//  Created by user on 4/19/23.
 //
 
 import SwiftUI
 
-enum ApproveStatus {
-    case approved
-    case denied
-    case unprocessed
-}
 
-struct RequestData: Hashable, Identifiable {
-    let id = UUID()
-    var appName: String
-    var approved: ApproveStatus
+struct TeacherAppView: View {
+    @State var request: RequestData
     
-    init(appName:String, approved:ApproveStatus) {
-        self.appName = appName
-        self.approved = approved
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(appName)
-    }
-}
-
-//View that displays data for a single request.
-struct AppRequestView: View {
-    var request: RequestData
     var body: some View {
         ZStack {
             Image(systemName:"applelogo")
@@ -39,19 +19,43 @@ struct AppRequestView: View {
             Text(request.appName)
                 .frame(maxWidth:.infinity, alignment:.center)
             HStack {
-                Image(systemName: "hand.thumbsup")
-                    .foregroundColor(.green)
-                Image(systemName: "hand.thumbsdown")
-                    .foregroundColor(.red)
+                Button(action:{ //Approve
+                    request = RequestData(appName: request.appName, approved: ApproveStatus.approved)
+                }) {
+                    if(request.approved == ApproveStatus.approved) {
+                        Image(systemName: "hand.thumbsup.fill")
+                            .foregroundColor(.green)
+                    }
+                    else {
+                        Image(systemName: "hand.thumbsup")
+                            .foregroundColor(.green)
+                    }
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                Button(action:{ //Deny
+                    request = RequestData(appName: request.appName, approved: ApproveStatus.denied)
+                }) {
+                    if(request.approved == ApproveStatus.denied) {
+                        Image(systemName: "hand.thumbsdown.fill")
+                            .foregroundColor(.red)
+                    }
+                    else {
+                        Image(systemName: "hand.thumbsdown")
+                            .foregroundColor(.red)
+                    }
+                }
+                .buttonStyle(BorderlessButtonStyle())
             }
             .frame(maxWidth:.infinity, alignment:.trailing)
         }
     }
 }
 
-struct StudentAppRequestView: View {
+//ApproveStatus and RequestData defined in StudentAppRequestView
+
+struct TeacherAppRequestView: View {
     @State private var searchAppName: String = ""
-    var adminName = "Admin"
+    var userName = "User"
     
     @State var appList:[RequestData] = [
         RequestData(appName: "App 1", approved: ApproveStatus.unprocessed),
@@ -61,7 +65,7 @@ struct StudentAppRequestView: View {
     
     var body: some View {
         VStack {
-            Text("Main / Requests / " + adminName)
+            Text("Main / Manage Users / " + userName)
                 .padding()
                 .background(Color.black)
                 .foregroundColor(.white)
@@ -84,7 +88,7 @@ struct StudentAppRequestView: View {
                 ForEach(appList) { request in
                     if(searchAppName.isEmpty ||
                         request.appName.contains(searchAppName)) {
-                        AppRequestView(request: request)
+                        TeacherAppView(request: request)
                     }
                 }
             }
@@ -93,14 +97,8 @@ struct StudentAppRequestView: View {
             .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                    maxHeight: UIScreen.main.bounds.size.height*0.7)
             
-            Button(action: {
-                //should open list of apps installed on phone
-                //user selects one to add a new request to appList
-                //currently just adds to appList to demonstrate UI functionality
-                var newAppName = "App " + String(appList.count)
-                appList.append(RequestData(appName: newAppName, approved: ApproveStatus.unprocessed))
-            }) {
-                Text("+ New")
+            Button(action: {}) {
+                Text("Delete User")
                     .padding()
                     .background(Color.black)
                     .foregroundColor(.white)
@@ -111,8 +109,8 @@ struct StudentAppRequestView: View {
     }
 }
 
-struct StudentAppRequestView_Previews: PreviewProvider {
+struct TeacherAppRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        StudentAppRequestView()
+        TeacherAppRequestView()
     }
 }
