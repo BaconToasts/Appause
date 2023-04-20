@@ -22,6 +22,7 @@
 		7F0987C429EF1C8300D7ABFA /* TeacherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */; };
 		7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */; };
 		BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */; };
+		BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSettingsView.swift; sourceTree = "<group>"; };
 		7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSettingsView.swift; sourceTree = "<group>"; };
 		BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentChooseAdminView.swift; sourceTree = "<group>"; };
+		BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAppRequestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				3197737829E51DF200596D4C /* Assets.xcassets */,
 				3197737A29E51DF200596D4C /* Preview Content */,
 				BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */,
+				BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */,
 			);
 			path = Project190;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3197737729E51DF000596D4C /* ContentView.swift in Sources */,
+				BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */,
 				3197737529E51DF000596D4C /* Project190App.swift in Sources */,
 				3197738E29E51FF100596D4C /* TeacherMainView.swift in Sources */,
 				3197738529E51EF500596D4C /* LoginView.swift in Sources */,
