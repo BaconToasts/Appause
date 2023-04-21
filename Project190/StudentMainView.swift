@@ -31,9 +31,8 @@ struct StudentMainView: View {
             .background(mainButtonColor)
             .border(Color.black, width: 5)
             .cornerRadius(100)
-            //.padding(.bottom, 30)
             Spacer()
-            // When clicked, will allow students to view and manage all of their classes
+            // When pressed, will allow students to view and manage all of their classes
             Button(action:{}){
                 Text(secondButtonName)
                     .foregroundColor(.black)
@@ -45,7 +44,7 @@ struct StudentMainView: View {
             .border(Color.black, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 10)
-            // // When clicked, will take the student to the settings view
+            // When pressed, will take the student to the settings view
             Button(action: {withAnimation {showNextView = .studentSettings}}){
                 Text(thirdButtonName)
                     .padding(.leading, 40)
@@ -61,7 +60,7 @@ struct StudentMainView: View {
             .border(Color.black, width: 5)
             .cornerRadius(cornerRadius)
             .padding(.bottom, 325)
-            // // When pressed, will take the student back to the main login page
+            // When pressed, will take the student back to the main login page
             Button(action: {
                 withAnimation {
                     //show nextView .whateverViewYouWantToShow defined in ContentView Enum
