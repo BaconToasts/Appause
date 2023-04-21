@@ -10,7 +10,7 @@ import SwiftUI
 struct StudentSettingsView: View{
     @Binding var showNextView: DisplayState
     
-    @State var firstButton = "Main/Settings"
+    @State var firstButton = "Main / Settings"
     @State var secondButton = "Change Password"
     @State var thirdButton = "Enable FaceID"
     @State var fourthButton = "Disable Bluetooth"
@@ -19,9 +19,8 @@ struct StudentSettingsView: View{
     
     var body: some View{
         VStack{
-            Button(action:{
-                withAnimation {showNextView = .mainStudent}}){
-                Text(firstButton).foregroundColor(.white)
+            Button(action:{withAnimation{showNextView = .mainStudent}}){
+                Text(firstButton).fontWeight(.bold).foregroundColor(.white).frame(width: 300, height: 20, alignment:.center)
             }
             .padding()
             .background(mainButtonColor)
@@ -29,26 +28,26 @@ struct StudentSettingsView: View{
             .padding(.bottom, 200)
             
             Button(action:{}){
-                Text(secondButton).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
+                Text(secondButton).fontWeight(.bold).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
             }
             .padding()
-            .border(borderColor, width: 5)
+            .border(mainButtonColor, width: 5)
             .cornerRadius(6)
             .padding(.bottom, 10)
             
             Button(action:{}){
-                Text(thirdButton).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
+                Text(thirdButton).fontWeight(.bold).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
             }
             .padding()
-            .border(borderColor, width: 5)
+            .border(mainButtonColor, width: 5)
             .cornerRadius(6)
             .padding(.bottom, 10)
 
             Button(action:{}){
-                Text(fourthButton).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
+                Text(fourthButton).fontWeight(.bold).frame(width:300, height:20, alignment:.center).foregroundColor(.black)
             }
             .padding()
-            .border(borderColor, width: 5)
+            .border(mainButtonColor, width: 5)
             .cornerRadius(6)
             .padding(.bottom, 300)
 
