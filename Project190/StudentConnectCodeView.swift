@@ -23,36 +23,42 @@ struct StudentConnectCodeView: View
                     //show nextView .whateverViewYouWantToShow defined in ContentView Enum
                     showNextView = .mainStudent}
             }){
-                Text("Main/Connect Code")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
+                Text("MAIN / CONNECT CODE")
                     .padding()
-                    .frame(width: 250.0, height: 75.0)
-                    .background(.black)
+                    .fontWeight(.bold)
+                    .background(Color.black)
                     .foregroundColor(.white)
-                    .cornerRadius(20)
+                    .frame(width: 300,
+                           height: 20,
+                           alignment: .center)
             }
+            .padding()
+            .background(Color.black)
+            .border(Color.black, width: 5)
+            .cornerRadius(100)
+            .padding(.bottom, 30)
             
             Text("Connect Code")
-                .padding(.top, 20)
+                .font(.title)
+                .padding(.top, 25)
             
             
             TextField("Insert Connect Code Here: ", text:$connectCode)
-            .padding(15.0)
+            .padding(25.0)
             .frame(width: 250.0, height: 100.0)
             .disabled(false)
             .textFieldStyle(.roundedBorder)
             
             Button("Submit Connect Code"){/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/}
             .padding()
-            .frame(width: 250.0, height: 50.0)
+            .frame(width: 300.0, height: 30.0)
             .background(.black)
             .foregroundColor(.white)
-            .cornerRadius(20)
+            .cornerRadius(100)
             
         }
-        .padding(.bottom, 300)
-        .cornerRadius(20)
+        .padding(.bottom, 400)
+        .cornerRadius(100)
     }
 }
 
