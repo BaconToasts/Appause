@@ -2,7 +2,8 @@
 //  ContentView.swift
 //  studentMainScreen
 //
-//  Created by user1 on 4/6/23.
+//  Created by Luis Campos on 4/6/23.
+//  Modified by Nav Bernal on 4/20/23.
 //
 
 import SwiftUI
@@ -12,41 +13,28 @@ struct StudentMainView: View {
     @Binding var showNextView: DisplayState
     
     @State var mainButtonColor = Color.black
-    @State var secondButtonName = "REQUESTS"
-    @State var thirdButtonName = "CONNECT CODE"
-    @State var fourthButtonName = "SETTINGS"
-    @State var fifthButtonName = "MANAGE ADMIN"
-    @State var sixthButtonName = "Logout"
+    @State var secondButtonName = "Classes"
+    @State var thirdButtonName = "Settings"
+    @State var fourthButtonName = "Logout"
     
     var body: some View {
         VStack {
+            // Button that displays current path
             Button(action:{}){
                 Text("MAIN").foregroundColor(.white).fontWeight(.bold).frame(width:300, height: 20, alignment: .center)
             }
             .padding()
             .background(mainButtonColor)
             .cornerRadius(100)
-            .padding(.bottom, 50)
-            Button(action:{}){
-                Text(secondButtonName)
-                    .foregroundColor(.black)
-                    .frame(width: 300, height: 20, alignment: .center)
-                    .fontWeight(.bold)
-                Image(systemName: "hand.raised")
-                    .imageScale(.large)
-                    .foregroundColor(.black)
-            }
-            .padding()
-            .border(Color.black, width: 5)
-            .cornerRadius(6)
-            .padding(.bottom, 10)
-                        
+            //.padding(.bottom, 10)
+            Spacer()
+            // When clicked, will allow students to view and manage all of their classes
             Button(action: {
                 withAnimation {
             //make button show nextView .whateverViewYouWantToShow defined in ContentView Enum
                     showNextView = .studentConnectCode}
             }){
-                Text(thirdButtonName)
+                Text(secondButtonName)
                     .foregroundColor(.black)
                     .frame(width: 335, height: 30, alignment: .center)
                     .fontWeight(.bold)
@@ -55,8 +43,9 @@ struct StudentMainView: View {
             .border(Color.black, width: 5)
             .cornerRadius(6)
             .padding(.bottom, 10)
+            // When clicked, will take the student to the settings view
             Button(action: {withAnimation {showNextView = .studentSettings}}){
-                Text(fourthButtonName)
+                Text(thirdButtonName)
                     .foregroundColor(.black)
                     .frame(width: 300, height: 20, alignment: .center)
                     .fontWeight(.bold)
@@ -67,24 +56,14 @@ struct StudentMainView: View {
             .padding()
             .border(Color.black, width: 5)
             .cornerRadius(6)
-            .padding(.bottom, 10)
-                        
-            Button(action: {}){
-                Text(fifthButtonName)
-                    .foregroundColor(.black)
-                    .frame(width: 335, height: 30, alignment: .center)
-                    .fontWeight(.bold)
-            }
-            .padding()
-            .border(Color.black, width: 5)
-            .cornerRadius(6)
-            .padding(.bottom, 265)
+            .padding(.bottom, 325)
+            // When pressed, will take the student back to the main login page
             Button(action: {
                 withAnimation {
                     //show nextView .whateverViewYouWantToShow defined in ContentView Enum
                     showNextView = .logout}
             }){
-                Text(sixthButtonName)
+                Text(fourthButtonName)
                     .foregroundColor(.black)
                     .fontWeight(.bold)
             }
