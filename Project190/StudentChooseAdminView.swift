@@ -36,7 +36,7 @@ struct StudentChooseAdminView: View {
                         .foregroundColor(.black)
                     }
                 }
-                .overlay(RoundedRectangle(cornerRadius:10, style:.circular)
+                .overlay(RoundedRectangle(cornerRadius:6, style:.circular)
                     .stroke(lineWidth:3))
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
