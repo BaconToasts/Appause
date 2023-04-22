@@ -50,6 +50,7 @@ struct AppRequestView: View {
 }
 
 struct StudentAppRequestView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var searchAppName: String = ""
     var adminName = "Admin"
     
@@ -61,13 +62,17 @@ struct StudentAppRequestView: View {
     
     var body: some View {
         VStack {
-            Text("Main / Requests / " + adminName)
-                .padding()
-                .background(Color.black)
-                .foregroundColor(.white)
-                .cornerRadius(5)
-                .padding(.top, 8)
-                .padding(.bottom, 40)
+            Button(action: {dismiss()}) {
+                
+                
+                Text("Main / Requests / " + adminName)
+                    .padding()
+                    .background(Color.black)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.top, 8)
+                    .padding(.bottom, 40)
+            }
             
             Text("App Requests")
                 .padding(.bottom, 5)
