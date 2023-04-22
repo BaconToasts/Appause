@@ -65,7 +65,8 @@ struct TeacherAppRequestView: View {
     
     var body: some View {
         VStack {
-            Text("Main / Manage Users / " + userName)
+            Text("MAIN / MANAGE USERS / " + userName)
+                .textCase(.uppercase)
                 .padding()
                 .background(Color.black)
                 .foregroundColor(.white)
