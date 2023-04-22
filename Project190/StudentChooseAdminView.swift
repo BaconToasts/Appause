@@ -10,6 +10,7 @@ import SwiftUI
 struct AdminEntry: View {
     var adminName: String = "New Class"
     var leftText: String = " - "
+    var isDefined: Bool = true
     var function: () -> Void
     
     var body: some View {
@@ -22,23 +23,25 @@ struct AdminEntry: View {
             })
                 .frame(alignment:.leading)
             
-                Text(adminName)
-                    .background(
-                        NavigationLink(destination: StudentAppRequestView(adminName: adminName)
-                            .navigationBarBackButtonHidden(true)) {}
-                            .opacity(0) //This hides the arrow on the NavigationLink
+        
+            Text(adminName)
+                .background(
+                    NavigationLink(destination: StudentAppRequestView(adminName: adminName)
+                        .navigationBarBackButtonHidden(true)) {}
+                        .opacity(0) //This hides the arrow on the NavigationLink
+                        .disabled(!isDefined)
                 )
-                    .font(.system(size:30))
-                    .frame(maxWidth:.infinity, alignment:.center)
-                    .overlay(RoundedRectangle(cornerRadius:6, style:.circular)
-                        .stroke(lineWidth:3))
-                    
+                .font(.system(size:30))
+                .frame(maxWidth:.infinity, alignment:.center)
+                .overlay(RoundedRectangle(cornerRadius:6, style:.circular)
+                    .stroke(lineWidth:3))
+        
+            
+            Image(systemName:"hand.raised.fill")
+            .frame(alignment:.trailing)
+                .foregroundColor(.yellow)
                 
-                Image(systemName:"hand.raised.fill")
-                .frame(alignment:.trailing)
-                    .foregroundColor(.yellow)
-                
-            }
+        }
     }
 }
 
@@ -74,7 +77,7 @@ struct StudentChooseAdminView: View {
                         AdminEntry(adminName: admin, function: {() -> Void in removeAdmin(index: index)})
                             .padding(10)
                     }
-                    AdminEntry(leftText: " + ", function: addAdmin)
+                    AdminEntry(leftText: " + ", isDefined: false, function: addAdmin)
                         .padding(10)
                 }
                 .frame(maxWidth: UIScreen.main.bounds.size.width*1,
