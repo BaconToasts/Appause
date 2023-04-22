@@ -66,6 +66,7 @@ struct StudentAppRequestView: View {
                 
                 
                 Text("Main / Requests / " + adminName)
+                    .textCase(.uppercase)
                     .padding()
                     .background(Color.black)
                     .foregroundColor(.white)

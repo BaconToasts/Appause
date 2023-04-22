@@ -64,6 +64,7 @@ struct StudentChooseAdminView: View {
         NavigationView {
             VStack {
                 Text("Main / Requests")
+                    .textCase(.uppercase)
                     .padding()
                     .padding(.horizontal, 20)
                     .background(Color.black)
