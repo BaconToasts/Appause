@@ -50,7 +50,7 @@ struct StudentChooseAdminView: View {
     ]
     
     func addAdmin() {
-        adminList.append("Admin " + String(adminList.count))
+        adminList.append("Class " + String(adminList.count + 1))
     }
     
     func removeAdmin(index: Int) {
