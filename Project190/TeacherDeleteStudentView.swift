@@ -17,7 +17,7 @@ struct TeacherDeleteStudentView: View{
     
     var body: some View{
         VStack{
-            Button(action:{}){
+            Button(action:{withAnimation{showNextView = .teacherAppRequest}}){
                 Text(firstButton).fontWeight(.bold).foregroundColor(.white).frame(width: 300, height: 20, alignment:.center)
             }
             .padding()
@@ -35,7 +35,7 @@ struct TeacherDeleteStudentView: View{
                 .cornerRadius(6)
                 .padding(.trailing, 100)
                 .padding(.bottom, 250)
-                Button(action:{}){
+                Button(action:{withAnimation{showNextView = .teacherManageUsers}}){
                     Text(thirdButton).fontWeight(.bold).foregroundColor(mainButtonColor).frame(width:50)
                 }
                 .padding()

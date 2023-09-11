@@ -9,7 +9,7 @@ import SwiftUI
 
 // add aditional display states here for additional View transitions
 enum DisplayState {
-    case eula, login, mainTeacher, mainStudent, connectCode, teacherMasterControl, logout, studentConnectCode, studentSettings, teacherSettings, teacherDeleteStudent, studentDeleteAdmin
+    case eula, login, mainTeacher, mainStudent, connectCode, teacherMasterControl, logout, studentConnectCode, studentSettings, teacherSettings, teacherDeleteStudent, studentDeleteAdmin, studentChooseAdmin, teacherAppRequest, teacherManageUsers
 }
 
 struct ContentView: View {
@@ -43,6 +43,13 @@ struct ContentView: View {
                 TeacherDeleteStudentView(showNextView: $displayState)
             case .studentDeleteAdmin:
                 StudentDeleteAdminView(showNextView: $displayState)
+            case .studentChooseAdmin:
+                StudentChooseAdminView(showNextView: $displayState)
+            case .teacherAppRequest:
+                TeacherAppRequestView(showNextView: $displayState )
+            case .teacherManageUsers:
+                TeacherManageUsers(showNextView: $displayState)
+                
             }
         }
     }

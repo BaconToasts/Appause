@@ -12,7 +12,7 @@ struct StudentRegisterView: View {
     @State private var lastName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var passConfirm: String = ""
+    @State private var passConfirm: String = ""                                                                                                                         
     
     var body: some View {
         VStack{

@@ -11,6 +11,7 @@ import SwiftUI
 struct TeacherAppView: View {
     @State var request: RequestData
     
+    
     var body: some View {
         ZStack {
             Image(systemName:"applelogo")
@@ -54,6 +55,8 @@ struct TeacherAppView: View {
 //ApproveStatus and RequestData defined in StudentAppRequestView
 
 struct TeacherAppRequestView: View {
+    @Binding var showNextView: DisplayState
+    
     @State private var searchAppName: String = ""
     var userName = "User"
     
@@ -65,15 +68,17 @@ struct TeacherAppRequestView: View {
     
     var body: some View {
         VStack {
-            Text("MAIN / MANAGE USERS / " + userName)
-                .textCase(.uppercase)
-                .padding()
-                .background(Color.black)
-                .foregroundColor(.white)
-                .cornerRadius(5)
-                .padding(.top, 8)
-                .padding(.bottom, 40)
-            
+            Button(action: {withAnimation {
+                //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+            showNextView = .mainTeacher}}) {
+                Text("Main / Manage Users / " + userName)
+                    .padding()
+                    .background(Color.black)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding(.top, 8)
+                    .padding(.bottom, 40)
+            }
             Text("App Requests")
                 .padding(.bottom, 5)
             TextField(
@@ -98,7 +103,8 @@ struct TeacherAppRequestView: View {
             .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                    maxHeight: UIScreen.main.bounds.size.height*0.7)
             
-            Button(action: {}) {
+            Button(action: { //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                showNextView = .teacherDeleteStudent}) {
                 Text("Delete User")
                     .padding()
                     .background(Color.black)
@@ -111,7 +117,9 @@ struct TeacherAppRequestView: View {
 }
 
 struct TeacherAppRequestView_Previews: PreviewProvider {
+    @State static private var showNextView: DisplayState = .teacherAppRequest
+
     static var previews: some View {
-        TeacherAppRequestView()
+        TeacherAppRequestView(showNextView: $showNextView)
     }
 }

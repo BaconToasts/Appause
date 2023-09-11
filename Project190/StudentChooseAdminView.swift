@@ -7,91 +7,58 @@
 
 import SwiftUI
 
-struct AdminEntry: View {
-    var adminName: String = "New Class"
-    var leftText: String = " - "
-    var isDefined: Bool = true
-    var function: () -> Void
-    
-    var body: some View {
-        HStack{
-            Button(action: {
-                self.function()}, label: {
-                    Text(leftText)
-                        .font(.system(size:30))
-                        .font(Font.headline.weight(.bold))
-            })
-                .frame(alignment:.leading)
-            
-        
-            Text(adminName)
-                .background(
-                    NavigationLink(destination: StudentAppRequestView(adminName: adminName)
-                        .navigationBarBackButtonHidden(true)) {}
-                        .opacity(0) //This hides the arrow on the NavigationLink
-                        .disabled(!isDefined)
-                )
-                .font(.system(size:30))
-                .frame(maxWidth:.infinity, alignment:.center)
-                .overlay(RoundedRectangle(cornerRadius:6, style:.circular)
-                    .stroke(lineWidth:3))
-        
-            
-            Image(systemName:"hand.raised.fill")
-            .frame(alignment:.trailing)
-                .foregroundColor(.yellow)
-                
-        }
-    }
-}
-
 struct StudentChooseAdminView: View {
-    @State var adminList:[String] = [
-        "Class 1",
-        "Class 2",
-        "Class 3"
+    //Add this binding state for transitions from view to view
+    @Binding var showNextView: DisplayState
+    
+    var adminList:[String] = [
+        "Admin 1",
+        "Admin 2",
+        "Admin 3"
     ]
-    
-    func addAdmin() {
-        adminList.append("Class " + String(adminList.count + 1))
-    }
-    
-    func removeAdmin(index: Int) {
-        adminList.remove(at: index)
-    }
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("Main / Requests")
-                    .textCase(.uppercase)
-                    .padding()
-                    .padding(.horizontal, 20)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    .padding(.top, -30)
-                
+                Button(action:{
+                    withAnimation {
+                        //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .mainStudent}
+                })
+                {
+                    Text("Main / Requests")
+                        .padding()
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(5)
+                        .padding(.top, -30)
+                        .padding(.bottom, 40)
+                    
+                }
                 
                 List {
-                    ForEach(Array(adminList.enumerated()), id:\.offset) { index, admin in
-                        AdminEntry(adminName: admin, function: {() -> Void in removeAdmin(index: index)})
-                            .padding(10)
-                    }
-                    AdminEntry(leftText: " + ", isDefined: false, function: addAdmin)
+                    ForEach(adminList, id:\.self) { admin in
+                        NavigationLink(destination: StudentAppRequestView(adminName: admin)) {
+                            Text(admin)
+                        }
                         .padding(10)
+                        .font(.system(size:30))
+                        .foregroundColor(.black)
+                    }
                 }
-                .frame(maxWidth: UIScreen.main.bounds.size.width*1,
+                .overlay(RoundedRectangle(cornerRadius:6, style:.circular)
+                    .stroke(lineWidth:3))
+                .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .buttonStyle(.plain)
     }
 }
 
 struct StudentChooseAdminView_Previews: PreviewProvider {
+    @State static private var showNextView: DisplayState = .studentChooseAdmin
+
     static var previews: some View {
-        StudentChooseAdminView()
+        StudentChooseAdminView(showNextView: $showNextView)
     }
 }

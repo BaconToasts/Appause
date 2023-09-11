@@ -23,13 +23,13 @@ struct LoginView: View {
     // Variables for button names
     @State var buttonNameTop = "Teacher Login"
     @State var buttonColorTopIdle = Color.black
-    @State var buttonColorTopActive = Color.gray
+    @State var buttonColorTopActive = Color.blue
     @State var buttonColorLogin = Color.blue
     
     
     @State var buttonNameBottom = "Student Login"
     @State var buttonColorBottomIdle = Color.black
-    @State var buttonColorBottomActive = Color.gray
+    @State var buttonColorBottomActive = Color.blue
     
     
     

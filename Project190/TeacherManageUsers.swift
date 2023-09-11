@@ -28,16 +28,16 @@ struct TeacherManageUsers: View
                 Button(action: {
                     withAnimation {
                         //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                        showNextView = .mainStudent}
+                        showNextView = .mainTeacher}
                 }){
                     Text("Main / Manage Users")
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .padding()
-                        .frame(width: 250.0, height: 75.0)
+                        .frame(width: 300.0, height: 50.0)
                         .background(.black)
                         .foregroundColor(.white)
-                        .cornerRadius(5)
+                        .cornerRadius(100)
                 }
                 .padding(.bottom,75)
                 .padding(.top, 50)
@@ -53,7 +53,7 @@ struct TeacherManageUsers: View
                     ForEach(studentList, id:\.self) { student in
                         if(studentName.isEmpty || student.contains(studentName))
                         {
-                            NavigationLink(destination:TeacherAppRequestView(userName: studentName)){
+                            NavigationLink(destination:TeacherAppRequestView(showNextView: $showNextView, userName: studentName)){
                                 Text(student)
                                     .font(.callout)
                                     .foregroundColor(.black)
@@ -72,7 +72,7 @@ struct TeacherManageUsers: View
     }
     
     struct TeacherManageUsers_Previews: PreviewProvider {
-        @State static private var showNextView: DisplayState = .studentConnectCode
+        @State static private var showNextView: DisplayState = .teacherManageUsers
         
         static var previews: some View {
             TeacherManageUsers(showNextView: $showNextView)

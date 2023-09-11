@@ -42,7 +42,11 @@ struct TeacherMainView: View {
             .padding(.bottom, 30)
             
             // create Requests button
-            Button(action:{})
+            Button(action:{
+                withAnimation {
+            //make button show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .teacherAppRequest}
+            })
             {
               Text("Requests")
                     .padding(.leading, 25)
@@ -86,7 +90,11 @@ struct TeacherMainView: View {
             .padding(.bottom, 10)
             
             // create Manage Users button
-            Button(action:{})
+            Button(action:{
+                withAnimation {
+            //make button show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .teacherManageUsers}
+            })
             {
                 Text("Manage Users")
                     .padding(.leading, 25)
