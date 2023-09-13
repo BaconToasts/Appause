@@ -30,11 +30,11 @@ struct TeacherManageUsers: View
                         //show nextView .whateverViewYouWantToShow defined in ContentView Enum
                         showNextView = .mainTeacher}
                 }){
-                    Text("Main / Manage Users")
+                    Text("MAIN / MANAGE USERS")
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .padding()
-                        .frame(width: 300.0, height: 50.0)
+                        .frame(width: 330.0, height: 50.0)
                         .background(.black)
                         .foregroundColor(.white)
                         .cornerRadius(100)
