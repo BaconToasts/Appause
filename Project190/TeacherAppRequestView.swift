@@ -4,14 +4,14 @@
 //
 //  Created by user on 4/19/23.
 //
+//
 
 import SwiftUI
 
 
 struct TeacherAppView: View {
     @State var request: RequestData
-    
-    
+   
     var body: some View {
         ZStack {
             Image(systemName:"applelogo")
@@ -57,6 +57,9 @@ struct TeacherAppView: View {
 struct TeacherAppRequestView: View {
     @Binding var showNextView: DisplayState
     
+    @State private var frameWidth: CGFloat = 330
+    @State private var frameHeight: CGFloat = 50
+    
     @State private var searchAppName: String = ""
     var userName = "User"
     
@@ -71,14 +74,20 @@ struct TeacherAppRequestView: View {
             Button(action: {withAnimation {
                 //show nextView .whateverViewYouWantToShow defined in ContentView Enum
             showNextView = .mainTeacher}}) {
-                Text("Main / Manage Users / " + userName)
-                    .padding()
+                Text("MAIN / MANAGE USER / " + String(userName).uppercased())
+                    .fontWeight(.bold)
                     .background(Color.black)
                     .foregroundColor(.white)
-                    .cornerRadius(5)
-                    .padding(.top, 8)
-                    .padding(.bottom, 40)
+                    .frame(width: frameWidth,
+                           height: frameHeight,
+                           alignment: .center)
             }
+            .background(Color.black)
+            .border(Color.black, width: 5)
+            .cornerRadius(100)
+            .padding(.bottom, 30)
+            .padding(.top, 35)
+            
             Text("App Requests")
                 .padding(.bottom, 5)
             TextField(

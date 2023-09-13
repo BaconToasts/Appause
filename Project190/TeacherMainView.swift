@@ -4,7 +4,7 @@
 //
 //  Purpose: Acts as GUI for the user in order to
 //           navigate to specfic features of the app.
-//           (currently non-functional)
+//
 
 import SwiftUI
 
