@@ -30,7 +30,7 @@ struct ContentView: View {
             case .connectCode:
                 TeacherConnectCodeView(showNextView: $displayState)
             case .studentConnectCode:
-                StudentConnectCodeView(showNextView: $displayState)
+                StudentConnectCodeView()
             case .teacherMasterControl:
                 TeacherMasterControlView(showNextView: $displayState)
             case .logout :
@@ -42,7 +42,7 @@ struct ContentView: View {
             case .teacherDeleteStudent:
                 TeacherDeleteStudentView(showNextView: $displayState)
             case .studentDeleteAdmin:
-                StudentDeleteAdminView(showNextView: $displayState)
+                StudentDeleteAdminView()
             case .studentChooseAdmin:
                 StudentChooseAdminView(showNextView: $displayState)
             case .teacherAppRequest:

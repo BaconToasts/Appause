@@ -17,6 +17,7 @@ struct StudentChooseAdminView: View {
         "Admin 3"
     ]
     
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,25 +27,43 @@ struct StudentChooseAdminView: View {
                     showNextView = .mainStudent}
                 })
                 {
-                    Text("Main / Requests")
+                    Text("Main / Classes")
                         .padding()
                         .background(Color.black)
                         .foregroundColor(.white)
                         .cornerRadius(5)
                         .padding(.top, -30)
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 30)
                     
                 }
                 
-                List {
+                ScrollView {
                     ForEach(adminList, id:\.self) { admin in
-                        NavigationLink(destination: StudentAppRequestView(adminName: admin)) {
-                            Text(admin)
+                        HStack{
+                            NavigationLink("-", destination: StudentDeleteAdminView(adminName:admin)
+                                .navigationBarHidden(true))
+                                .font(.system(size:30))
+                                .foregroundColor(.black)
+                            NavigationLink(admin, destination: StudentAppRequestView(adminName: admin)
+                                .navigationBarHidden(true))
+                                .padding(10)
+                                .font(.system(size:30))
+                                .foregroundColor(.black)
+                                .navigationBarHidden(true)
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    
+                    NavigationLink(destination: StudentConnectCodeView()) {
+                        HStack{
+                            Text("+")
+                            Text("New Class")
                         }
                         .padding(10)
                         .font(.system(size:30))
                         .foregroundColor(.black)
                     }
+                    .navigationBarHidden(true)
                 }
                 .overlay(RoundedRectangle(cornerRadius:6, style:.circular)
                     .stroke(lineWidth:3))
@@ -52,6 +71,7 @@ struct StudentChooseAdminView: View {
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
             }
         }
+            .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
