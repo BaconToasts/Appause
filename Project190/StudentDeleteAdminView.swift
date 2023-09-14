@@ -9,9 +9,9 @@ import SwiftUI
 struct StudentDeleteAdminView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @State var firstButton = "Main / Classes / Remove Class"
-    @State var secondButton = "Yes"
-    @State var thirdButton = "No"
+    @State var firstButton = "MAIN / CLASSES / REMOVE CLASS"
+    @State var secondButton = "YES"
+    @State var thirdButton = "NO"
     @State var mainButtonColor = Color.black
     
     var adminName = "Admin"

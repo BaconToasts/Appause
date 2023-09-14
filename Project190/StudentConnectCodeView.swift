@@ -18,21 +18,15 @@ struct StudentConnectCodeView: View
     {
         VStack
         {
-            Button(action: { dismiss()}){
-                Text("MAIN / CONNECT CODE")
+            Button(action: {dismiss()}) {
+                Text("MAIN / CLASSES / ADD CLASS")
                     .padding()
-                    .fontWeight(.bold)
-                    .background(Color.black)
                     .foregroundColor(.white)
-                    .frame(width: 300,
-                           height: 20,
-                           alignment: .center)
+                    .background(.black)
+                    .cornerRadius(100)
+                    .padding(.top, 8)
+                    .padding(.bottom, 40)
             }
-            .padding()
-            .background(Color.black)
-            .border(Color.black, width: 5)
-            .cornerRadius(100)
-            .padding(.bottom, 30)
             
             Text("Connect Code")
                 .font(.title)

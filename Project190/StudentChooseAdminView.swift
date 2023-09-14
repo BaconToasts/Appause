@@ -28,7 +28,7 @@ struct StudentChooseAdminView: View {
                     showNextView = .mainStudent}
                 })
                 {
-                    Text("Main / Classes")
+                    Text("MAIN / CLASSES")
                         .padding()
                         .background(Color.black)
                         .foregroundColor(.white)
