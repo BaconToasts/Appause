@@ -31,23 +31,24 @@ struct TeacherManageUsers: View
                         showNextView = .mainTeacher}
                 }){
                     Text("MAIN / MANAGE USERS")
-                        .foregroundColor(.white)
                         .fontWeight(.bold)
-                        .padding()
-                        .frame(width: 330.0, height: 50.0)
+                        .frame(width: 300.0, height: 20.0, alignment:.center)
                         .background(.black)
                         .foregroundColor(.white)
-                        .cornerRadius(100)
                 }
-                .padding(.bottom,75)
-                .padding(.top, 50)
+                .padding()
+                .background(Color.black)
+                .cornerRadius(100)
+                .padding(.top)
+                Spacer()
                 
                 TextField("Search for Registered Users",text: $studentName)
                     .multilineTextAlignment(.center)
                     .overlay(RoundedRectangle(cornerRadius: 5)
                         .stroke(lineWidth:1))
                     .frame(maxWidth:UIScreen.main.bounds.size.width*0.75)
-                    .padding(.bottom,25)
+                    .padding(.bottom, 25)
+                    .padding(.top, 30)
                 
                 List {
                     ForEach(studentList, id:\.self) { student in

@@ -29,9 +29,7 @@ struct TeacherConnectCodeView: View {
             }){
                 //button defining text enclosed by brackets
                 Text("MAIN / CONNECT CODE")
-                    .padding()
                     .fontWeight(.bold)
-                    .background(Color.black)
                     .foregroundColor(.white)
                     .frame(width: 300,
                            height: 20,
@@ -41,7 +39,9 @@ struct TeacherConnectCodeView: View {
             .background(Color.black)
             .border(Color.black, width: 5)
             .cornerRadius(100)
-            .padding(.bottom, 30)
+            .padding(.top)
+            Spacer()
+    
             
             Text("Connect Code")
                 .font(.title)

@@ -29,7 +29,6 @@ struct TeacherMainView: View {
             {
                 Text("MAIN")
                     .fontWeight(fontWeight)
-                    .background(.black)
                     .foregroundColor(.white)
                     .frame(width: frameWidth,
                            height: frameHeight,
@@ -37,9 +36,8 @@ struct TeacherMainView: View {
             }
             .padding()
             .background(mainbtnColor)
-            .border(borderColor, width: 5)
             .cornerRadius(100)
-            .padding(.bottom, 30)
+            Spacer()
             
             // create Requests button
             Button(action:{

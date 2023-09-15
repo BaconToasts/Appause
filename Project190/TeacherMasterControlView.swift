@@ -21,7 +21,6 @@ struct TeacherMasterControlView: View {
                     showNextView = .mainTeacher}
             }){// Text displaying our current path
                 Text("MAIN / MASTER CONTROL")
-                    .padding()
                     .fontWeight(.bold)
                     .background(.black)
                     .foregroundColor(.white)
@@ -34,7 +33,8 @@ struct TeacherMasterControlView: View {
             .background(.black)
             .border(.black, width: 5)
             .cornerRadius(100)
-            .padding(.bottom, 60)
+            .padding(.top)
+            Spacer()
             
             //spacer to push button above it to the top. The higher the height value
             // the more it is pushed to the top. Lower closer to center

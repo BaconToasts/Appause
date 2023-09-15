@@ -57,8 +57,8 @@ struct TeacherAppView: View {
 struct TeacherAppRequestView: View {
     @Binding var showNextView: DisplayState
     
-    @State private var frameWidth: CGFloat = 330
-    @State private var frameHeight: CGFloat = 50
+    @State private var frameWidth: CGFloat = 300
+    @State private var frameHeight: CGFloat = 20
     
     @State private var searchAppName: String = ""
     var userName = "User"
@@ -76,19 +76,17 @@ struct TeacherAppRequestView: View {
             showNextView = .mainTeacher}}) {
                 Text("MAIN / MANAGE USER / " + String(userName).uppercased())
                     .fontWeight(.bold)
-                    .background(Color.black)
                     .foregroundColor(.white)
-                    .frame(width: frameWidth,
-                           height: frameHeight,
-                           alignment: .center)
+                    .frame(width: frameWidth, height: frameHeight, alignment: .center)
             }
+            .padding()
             .background(Color.black)
-            .border(Color.black, width: 5)
             .cornerRadius(100)
-            .padding(.bottom, 30)
-            .padding(.top, 35)
+            .padding(.top)
+            Spacer()
             
             Text("App Requests")
+                .padding(.top, 50)
                 .padding(.bottom, 5)
             TextField(
                 "Search",

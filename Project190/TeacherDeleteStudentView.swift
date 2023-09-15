@@ -9,7 +9,7 @@ import SwiftUI
 struct TeacherDeleteStudentView: View{
     @Binding var showNextView: DisplayState
     
-    @State var firstButton = "Main / Manage Users / Delete Student"
+    @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
     @State var thirdButton = "No"
     @State var borderColor = Color.black
@@ -18,12 +18,14 @@ struct TeacherDeleteStudentView: View{
     var body: some View{
         VStack{
             Button(action:{withAnimation{showNextView = .teacherAppRequest}}){
-                Text(firstButton).fontWeight(.bold).foregroundColor(.white).frame(width: 300, height: 20, alignment:.center)
+                Text(firstButton).fontWeight(.bold).foregroundColor(.white).frame(width: 330, height: 50, alignment: .center)
             }
-            .padding()
             .background(mainButtonColor)
             .cornerRadius(100)
             .padding(.bottom, 180)
+            .padding(.top, 35)
+            
+            
             Text("Are you sure that you want to permanently delete this student from your list of registered users?").fontWeight(.bold).multilineTextAlignment(.center).frame(width:300, height:150, alignment:.center)
                 .padding()
             HStack{
