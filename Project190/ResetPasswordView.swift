@@ -10,15 +10,18 @@ import KeychainSwift
 
 struct ResetPasswordView: View{
     @Binding var showNextView: DisplayState
+    
     @State private var displayText:String = "Please enter your new password"
     @State private var newPassword:String = ""
     @State private var confirmNewPassword:String = ""
     @State private var passCheck = false
     @State private var nextView: DisplayState = .login
     @State private var showPassword = false
-    private let keychain = KeychainSwift()//LoginView.keychain
+    private let keychain = KeychainSwift()
+    
     var body: some View{
         VStack{
+            
             Button(action:{}){
                 Text("MAIN/PASSWORD RESET")
                     .fontWeight(.bold)
@@ -55,6 +58,7 @@ struct ResetPasswordView: View{
                 let npass = newPassword
                 let cNPass = confirmNewPassword
                 let passCheck = npass==cNPass
+                /*These if else statements are for determining whether the */
                 if passCheck{
                     displayText="Correct New Password"
                     nextView = .login
@@ -63,6 +67,7 @@ struct ResetPasswordView: View{
                     displayText="Incorrect New Password"
                     nextView = .resetPassword
                 }
+                
                 withAnimation{showNextView = nextView}
             }){
                 Text("Confirm")
@@ -74,8 +79,10 @@ struct ResetPasswordView: View{
         }
     }
 }
+
 struct ResetPasswordView_Previews: PreviewProvider{
-    @State static private var showNextView:DisplayState = .resetPassword
+    @State static private var showNextView: DisplayState = .resetPassword
+    
     static var previews: some View{
         ResetPasswordView(showNextView: $showNextView)
     }
