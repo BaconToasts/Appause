@@ -12,37 +12,47 @@ struct TeacherDeleteStudentView: View{
     @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
     @State var thirdButton = "No"
-    @State var borderColor = Color.black
-    @State var mainButtonColor = Color.black
     
     var body: some View{
         VStack{
             Button(action:{withAnimation{showNextView = .teacherAppRequest}}){
-                Text(firstButton).fontWeight(.bold).foregroundColor(.white).frame(width: 330, height: 50, alignment: .center)
+                Text(firstButton)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight() + 23,
+                           alignment: btnStyle.getAlignment())
             }
-            .background(mainButtonColor)
-            .cornerRadius(100)
-            .padding(.bottom, 180)
-            .padding(.top, 35)
-            
+            .padding()
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
+            .padding(.top)
+            Spacer()
             
             Text("Are you sure that you want to permanently delete this student from your list of registered users?").fontWeight(.bold).multilineTextAlignment(.center).frame(width:300, height:150, alignment:.center)
                 .padding()
             HStack{
                 Button(action:{}){
-                    Text(secondButton).fontWeight(.bold).foregroundColor(.white).frame(width:50)
+                    Text(secondButton)
+                        .fontWeight(btnStyle.getFont())
+                        .foregroundColor(.white)
+                        .frame(width:50)
                 }
                 .padding()
-                .background(mainButtonColor)
-                .cornerRadius(6)
+                .background(.black)
+                .cornerRadius(btnStyle.getBtnRadius())
                 .padding(.trailing, 100)
                 .padding(.bottom, 250)
+                
                 Button(action:{withAnimation{showNextView = .teacherManageUsers}}){
-                    Text(thirdButton).fontWeight(.bold).foregroundColor(mainButtonColor).frame(width:50)
+                    Text(thirdButton)
+                        .fontWeight(btnStyle.getFont())
+                        .foregroundColor(.black)
+                        .frame(width:50)
                 }
                 .padding()
-                .border(borderColor, width: 5)
-                .cornerRadius(6)
+                .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+                .cornerRadius(btnStyle.getBtnRadius())
                 .padding(.bottom, 250)
             }
         }

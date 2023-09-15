@@ -29,16 +29,15 @@ struct TeacherConnectCodeView: View {
             }){
                 //button defining text enclosed by brackets
                 Text("MAIN / CONNECT CODE")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(width: 300,
-                           height: 20,
-                           alignment: .center)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(Color.black)
-            .border(Color.black, width: 5)
-            .cornerRadius(100)
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
             .padding(.top)
             Spacer()
     

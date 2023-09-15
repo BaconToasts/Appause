@@ -11,32 +11,22 @@ import SwiftUI
 struct TeacherMainView: View {
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState
-    @State private var mainbtnColor: Color = Color.black
-    @State private var borderColor: Color = Color.black
-    @State private var btnColor: Color = Color.gray.opacity(0.25)
-    @State private var btnAlignment: Alignment = .center
-    @State private var fontWeight:  Font.Weight = .bold
-    @State private var cornerRadius: CGFloat = 6
-    @State private var frameWidth: CGFloat = 300
-    @State private var frameHeight: CGFloat = 20
-    
-    
+        
     var body: some View {
         VStack{
-            
             // create Main button
             Button(action:{})
             {
                 Text("MAIN")
-                    .fontWeight(fontWeight)
-                    .foregroundColor(.white)
-                    .frame(width: frameWidth,
-                           height: frameHeight,
-                           alignment: btnAlignment)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(mainbtnColor)
-            .cornerRadius(100)
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
             Spacer()
             
             // create Requests button
@@ -48,21 +38,21 @@ struct TeacherMainView: View {
             {
               Text("Requests")
                     .padding(.leading, 25)
-                    .fontWeight(fontWeight)
-                    .foregroundColor(.black)
-                    .frame(width: frameWidth,
-                           height: frameHeight,
-                           alignment: btnAlignment)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
                 
                 Image(systemName: "hand.raised")
-                    .fontWeight(fontWeight)
+                    .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
                     .foregroundColor(.black)
             }
             .padding()
-            .background(btnColor)
-            .border(borderColor, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBtnRadius())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
             // create Whitelist button
@@ -70,21 +60,21 @@ struct TeacherMainView: View {
             {
                 Text("Whitelist")
                     .padding(.leading, 20)
-                    .fontWeight(fontWeight)
-                    .foregroundColor(.black)
-                    .frame(width: frameWidth,
-                           height: frameHeight,
-                           alignment: btnAlignment)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
                 
                 Image(systemName: "bookmark.slash")
-                    .fontWeight(fontWeight)
+                    .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
                     .foregroundColor(.black)
             }
             .padding()
-            .background(btnColor)
-            .border(borderColor, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBtnRadius())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
             // create Manage Users button
@@ -96,22 +86,22 @@ struct TeacherMainView: View {
             {
                 Text("Manage Users")
                     .padding(.leading, 25)
-                    .fontWeight(fontWeight)
-                    .foregroundColor(.black)
-                    .frame(width: frameWidth,
-                           height: frameHeight,
-                           alignment: btnAlignment)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
                 
                 Image(systemName: "person")
-                    .fontWeight(fontWeight)
+                    .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
                     .foregroundColor(.black)
             
             }
             .padding()
-            .background(btnColor)
-            .border(borderColor, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBtnRadius())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
             // create Connect Code button
@@ -123,16 +113,16 @@ struct TeacherMainView: View {
             })
             {
                 Text("Connect Code")
-                    .fontWeight(fontWeight)
-                    .foregroundColor(.black)
-                    .frame(width: frameWidth + 35,
-                           height: frameHeight + 5,
-                           alignment: btnAlignment)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth() + 35,
+                           height: btnStyle.getHeight() + 5,
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(btnColor)
-            .border(borderColor, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBtnRadius())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
             // create Settings button
@@ -140,21 +130,21 @@ struct TeacherMainView: View {
             {
                 Text("Settings")
                     .padding(.leading, 25)
-                    .fontWeight(fontWeight)
-                    .foregroundColor(.black)
-                    .frame(width: frameWidth,
-                           height: frameHeight,
-                           alignment: btnAlignment)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
                 
                 Image(systemName: "gear")
-                    .fontWeight(fontWeight)
+                    .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
                     .foregroundColor(.black)
             }
             .padding()
-            .background(btnColor)
-            .border(borderColor, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBtnRadius())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
                        
             
@@ -168,22 +158,22 @@ struct TeacherMainView: View {
             {
                 Text("Master Control")
                     .padding(.leading, 25)
-                    .fontWeight(fontWeight)
+                    .fontWeight(btnStyle.getFont())
                     .foregroundColor(.black)
-                    .frame(width: frameWidth + 5,
-                           height: frameHeight,
-                           alignment: btnAlignment)
+                    .frame(width: btnStyle.getWidth() + 5,
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
                 
                 Image(systemName: "lock")
-                    .fontWeight(fontWeight)
+                    .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
                     .foregroundColor(.black)
                 
             }
             .padding()
-            .background(btnColor)
-            .border(borderColor, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBtnRadius())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 100)
             
             Button(action: {

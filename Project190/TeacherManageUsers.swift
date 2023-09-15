@@ -31,14 +31,16 @@ struct TeacherManageUsers: View
                         showNextView = .mainTeacher}
                 }){
                     Text("MAIN / MANAGE USERS")
-                        .fontWeight(.bold)
-                        .frame(width: 300.0, height: 20.0, alignment:.center)
-                        .background(.black)
+                        .fontWeight(btnStyle.getFont())
                         .foregroundColor(.white)
+                        .frame(width: btnStyle.getWidth(),
+                               height: btnStyle.getHeight(),
+                               alignment: btnStyle.getAlignment())
+                       
                 }
                 .padding()
-                .background(Color.black)
-                .cornerRadius(100)
+                .background(btnStyle.getPathColor())
+                .cornerRadius(btnStyle.getPathRadius())
                 .padding(.top)
                 Spacer()
                 

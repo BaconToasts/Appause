@@ -57,9 +57,6 @@ struct TeacherAppView: View {
 struct TeacherAppRequestView: View {
     @Binding var showNextView: DisplayState
     
-    @State private var frameWidth: CGFloat = 300
-    @State private var frameHeight: CGFloat = 20
-    
     @State private var searchAppName: String = ""
     var userName = "User"
     
@@ -75,13 +72,15 @@ struct TeacherAppRequestView: View {
                 //show nextView .whateverViewYouWantToShow defined in ContentView Enum
             showNextView = .mainTeacher}}) {
                 Text("MAIN / MANAGE USER / " + String(userName).uppercased())
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(width: frameWidth, height: frameHeight, alignment: .center)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(Color.black)
-            .cornerRadius(100)
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
             .padding(.top)
             Spacer()
             
@@ -114,6 +113,7 @@ struct TeacherAppRequestView: View {
                 showNextView = .teacherDeleteStudent}) {
                 Text("Delete User")
                     .padding()
+                    .fontWeight(.bold)
                     .background(Color.black)
                     .foregroundColor(.white)
                     .cornerRadius(25)

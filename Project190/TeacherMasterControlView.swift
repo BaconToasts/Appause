@@ -21,18 +21,16 @@ struct TeacherMasterControlView: View {
                     showNextView = .mainTeacher}
             }){// Text displaying our current path
                 Text("MAIN / MASTER CONTROL")
-                    .fontWeight(.bold)
-                    .background(.black)
-                    .foregroundColor(.white)
-                    .frame(width: 300,
-                           height: 20,
-                           alignment: .center)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
                     
             }
             .padding()
-            .background(.black)
-            .border(.black, width: 5)
-            .cornerRadius(100)
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
             .padding(.top)
             Spacer()
             

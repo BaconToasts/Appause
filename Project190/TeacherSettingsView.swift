@@ -13,57 +13,65 @@ struct TeacherSettingsView: View{
     @State var secondButton = "Change Password"
     @State var thirdButton = "Enable FaceID"
     @State var fourthButton = "Disable Bluetooth"
-    @State var borderColor = Color.black
-    @State var mainButtonColor = Color.black
-    @State var backgroundColor = Color.gray.opacity(0.25)
     
     var body: some View{
         VStack{
             Button(action:{withAnimation{showNextView = .mainTeacher}}){
                 Text(firstButton)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(width: 300, height: 20, alignment:.center)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(mainButtonColor)
-            .cornerRadius(100)
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
             .padding(.top)
             Spacer()
             
             Button(action:{}){
                 Text(secondButton)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .frame(width: 300, height: 20, alignment:.center)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(backgroundColor)
-            .border(mainButtonColor, width: 5)
-            .cornerRadius(6)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
             
             Button(action:{}){
                 Text(thirdButton)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .frame(width: 300, height: 20, alignment:.center)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(backgroundColor)
-            .border(mainButtonColor, width: 5)
-            .cornerRadius(6)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
             
             Button(action:{}){
-                Text(fourthButton).fontWeight(.bold).foregroundColor(.black).frame(width: 300, height: 20, alignment:.center)
+                Text(fourthButton)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(backgroundColor)
-            .border(mainButtonColor, width: 5)
-            .cornerRadius(6)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 300)
         }
     }
