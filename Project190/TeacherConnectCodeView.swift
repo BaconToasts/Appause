@@ -14,7 +14,8 @@ struct TeacherConnectCodeView: View {
     
     @State private var generatedCode: String = ""
     
-    var charList = ["1","2","3","4","5","6","7","8","9","0",
+    //array used to generate a random character string
+    @State private var charList = ["1","2","3","4","5","6","7","8","9","0",
                     "a","b","c","d","e","f","g","h","i","j",
                     "k","l","m","n","o","p","q","r","s","t",
                     "u","v","w","x","y","z"]
@@ -56,6 +57,8 @@ struct TeacherConnectCodeView: View {
             .disabled(true)
             .padding(25)
             
+            
+            //generates a random string of 6 characters using characters from the charList array
             Button(action: {
                 generatedCode = ""
                 for _ in 0..<6{
