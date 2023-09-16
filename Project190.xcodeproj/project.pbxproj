@@ -10,6 +10,7 @@
 		0068778929F23E300007F94A /* StudentDeleteAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778829F23E300007F94A /* StudentDeleteAdminView.swift */; };
 		0068778B29F23F720007F94A /* TeacherManageUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778A29F23F720007F94A /* TeacherManageUsers.swift */; };
 		00CE9AF829F2FF2000AAEE3C /* StudentRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */; };
+		31256F992AB547EA008A38C6 /* EmailCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31256F982AB547EA008A38C6 /* EmailCodeView.swift */; };
 		3197737529E51DF000596D4C /* Project190App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197737429E51DF000596D4C /* Project190App.swift */; };
 		3197737729E51DF000596D4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197737629E51DF000596D4C /* ContentView.swift */; };
 		3197737929E51DF200596D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3197737829E51DF200596D4C /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		0068778829F23E300007F94A /* StudentDeleteAdminView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDeleteAdminView.swift; sourceTree = "<group>"; };
 		0068778A29F23F720007F94A /* TeacherManageUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherManageUsers.swift; sourceTree = "<group>"; };
 		00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentRegisterView.swift; sourceTree = "<group>"; };
+		31256F982AB547EA008A38C6 /* EmailCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCodeView.swift; sourceTree = "<group>"; };
 		3197737129E51DF000596D4C /* Project190.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project190.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3197737429E51DF000596D4C /* Project190App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190App.swift; sourceTree = "<group>"; };
 		3197737629E51DF000596D4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
 				3197738229E51E7400596D4C /* EULAView.swift */,
 				3197738429E51EF500596D4C /* LoginView.swift */,
+				31256F982AB547EA008A38C6 /* EmailCodeView.swift */,
 				3197738929E51F5A00596D4C /* StudentMainView.swift */,
 				BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */,
 				00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */,
@@ -212,6 +215,7 @@
 				BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */,
 				7F9ACC452AB14C02006A6762 /* ResetPasswordView.swift in Sources */,
 				31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */,
+				31256F992AB547EA008A38C6 /* EmailCodeView.swift in Sources */,
 				7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */,
 				3197738A29E51F5A00596D4C /* StudentMainView.swift in Sources */,
 				3197738329E51E7400596D4C /* EULAView.swift in Sources */,
