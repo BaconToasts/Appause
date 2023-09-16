@@ -30,6 +30,7 @@
 		BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */; };
 		BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */; };
 		BE0FDCE029F0F18300D9EBE3 /* TeacherAppRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDF29F0F18300D9EBE3 /* TeacherAppRequestView.swift */; };
+		CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentChooseAdminView.swift; sourceTree = "<group>"; };
 		BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAppRequestView.swift; sourceTree = "<group>"; };
 		BE0FDCDF29F0F18300D9EBE3 /* TeacherAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppRequestView.swift; sourceTree = "<group>"; };
+		CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyleVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				0068778A29F23F720007F94A /* TeacherManageUsers.swift */,
 				7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */,
 				7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */,
+				CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */,
 				3197738B29E51FA300596D4C /* TeacherConnectCodeView.swift */,
 				3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */,
 				3197737829E51DF200596D4C /* Assets.xcassets */,
@@ -211,6 +214,7 @@
 				0068778B29F23F720007F94A /* TeacherManageUsers.swift in Sources */,
 				3197738C29E51FA300596D4C /* TeacherConnectCodeView.swift in Sources */,
 				BE0FDCE029F0F18300D9EBE3 /* TeacherAppRequestView.swift in Sources */,
+				CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */,
 				3197739029E5203B00596D4C /* TeacherMasterControlView.swift in Sources */,
 				BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */,
 				7F9ACC452AB14C02006A6762 /* ResetPasswordView.swift in Sources */,
