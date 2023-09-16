@@ -30,24 +30,27 @@ struct TeacherManageUsers: View
                         //show nextView .whateverViewYouWantToShow defined in ContentView Enum
                         showNextView = .mainTeacher}
                 }){
-                    Text("Main / Manage Users")
+                    Text("MAIN / MANAGE USERS")
+                        .fontWeight(btnStyle.getFont())
                         .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .padding()
-                        .frame(width: 300.0, height: 50.0)
-                        .background(.black)
-                        .foregroundColor(.white)
-                        .cornerRadius(100)
+                        .frame(width: btnStyle.getWidth(),
+                               height: btnStyle.getHeight(),
+                               alignment: btnStyle.getAlignment())
+                       
                 }
-                .padding(.bottom,75)
-                .padding(.top, 50)
+                .padding()
+                .background(btnStyle.getPathColor())
+                .cornerRadius(btnStyle.getPathRadius())
+                .padding(.top)
+                Spacer()
                 
                 TextField("Search for Registered Users",text: $studentName)
                     .multilineTextAlignment(.center)
                     .overlay(RoundedRectangle(cornerRadius: 5)
                         .stroke(lineWidth:1))
                     .frame(maxWidth:UIScreen.main.bounds.size.width*0.75)
-                    .padding(.bottom,25)
+                    .padding(.bottom, 25)
+                    .padding(.top, 30)
                 
                 List {
                     ForEach(studentList, id:\.self) { student in
