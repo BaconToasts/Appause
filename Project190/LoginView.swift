@@ -12,7 +12,7 @@ import CoreHaptics
 
 struct LoginView: View {
     //Stores the username and password even when app is closed
-    private let keychain = KeychainSwift()
+    public var keychain = KeychainSwift()
     
     @State private var showErrorMessages = false
     @State private var errorMessages = ""
