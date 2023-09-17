@@ -1,8 +1,8 @@
 //
-//  StudentRegisterView.swift
+//  TeacherRegisterView.swift
 //  Project190
 //
-//  Created by Mark Zhang on 4/19/23.
+//  Created by Mark Zhang on 9/16/23.
 //
 
 import SwiftUI
@@ -10,7 +10,7 @@ import Foundation //used for regex verification
 import KeychainSwift // used to save registration data
 
 
-struct StudentRegisterView: View {
+struct TeacherRegisterView: View {
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState
     
@@ -89,13 +89,14 @@ struct StudentRegisterView: View {
                     registerError = "Passwords do not match. Try again."
                 }
                 else{
-                    registerError = "" //resets the error message if there is one
+                    //resets the error message if there is one
+                    registerError = ""
                     
                     //adds information into the keychain
-                    keychain.set(email, forKey: "studentUserKey")
-                    keychain.set(password, forKey: "studentPassKey")
-                    keychain.set(firstName, forKey: "studentFirstNameKey")
-                    keychain.set(lastName, forKey: "studentLastNameKey")
+                    keychain.set(email, forKey: "teacherUserKey")
+                    keychain.set(password, forKey: "teacherPassKey")
+                    keychain.set(firstName, forKey: "teacherFirstNameKey")
+                    keychain.set(lastName, forKey: "teacherLastNameKey")
                     
                     withAnimation {
                         //show nextView .whateverViewYouWantToShow defined in ContentView Enum
@@ -120,10 +121,11 @@ struct StudentRegisterView: View {
     }
 }
 
-struct StudentRegisterView_Previews: PreviewProvider {
-    @State static private var showNextView: DisplayState = .studentRegister
+struct TeacherRegisterView_Previews: PreviewProvider {
+    @State static private var showNextView: DisplayState = .teacherRegister
     
     static var previews: some View {
-        StudentRegisterView(showNextView: $showNextView)
+        TeacherRegisterView(showNextView: $showNextView)
     }
 }
+
