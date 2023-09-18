@@ -14,18 +14,25 @@ struct StudentDeleteAdminView: View {
     @State var thirdButton = "NO"
     @State var mainButtonColor = Color.black
     
-    var adminName = "Admin"
+    var teacherName = "Mr. Brimberry"
     
     var body: some View {
         VStack{
-            Button(firstButton, action: {dismiss()})
-                .padding()
-                .background(Color.black)
-                .foregroundColor(.white)
-                .cornerRadius(5)
-                .padding(.top, -30)
-                .padding(.bottom, 40)
-            Text("Are you sure that you want to request that " + adminName + " removes your registration?").fontWeight(.bold).multilineTextAlignment(.center).frame(width:300, height:150, alignment:.center)
+            Button(action:{dismiss()}){
+                Text(firstButton)
+                .fontWeight(btnStyle.getFont())
+                .foregroundColor(btnStyle.getPathFontColor())
+                .frame(width: btnStyle.getWidth(),
+                       height: btnStyle.getHeight() + 23,
+                       alignment: btnStyle.getAlignment())
+            }
+            .padding()
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
+            .padding(.top)
+            Spacer()
+            
+            Text("Are you sure that you want to request that " + teacherName + " removes you from their class?").fontWeight(.bold).multilineTextAlignment(.center).frame(width:300, height:150, alignment:.center)
                 .padding()
             HStack{
                 Button(action:{ dismiss()}){

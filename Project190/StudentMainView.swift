@@ -1,6 +1,5 @@
 //
-//  ContentView.swift
-//  studentMainScreen
+//  StudentMainView.swift
 //
 //  Created by Luis Campos on 4/6/23.
 //  Modified by Nav Bernal and Alec Lobato on 4/20/23.

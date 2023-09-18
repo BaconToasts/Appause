@@ -20,13 +20,17 @@ struct StudentConnectCodeView: View
         {
             Button(action: {dismiss()}) {
                 Text("MAIN / CLASSES / ADD CLASS")
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(.black)
-                    .cornerRadius(100)
-                    .padding(.top, 8)
-                    .padding(.bottom, 40)
+                    .fontWeight(btnStyle.getFont())
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
+            .padding()
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
+            .padding(.top)
+            Spacer()
             
             Text("Connect Code")
                 .font(.title)
@@ -40,11 +44,11 @@ struct StudentConnectCodeView: View
             .textFieldStyle(.roundedBorder)
             
             Button("Submit Connect Code"){/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/}
-            .padding()
-            .frame(width: 300.0, height: 30.0)
-            .background(.black)
-            .foregroundColor(.white)
-            .cornerRadius(100)
+                .padding()
+                .fontWeight(.bold)
+                .background(Color.black)
+                .foregroundColor(.white)
+                .cornerRadius(100)
             
         }
         .padding(.bottom, 400)
