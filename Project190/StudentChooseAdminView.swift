@@ -44,7 +44,7 @@ struct StudentChooseAdminView: View {
                 ScrollView {
                     ForEach(adminList, id:\.self) { admin in
                         ZStack {
-                            NavigationLink("-", destination: StudentDeleteAdminView(adminName: admin)
+                            NavigationLink("-", destination: StudentDeleteAdminView(teacherName: admin)
                                 .navigationBarHidden(true))
                                 .font(.system(size:30))
                                 .frame(maxWidth:.infinity, alignment:.leading)
