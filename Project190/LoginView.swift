@@ -12,7 +12,7 @@ import CoreHaptics
 
 struct LoginView: View {
     //Stores the username and password even when app is closed
-    private let keychain = KeychainSwift()
+    public var keychain = KeychainSwift()
     
     @State private var showErrorMessages = false
     @State private var errorMessages = ""
@@ -106,6 +106,13 @@ struct LoginView: View {
                         HStack {
                             //*********************** REGISTER BUTTON ************************//
                             Button(action: {
+                                withAnimation {
+                                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                                    showNextView = showTextFields ? .teacherRegister : .studentRegister
+                                }
+                                
+                                //previous code used in place of registration
+                                /*
                                 let username = showTextFields ? usernameText : studentUsernameText
                                 let password = showTextFields ? passwordText : studentPasswordText
                                 let keychainUsernameKey = showTextFields ? "registeredTeacherUsername" : "registeredStudentUsername"
@@ -117,7 +124,7 @@ struct LoginView: View {
                                     showTextFields ? (isRegistrationSuccessful = true) : (isStudentRegistrationSuccessful = true)
                                 } else {
                                     showTextFields ? (isRegistrationSuccessful = false) : (isStudentRegistrationSuccessful = false)
-                                }
+                                }*/
                             }) {
                                 Text("Register")
                                     .foregroundColor(.white)
@@ -135,12 +142,10 @@ struct LoginView: View {
                             //~~~~~~~~~~~~~~~~~~ end of register button ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
                             //****************** LOGIN BUTTON *******************************//
                             Button(action: {
-                                let keychainUsernameKey = showTextFields ? "registeredTeacherUsername" : "registeredStudentUsername"
-                                let keychainPasswordKey = showTextFields ? "registeredTeacherPassword" : "registeredStudentPassword"
+                                let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
+                                let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
                                 
-                                let registeredUsername = keychain.get(keychainUsernameKey)
-                                let registeredPassword = keychain.get(keychainPasswordKey)
-                                
+                                //retrieves the username and password from the keychain depending on which type login is being used
                                 let username = showTextFields ? usernameText : studentUsernameText
                                 let password = showTextFields ? passwordText : studentPasswordText
                                 

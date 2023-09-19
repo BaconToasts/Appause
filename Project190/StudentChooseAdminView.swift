@@ -29,19 +29,22 @@ struct StudentChooseAdminView: View {
                 })
                 {
                     Text("MAIN / CLASSES")
-                        .padding()
-                        .background(Color.black)
+                        .fontWeight(btnStyle.getFont())
                         .foregroundColor(.white)
-                        .cornerRadius(5)
-                        .padding(.top, -30)
-                        .padding(.bottom, 30)
-                    
+                        .frame(width: btnStyle.getWidth(),
+                               height: btnStyle.getHeight(),
+                               alignment: btnStyle.getAlignment())
+                       
                 }
+                .padding()
+                .background(btnStyle.getPathColor())
+                .cornerRadius(btnStyle.getPathRadius())
+                .padding(.bottom, 70)
                 
                 ScrollView {
                     ForEach(adminList, id:\.self) { admin in
                         ZStack {
-                            NavigationLink("-", destination: StudentDeleteAdminView(adminName: admin)
+                            NavigationLink("-", destination: StudentDeleteAdminView(teacherName: admin)
                                 .navigationBarHidden(true))
                                 .font(.system(size:30))
                                 .frame(maxWidth:.infinity, alignment:.leading)
