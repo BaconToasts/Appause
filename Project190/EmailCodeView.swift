@@ -42,10 +42,13 @@ struct EmailCodeView: View {
                 }
             }) {
                 Text("Generate and Send Code")
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .frame(width: 300, height: 20, alignment: .center)
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .background(Color.gray.opacity(0.25))
+                    .border(Color.black, width: 5)
+                    .cornerRadius(6)
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
@@ -69,7 +72,7 @@ struct EmailCodeView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("api-F199XXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
+        request.addValue("api-F199xxxxxxxxxxxxxxxxxx", forHTTPHeaderField: "Key") // Replace with your API key
 
         let body: [String: Any] = [
             "api_key": "api-F199C926535F11EE96AEF23C91C88F4E", // Your API key
