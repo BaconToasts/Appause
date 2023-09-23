@@ -132,18 +132,18 @@ struct ResetPasswordView: View{
                 /*These variables are supposed to store whether or not if the student's new password
                  or the teacher's new password matches their previous password. If it does then it will
                  remain on the reset page until they type in a new password*/
-                studentDiffPassword = (npass != kc.get("registeredStudentPassword"))
-                teacherDiffPassword = (npass != kc.get("registeredTeacherPassword"))
+                studentDiffPassword = (npass != kc.get("studentPassKey"))
+                teacherDiffPassword = (npass != kc.get("teacherPassKey"))
                 if(npass != "" && cNPass != ""){
                     if(passCheck && studentDiffPassword == true){
                         displayText="Correct New Password"
-                        kc.set(npass, forKey: "registeredStudentPassword")
+                        kc.set(npass, forKey: "studentPassKey")
                         nextView = .login
                         confirmColor = Color.green
                     }
                     else if(passCheck && teacherDiffPassword == true){
                         displayText="Correct New Password"
-                        kc.set(npass, forKey: "registeredTeacherPassword")
+                        kc.set(npass, forKey: "teacherPassKey")
                         nextView = .login
                         confirmColor = Color.green
                     }
