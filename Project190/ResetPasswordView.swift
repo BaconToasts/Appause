@@ -15,14 +15,14 @@ struct ResetPasswordView: View{
     @State private var newPassword:String = ""
     @State private var confirmNewPassword:String = ""
     @State private var passCheck = false
+    @State private var recentPassCheck = false
     @State private var nextView: DisplayState = .login
-    @State private var showPassword = false
+    @State private var newPasswordViewStatus: String = ""
+    @State private var confirmNewPasswordViewStatus: String = ""
     @State private var studentDiffPassword = false
     @State private var teacherDiffPassword = false
     @State private var confirmColor = Color.green
     
-    /*private let log = LoginView(showNextView: $nextView)
-     private let kc = log.keychain*/
     private let kc = KeychainSwift()
     
     var body: some View{
@@ -46,62 +46,83 @@ struct ResetPasswordView: View{
             /*These if else statements are supposed to help display the text field entry
              for the users new password and depending on if the user clicks on the show
              button it will display the new password or hide it if they click hide.*/
-            if(showPassword == true){
-                TextField("New Password: ", text:$newPassword)
-                    .padding([.trailing, .leading], 50)
-                    .padding(.bottom, 10)
-                    .padding(.top, 50)
-                    .multilineTextAlignment(.leading)
-                    .textFieldStyle(.roundedBorder)
+            if(newPasswordViewStatus == "visible"){
+                HStack{
+                    TextField("New Password: ", text: $newPassword)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 10)
+                        .padding(.top, 50)
+                        .multilineTextAlignment(.leading)
+                        .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(TextInputAutocapitalization.never)
+                    Button(action: {newPasswordViewStatus = "hidden"}){
+                        Image(systemName: "eye.slash")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding(.top, 40)
+                            .padding(.trailing, 50)
+                    }
+                }
             }
             else{
-                SecureField("New Password: ", text:$newPassword)
-                    .padding([.trailing, .leading], 50)
-                    .padding(.bottom, 10)
-                    .padding(.top, 50)
-                    .multilineTextAlignment(.leading)
-                    .textFieldStyle(.roundedBorder)
+                HStack{
+                    SecureField("New Password: ", text:$newPassword)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 10)
+                        .padding(.top, 50)
+                        .multilineTextAlignment(.leading)
+                        .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(TextInputAutocapitalization.never)
+                    Button(action:{newPasswordViewStatus = "visible"}){
+                        Image(systemName: "eye")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding(.top, 40)
+                            .padding(.trailing, 50)
+                    }
+                }
             }
             /*These if else statements are supposed to help display the text field entry
              for the users to confirm their new password and depending on if the user clicks
              on the show button it will display the new password or hide it if they click hide.*/
-            if(showPassword == true){
-                TextField("Confirm New Password: ", text:$confirmNewPassword)
-                    .padding([.trailing, .leading], 50)
-                    .padding(.bottom, 20)
-                    .multilineTextAlignment(.leading)
-                    .textFieldStyle(.roundedBorder)
+            if(confirmNewPasswordViewStatus == "visible"){
+                HStack{
+                    TextField("Confirm New Password: ", text: $confirmNewPassword)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 20)
+                        .multilineTextAlignment(.leading)
+                        .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(TextInputAutocapitalization.never)
+                    Button(action: {confirmNewPasswordViewStatus = "hidden"}){
+                        Image(systemName: "eye.slash")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 20)
+                            .padding(.trailing, 50)
+                    }
+                }
             }
             else{
-                SecureField("Confirm New Password: ", text:$confirmNewPassword)
-                    .padding([.trailing, .leading], 50)
-                    .padding(.bottom, 20)
-                    .multilineTextAlignment(.leading)
-                    .textFieldStyle(.roundedBorder)
-            }
-            /*This section is for displaying the buttons to either show or hide the new password
-             that the user wants to replace their previous password*/
-            HStack{
-                Button(action:{
-                    showPassword = true
-                }){
-                    Text("Show").foregroundColor(Color.black)
+                HStack{
+                    SecureField("Confirm New Password: ", text: $confirmNewPassword)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 20)
+                        .multilineTextAlignment(.leading)
+                        .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(TextInputAutocapitalization.never)
+                    Button(action: {confirmNewPasswordViewStatus = "visible"}){
+                        Image(systemName: "eye")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding([.bottom, .trailing], 20)
+                            .padding(.trailing, 30)
+                    }
                 }
-                .padding(15)
-                .background(Color.cyan)
-                .border(Color.black,width: 5)
-                .cornerRadius(6)
-                Button(action:{
-                    self.showPassword = false
-                }){
-                    Text("Hide").foregroundColor(Color.black)
-                }
-                .padding(15)
-                .background(Color.gray)
-                .border(Color.black,width: 5)
-                .cornerRadius(6)
             }
-            
             /*Finally this section of code is for the confirmation button and it checks
              to see if both of the passwords that the user types into the fields are the same*/
             Button(action:{
@@ -111,28 +132,42 @@ struct ResetPasswordView: View{
                 /*These variables are supposed to store whether or not if the student's new password
                  or the teacher's new password matches their previous password. If it does then it will
                  remain on the reset page until they type in a new password*/
-                let studentDiffPassword = npass != kc.get("registeredStudentPassword")
-                let teacherDiffPassword = npass != kc.get("registeredTeacherPassword")
-                if passCheck && studentDiffPassword == true{
-                    displayText="Correct New Password"
-                    kc.set(npass, forKey: "registeredStudentPassword")
-                    nextView = .login
-                    confirmColor = Color.green
+                studentDiffPassword = (npass != kc.get("registeredStudentPassword"))
+                teacherDiffPassword = (npass != kc.get("registeredTeacherPassword"))
+                if(npass != "" && cNPass != ""){
+                    if(passCheck && studentDiffPassword == true){
+                        displayText="Correct New Password"
+                        kc.set(npass, forKey: "registeredStudentPassword")
+                        nextView = .login
+                        confirmColor = Color.green
+                    }
+                    else if(passCheck && teacherDiffPassword == true){
+                        displayText="Correct New Password"
+                        kc.set(npass, forKey: "registeredTeacherPassword")
+                        nextView = .login
+                        confirmColor = Color.green
+                    }
+                    else if (passCheck == true && studentDiffPassword == false){
+                        displayText = "Enter Unique Password"
+                        nextView = .resetPassword
+                        confirmColor = Color.red
+                    }
+                    else if (passCheck == true && teacherDiffPassword == false){
+                        displayText = "Enter Unique Password"
+                        nextView = .resetPassword
+                        confirmColor = Color.red
+                    }
+                    else if (passCheck == false){
+                        displayText = "Enter the same new password"
+                        nextView = .resetPassword
+                        confirmColor = Color.red
+                    }
                 }
-                else if passCheck && teacherDiffPassword == true{
-                    displayText="Correct New Password"
-                    kc.set(npass, forKey: "registeredTeacherPassword")
-                    nextView = .login
-                    confirmColor = Color.green
-                }
-                else if ((passCheck == false && studentDiffPassword == false) ||
-                         (passCheck == false && teacherDiffPassword == false) ||
-                passCheck == false){
-                    displayText="Incorrect New Password"
+                else{
+                    displayText = "No password was entered"
                     nextView = .resetPassword
                     confirmColor = Color.red
                 }
-                
                 withAnimation{showNextView = nextView}
             }){
                 Text("Confirm")
