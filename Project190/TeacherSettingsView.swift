@@ -30,7 +30,7 @@ struct TeacherSettingsView: View{
             .padding(.top)
             Spacer()
             
-            Button(action:{}){
+            Button(action:{withAnimation{showNextView = .emailCode}}){
                 Text(secondButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
