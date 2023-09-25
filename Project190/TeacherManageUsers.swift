@@ -56,7 +56,8 @@ struct TeacherManageUsers: View
                     ForEach(studentList, id:\.self) { student in
                         if(studentName.isEmpty || student.contains(studentName))
                         {
-                            NavigationLink(destination:TeacherAppRequestView(showNextView: $showNextView, userName: studentName)){
+                            NavigationLink(destination:TeacherAppRequestView(userName: student)
+                                .navigationBarHidden(true)){
                                 Text(student)
                                     .font(.callout)
                                     .foregroundColor(.black)

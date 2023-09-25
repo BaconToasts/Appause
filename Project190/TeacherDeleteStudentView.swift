@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct TeacherDeleteStudentView: View{
-    @Binding var showNextView: DisplayState
+    @Environment(\.dismiss) private var dismiss
     
     @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
@@ -15,7 +15,7 @@ struct TeacherDeleteStudentView: View{
     
     var body: some View{
         VStack{
-            Button(action:{withAnimation{showNextView = .teacherAppRequest}}){
+            Button(action: {dismiss()}) {
                 Text(firstButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getPathFontColor())
@@ -44,7 +44,7 @@ struct TeacherDeleteStudentView: View{
                 .padding(.trailing, 100)
                 .padding(.bottom, 250)
                 
-                Button(action:{withAnimation{showNextView = .teacherManageUsers}}){
+                Button(action: {dismiss()}) {
                     Text(thirdButton)
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(.black)
@@ -59,8 +59,7 @@ struct TeacherDeleteStudentView: View{
     }
 }
 struct TeacherDeleteStudentView_Previews: PreviewProvider{
-    @State static private var showNextView: DisplayState = .teacherDeleteStudent
     static var previews: some View{
-        TeacherDeleteStudentView(showNextView: $showNextView)
+        TeacherDeleteStudentView()
     }
 }
