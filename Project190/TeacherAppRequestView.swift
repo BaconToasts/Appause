@@ -11,14 +11,22 @@ import SwiftUI
 
 struct TeacherAppView: View {
     @State var request: RequestData
+    @State var studentName: String
    
     var body: some View {
         ZStack {
             Image(systemName:"applelogo")
                 .frame(maxWidth:.infinity, alignment:.leading)
             
-            Text(request.appName)
-                .frame(maxWidth:.infinity, alignment:.center)
+            NavigationLink(destination: TeacherAppDescription(appData: request)
+                .navigationBarHidden(true)) {
+                Text(request.appName)
+                    .frame(maxWidth:.infinity, alignment:.center)
+                    
+            }
+                
+            //Text(request.appName)
+                //.frame(maxWidth:.infinity, alignment:.center)
             HStack {
                 Button(action:{ //Approve
                     request = RequestData(appName: request.appName, approved: ApproveStatus.approved)
@@ -67,58 +75,60 @@ struct TeacherAppRequestView: View {
     ]
     
     var body: some View {
-        VStack {
-            Button(action: {withAnimation {
-                //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-            showNextView = .mainTeacher}}) {
-                Text("MAIN / MANAGE USER / " + String(userName).uppercased())
-                    .fontWeight(btnStyle.getFont())
-                    .foregroundColor(btnStyle.getPathFontColor())
-                    .frame(width: btnStyle.getWidth(),
-                           height: btnStyle.getHeight(),
-                           alignment: btnStyle.getAlignment())
-            }
-            .padding()
-            .background(btnStyle.getPathColor())
-            .cornerRadius(btnStyle.getPathRadius())
-            .padding(.top)
-            Spacer()
-            
-            Text("App Requests")
-                .padding(.top, 50)
-                .padding(.bottom, 5)
-            TextField(
-                "Search",
-                text: $searchAppName
-            )
-            .multilineTextAlignment(.center)
-            .overlay(RoundedRectangle(cornerRadius: 5)
-                .stroke(lineWidth:1))
-            .frame(maxWidth: UIScreen.main.bounds.size.width*0.75)
-            
-            List {
-                ForEach(appList) { request in
-                    if(searchAppName.isEmpty ||
-                        request.appName.contains(searchAppName)) {
-                        TeacherAppView(request: request)
+        NavigationView {
+            VStack {
+                Button(action: {withAnimation {
+                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .mainTeacher}}) {
+                        Text("MAIN / MANAGE USER / " + String(userName).uppercased())
+                            .fontWeight(btnStyle.getFont())
+                            .foregroundColor(btnStyle.getPathFontColor())
+                            .frame(width: btnStyle.getWidth(),
+                                   height: btnStyle.getHeight(),
+                                   alignment: btnStyle.getAlignment())
+                    }
+                    .padding()
+                    .background(btnStyle.getPathColor())
+                    .cornerRadius(btnStyle.getPathRadius())
+                    .padding(.top)
+                Spacer()
+                
+                Text("App Requests")
+                    .padding(.top, 50)
+                    .padding(.bottom, 5)
+                TextField(
+                    "Search",
+                    text: $searchAppName
+                )
+                .multilineTextAlignment(.center)
+                .overlay(RoundedRectangle(cornerRadius: 5)
+                    .stroke(lineWidth:1))
+                .frame(maxWidth: UIScreen.main.bounds.size.width*0.75)
+                
+                List {
+                    ForEach(appList) { request in
+                        if(searchAppName.isEmpty ||
+                           request.appName.contains(searchAppName)) {
+                            TeacherAppView(request: request, studentName: userName)
+                        }
                     }
                 }
+                .overlay(RoundedRectangle(cornerRadius:10, style:.circular)
+                    .stroke(lineWidth:3))
+                .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
+                       maxHeight: UIScreen.main.bounds.size.height*0.7)
+                
+                Button(action: { //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = .teacherDeleteStudent}) {
+                        Text("Delete User")
+                            .padding()
+                            .fontWeight(.bold)
+                            .background(Color.black)
+                            .foregroundColor(.white)
+                            .cornerRadius(25)
+                    }
+                    .padding(.top, 10)
             }
-            .overlay(RoundedRectangle(cornerRadius:10, style:.circular)
-                .stroke(lineWidth:3))
-            .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
-                   maxHeight: UIScreen.main.bounds.size.height*0.7)
-            
-            Button(action: { //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                showNextView = .teacherDeleteStudent}) {
-                Text("Delete User")
-                    .padding()
-                    .fontWeight(.bold)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .cornerRadius(25)
-            }
-            .padding(.top, 10)
         }
     }
 }

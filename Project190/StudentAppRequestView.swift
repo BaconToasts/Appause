@@ -16,11 +16,15 @@ enum ApproveStatus {
 struct RequestData: Hashable, Identifiable {
     let id = UUID()
     var appName: String
+    var appDescription: String
     var approved: ApproveStatus
+    var approvedDuration: Float
     
     init(appName:String, approved:ApproveStatus) {
         self.appName = appName
         self.approved = approved
+        self.appDescription = "Generic App Description"
+        self.approvedDuration = .infinity
     }
     
     func hash(into hasher: inout Hasher) {
