@@ -14,6 +14,7 @@ struct TeacherAppDescription: View {
     @State var requestReason = "Generic Request Reason"
     @State private var hours = 0
     @State private var minutes = 0
+    @State private var showAlert = false
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -67,11 +68,20 @@ struct TeacherAppDescription: View {
                 .padding(.bottom)
                 
                 Button("Approve Temporarily", action:{
-                    appData.approved = ApproveStatus.approved
-                    appData.approvedDuration = Float(hours*60 + minutes)
-                    dismiss()
+                    if(hours == 0 && minutes == 0) {
+                        showAlert = true
+                    }
+                    else {
+                        showAlert = false
+                        appData.approved = ApproveStatus.approved
+                        appData.approvedDuration = Float(hours*60 + minutes)
+                        dismiss()
+                    }
                 })
                 .buttonStyle()
+                .alert("Duration should be longer than 0 minutes.", isPresented:$showAlert) {
+                    Button("OK", role:.cancel) {}
+                }
                 HStack {
                     VStack{
                         Text("Hours")
