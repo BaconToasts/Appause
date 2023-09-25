@@ -63,7 +63,7 @@ struct TeacherAppView: View {
 //ApproveStatus and RequestData defined in StudentAppRequestView
 
 struct TeacherAppRequestView: View {
-    @Binding var showNextView: DisplayState
+    @Environment(\.dismiss) private var dismiss
     
     @State private var searchAppName: String = ""
     var userName = "User"
@@ -77,9 +77,7 @@ struct TeacherAppRequestView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Button(action: {withAnimation {
-                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                    showNextView = .mainTeacher}}) {
+                Button(action: {dismiss()}) {
                         Text("MAIN / MANAGE USER / " + String(userName).uppercased())
                             .fontWeight(btnStyle.getFont())
                             .foregroundColor(btnStyle.getPathFontColor())
@@ -118,8 +116,7 @@ struct TeacherAppRequestView: View {
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
                 
-                Button(action: { //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                    showNextView = .teacherDeleteStudent}) {
+                NavigationLink(destination: TeacherDeleteStudentView()) {
                         Text("Delete User")
                             .padding()
                             .fontWeight(.bold)
@@ -134,9 +131,7 @@ struct TeacherAppRequestView: View {
 }
 
 struct TeacherAppRequestView_Previews: PreviewProvider {
-    @State static private var showNextView: DisplayState = .teacherAppRequest
-
     static var previews: some View {
-        TeacherAppRequestView(showNextView: $showNextView)
+        TeacherAppRequestView()
     }
 }
