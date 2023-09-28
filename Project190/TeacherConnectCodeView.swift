@@ -51,7 +51,13 @@ struct TeacherConnectCodeView: View {
                 "Press the button to generate a code",
                 text: $generatedCode
             )
+            
+            .background(Color.white.opacity(0.25))
+            .foregroundColor(Color("BlackWhite"))
+        
             .multilineTextAlignment(.center)
+            .overlay(RoundedRectangle(cornerRadius: 5)
+                .stroke(lineWidth:1))
             .textFieldStyle(.roundedBorder)
             .disabled(true)
             .padding(25)
@@ -67,13 +73,14 @@ struct TeacherConnectCodeView: View {
             }) {
                 Text("Generate New Code")
                     .padding()
-                    .fontWeight(.bold)
-                    .background(Color.black)
-                    .foregroundColor(.white)
+                    .fontWeight(btnStyle.getFont())
+                    .background(btnStyle.getPathColor())
+                    .foregroundColor(btnStyle.getPathFontColor())
                     .cornerRadius(100)
             }
             .padding(.bottom, 400)
         }
+        .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
 }
 struct TeacherConnectCodeView_Previews: PreviewProvider {
