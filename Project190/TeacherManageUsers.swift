@@ -32,7 +32,7 @@ struct TeacherManageUsers: View
                 }){
                     Text("MAIN / MANAGE USERS")
                         .fontWeight(btnStyle.getFont())
-                        .foregroundColor(.white)
+                        .foregroundColor(btnStyle.getPathFontColor())
                         .frame(width: btnStyle.getWidth(),
                                height: btnStyle.getHeight(),
                                alignment: btnStyle.getAlignment())
@@ -60,7 +60,7 @@ struct TeacherManageUsers: View
                                 .navigationBarHidden(true)){
                                 Text(student)
                                     .font(.callout)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(btnStyle.getBtnFontColor())
                             }
                         }
                     }
@@ -72,7 +72,9 @@ struct TeacherManageUsers: View
                 .padding(.bottom, 300)
                 .cornerRadius(5)
                 
-            }}
+            }
+        }
+        .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
     
     struct TeacherManageUsers_Previews: PreviewProvider {

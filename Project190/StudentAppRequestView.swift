@@ -116,13 +116,14 @@ struct StudentAppRequestView: View {
             }) {
                 Text("+ New")
                     .padding()
-                    .fontWeight(.bold)
-                    .background(Color.black)
-                    .foregroundColor(.white)
+                    .fontWeight(btnStyle.getFont())
+                    .background(btnStyle.getPathColor())
+                    .foregroundColor(btnStyle.getPathFontColor())
                     .cornerRadius(25)
             }
             .padding(.top, 10)
         }
+        .preferredColorScheme(btnStyle.getStudentScheme() == 0 ? .light : .dark)
     }
 }
 

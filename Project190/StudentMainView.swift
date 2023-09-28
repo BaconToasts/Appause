@@ -24,12 +24,16 @@ struct StudentMainView: View {
     var body: some View {
         VStack {
             Button(action:{}){
-                Text("MAIN").foregroundColor(.white).fontWeight(.bold).frame(width:frameWidth, height: frameHeight, alignment: .center)
+                Text("MAIN")
+                    .foregroundColor(btnStyle.getPathFontColor())
+                    .fontWeight(btnStyle.getFont())
+                    .frame(width: btnStyle.getWidth(),
+                           height: btnStyle.getHeight(),
+                           alignment: btnStyle.getAlignment())
             }
             .padding()
-            .background(mainButtonColor)
-            .border(Color.black, width: 5)
-            .cornerRadius(100)
+            .background(btnStyle.getPathColor())
+            .cornerRadius(btnStyle.getPathRadius())
             Spacer()
             // When pressed, will allow students to view and manage all of their classes
             Button(action:{withAnimation
@@ -37,19 +41,22 @@ struct StudentMainView: View {
             }){
                 Text(secondButtonName)
                     .padding(.leading, 25)
-                    .foregroundColor(.black)
-                    .frame(width: frameWidth, height: frameHeight, alignment: .center)
-                    .fontWeight(.bold)
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width:btnStyle.getWidth(),
+                           height:btnStyle.getHeight(),
+                           alignment:btnStyle.getAlignment())
+                    .fontWeight(btnStyle.getFont())
                 Image(systemName: "hand.raised")
-                    .fontWeight(.bold)
+                    .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
             }
             .padding()
-            .background(btnColor)
-            .border(Color.black, width: 5)
-            .cornerRadius(6)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
+
                         
             Button(action: {
                 withAnimation {
@@ -58,29 +65,34 @@ struct StudentMainView: View {
             }){
                 Text(thirdButtonName)
                     .padding(.leading, 25)
-                    .foregroundColor(.black)
-                    .frame(width: 335, height: frameHeight, alignment: .center)
-                    .fontWeight(.bold)
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width:btnStyle.getWidth() + 35,
+                           height:btnStyle.getHeight(),
+                           alignment:btnStyle.getAlignment())
+                    .fontWeight(btnStyle.getFont())
             }
             .padding()
-            .background(btnColor)
-            .border(Color.black, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
+            
             Button(action: {withAnimation {showNextView = .studentSettings}}){
                 Text(fourthButtonName)
                     .padding(.leading, 25)
-                    .foregroundColor(.black)
-                    .frame(width: frameWidth, height: frameHeight, alignment: .center)
-                    .fontWeight(.bold)
+                    .foregroundColor(btnStyle.getBtnFontColor())
+                    .frame(width:btnStyle.getWidth(),
+                           height:btnStyle.getHeight(),
+                           alignment:btnStyle.getAlignment())
+                    .fontWeight(btnStyle.getFont())
                 Image(systemName: "gear")
                     .imageScale(.large)
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
             }
             .padding()
-            .background(btnColor)
-            .border(Color.black, width: 5)
-            .cornerRadius(cornerRadius)
+            .background(btnStyle.getBtnColor())
+            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+            .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 335)
             // When pressed, will take the student back to the main login page
             Button(action: {
@@ -97,6 +109,7 @@ struct StudentMainView: View {
             .cornerRadius(200)
         }
         .padding()
+        .preferredColorScheme(btnStyle.getStudentScheme() == 0 ? .light : .dark)
     }
 }
 

@@ -41,7 +41,7 @@ struct TeacherMasterControlView: View {
             Text("Status: " + status)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.title)
-                .foregroundColor(.black)
+                .foregroundColor(Color("BlackWhite"))
                 .padding(.top, 10)
                 .padding(.bottom, 60)
                 .padding(.leading, 105)
@@ -81,13 +81,14 @@ struct TeacherMasterControlView: View {
             }) {
                 Text("Status Reset")
                     .padding()
-                    .fontWeight(.bold)
-                    .background(Color.black)
-                    .foregroundColor(.white)
+                    .fontWeight(btnStyle.getFont())
+                    .background(btnStyle.getPathColor())
+                    .foregroundColor(btnStyle.getPathFontColor())
                     .cornerRadius(100)
             }
             .padding(.bottom, 250)
         }
+        .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
 }
 

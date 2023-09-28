@@ -45,7 +45,7 @@ struct TeacherAppDescription: View {
                 }
                 .padding()
             }
-            .border(.black, width:3)
+            .border(Color("BlackWhite"), width:3)
             
             Text(studentName + " provided the following reason for this request: ")
                 .multilineTextAlignment(.center)
@@ -53,7 +53,7 @@ struct TeacherAppDescription: View {
             
             Text(requestReason)
                 .padding()
-                .border(.black, width:2)
+                .border(Color("BlackWhite"), width:2)
             
             Text("Allow access to this app?")
                 .padding(.top)
@@ -88,7 +88,7 @@ struct TeacherAppDescription: View {
                             .padding(.bottom, -5)
                         TextField("Hours", value:$hours, format:.number)
                             .multilineTextAlignment(.center)
-                            .overlay(RoundedRectangle(cornerRadius:14).stroke(Color.black, lineWidth:2))
+                            .overlay(RoundedRectangle(cornerRadius:14).stroke(Color("BlackWhite"), lineWidth:2))
                             
                     }
                     .padding(.leading)
@@ -97,7 +97,7 @@ struct TeacherAppDescription: View {
                             .padding(.bottom, -5)
                         TextField("Minutes", value:$minutes, format:.number)
                             .multilineTextAlignment(.center)
-                            .overlay(RoundedRectangle(cornerRadius:14).stroke(Color.black, lineWidth:2))
+                            .overlay(RoundedRectangle(cornerRadius:14).stroke(Color("BlackWhite"), lineWidth:2))
                     }
                     .padding(.trailing)
                 }
@@ -115,6 +115,7 @@ struct TeacherAppDescription: View {
             Spacer()
             
         }
+        .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
     
 }

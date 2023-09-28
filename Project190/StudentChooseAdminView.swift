@@ -30,7 +30,7 @@ struct StudentChooseAdminView: View {
                 {
                     Text("MAIN / CLASSES")
                         .fontWeight(btnStyle.getFont())
-                        .foregroundColor(.white)
+                        .foregroundColor(btnStyle.getPathFontColor())
                         .frame(width: btnStyle.getWidth(),
                                height: btnStyle.getHeight(),
                                alignment: btnStyle.getAlignment())
@@ -49,13 +49,13 @@ struct StudentChooseAdminView: View {
                                 .font(.system(size:30))
                                 .frame(maxWidth:.infinity, alignment:.leading)
                                 .padding(.leading, 5)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("BlackWhite"))
                             
                             Text(admin)
                                 .font(.system(size:25))
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth:.infinity, alignment:.center)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("BlackWhite"))
                             
                             NavigationLink(destination: StudentAppRequestView(adminName: admin)
                                 .navigationBarHidden(true)) {
@@ -81,7 +81,7 @@ struct StudentChooseAdminView: View {
                                 .font(.system(size:25))
                         }
                             .padding(5)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("BlackWhite"))
                     }
                 }
                 .overlay(RoundedRectangle(cornerRadius:6, style:.circular)
@@ -90,6 +90,7 @@ struct StudentChooseAdminView: View {
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
             }
         }
+        .preferredColorScheme(btnStyle.getStudentScheme() == 0 ? .light : .dark)
     }
 }
 

@@ -16,25 +16,55 @@ import Foundation
 import SwiftUI
 
 class Style{
-    private var pathColor: Color = Color.black
+    private var pathColor: Color = Color("BlackWhite")
     private var pathRadius: CGFloat = 100
-    private var pathFontColor: Color = Color.white
+    private var pathFontColor: Color = Color("WhiteBlack")
     
     private var btnWidth: CGFloat = 300
     private var btnHeight: CGFloat = 20
     private var btnAlignment: Alignment = Alignment.center
     
-    private var btnFontColor: Color = Color.black
-    private var borderColor: Color = Color.black
+    private var btnFontColor: Color = Color("BlackWhite")
+    private var borderColor: Color = Color("BlackWhite")
     private var borderWidth: CGFloat = 5
     private var btnColor: Color = Color.gray.opacity(0.25)
     private var btnRadius: CGFloat = 6
     
     private var fontW: Font.Weight = .bold
     
+    @AppStorage("teacherScheme") private var teacherScheme = 0
+    @AppStorage("studentScheme") private var studentScheme = 0
+    
 }
 extension Style{
     
+    func setTeacherScheme(){
+        if teacherScheme == 0 {
+            teacherScheme = 1
+        }
+        else
+        {
+            teacherScheme = 0
+        }
+    }
+    
+    func getTeacherScheme() -> Int{
+        teacherScheme
+    }
+    
+    func setStudentScheme(){
+        if studentScheme == 0 {
+            studentScheme = 1
+        }
+        else
+        {
+            studentScheme = 0
+        }
+    }
+    
+    func getStudentScheme() -> Int{
+        studentScheme
+    }
     func getPathColor() -> Color{
         pathColor
     }

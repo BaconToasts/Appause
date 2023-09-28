@@ -47,7 +47,7 @@ struct TeacherMainView: View {
                 Image(systemName: "hand.raised")
                     .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
             }
             .padding()
             .background(btnStyle.getBtnColor())
@@ -69,7 +69,7 @@ struct TeacherMainView: View {
                 Image(systemName: "bookmark.slash")
                     .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
             }
             .padding()
             .background(btnStyle.getBtnColor())
@@ -95,7 +95,7 @@ struct TeacherMainView: View {
                 Image(systemName: "person")
                     .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
             
             }
             .padding()
@@ -139,7 +139,7 @@ struct TeacherMainView: View {
                 Image(systemName: "gear")
                     .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
             }
             .padding()
             .background(btnStyle.getBtnColor())
@@ -159,7 +159,7 @@ struct TeacherMainView: View {
                 Text("Master Control")
                     .padding(.leading, 25)
                     .fontWeight(btnStyle.getFont())
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
                     .frame(width: btnStyle.getWidth() + 5,
                            height: btnStyle.getHeight(),
                            alignment: btnStyle.getAlignment())
@@ -167,7 +167,7 @@ struct TeacherMainView: View {
                 Image(systemName: "lock")
                     .fontWeight(btnStyle.getFont())
                     .imageScale(.large)
-                    .foregroundColor(.black)
+                    .foregroundColor(btnStyle.getBtnFontColor())
                 
             }
             .padding()
@@ -190,7 +190,7 @@ struct TeacherMainView: View {
             .cornerRadius(200)
         }
         .padding()
-        
+        .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
 }
 

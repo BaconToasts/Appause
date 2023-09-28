@@ -35,11 +35,11 @@ struct TeacherDeleteStudentView: View{
                 Button(action:{}){
                     Text(secondButton)
                         .fontWeight(btnStyle.getFont())
-                        .foregroundColor(.white)
+                        .foregroundColor(btnStyle.getPathFontColor())
                         .frame(width:50)
                 }
                 .padding()
-                .background(.black)
+                .background(btnStyle.getBtnFontColor())
                 .cornerRadius(btnStyle.getBtnRadius())
                 .padding(.trailing, 100)
                 .padding(.bottom, 250)
@@ -47,7 +47,7 @@ struct TeacherDeleteStudentView: View{
                 Button(action: {dismiss()}) {
                     Text(thirdButton)
                         .fontWeight(btnStyle.getFont())
-                        .foregroundColor(.black)
+                        .foregroundColor(btnStyle.getBtnFontColor())
                         .frame(width:50)
                 }
                 .padding()
@@ -56,6 +56,7 @@ struct TeacherDeleteStudentView: View{
                 .padding(.bottom, 250)
             }
         }
+        .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
 }
 struct TeacherDeleteStudentView_Previews: PreviewProvider{

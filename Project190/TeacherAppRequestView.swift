@@ -118,15 +118,17 @@ struct TeacherAppRequestView: View {
                 
                 NavigationLink(destination: TeacherDeleteStudentView()) {
                         Text("Delete User")
-                            .padding()
-                            .fontWeight(.bold)
-                            .background(Color.black)
-                            .foregroundColor(.white)
-                            .cornerRadius(25)
-                    }
+                        .padding()
+                        .fontWeight(btnStyle.getFont())
+                        .background(btnStyle.getPathColor())
+                        .foregroundColor(btnStyle.getPathFontColor())
+                        .cornerRadius(25)
+                    
+                }
                     .padding(.top, 10)
             }
         }
+        .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
 }
 
