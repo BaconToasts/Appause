@@ -45,14 +45,15 @@ struct StudentConnectCodeView: View
             
             Button("Submit Connect Code"){/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/}
                 .padding()
-                .fontWeight(.bold)
-                .background(Color.black)
-                .foregroundColor(.white)
+                .fontWeight(btnStyle.getFont())
+                .background(btnStyle.getPathColor())
+                .foregroundColor(btnStyle.getPathFontColor())
                 .cornerRadius(100)
             
         }
         .padding(.bottom, 400)
         .cornerRadius(100)
+        .preferredColorScheme(btnStyle.getStudentScheme() == 0 ? .light : .dark)
     }
 }
 

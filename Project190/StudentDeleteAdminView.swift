@@ -36,22 +36,28 @@ struct StudentDeleteAdminView: View {
                 .padding()
             HStack{
                 Button(action:{ dismiss()}){
-                    Text(secondButton).fontWeight(.bold).foregroundColor(.white).frame(width:50)
+                    Text(secondButton).fontWeight(btnStyle.getFont())
+                        .foregroundColor(btnStyle.getPathFontColor())
+                        .frame(width:50)
                 }
                 .padding()
-                .background(mainButtonColor)
-                .cornerRadius(6)
+                .background(btnStyle.getBtnFontColor())
+                .cornerRadius(btnStyle.getBtnRadius())
                 .padding(.trailing, 100)
                 .padding(.bottom, 250)
+                
                 Button(action:{ dismiss()}){
-                    Text(thirdButton).fontWeight(.bold).foregroundColor(mainButtonColor).frame(width:50)
+                    Text(thirdButton).fontWeight(btnStyle.getFont())
+                        .foregroundColor(btnStyle.getBtnFontColor())
+                        .frame(width:50)
                 }
                 .padding()
-                .border(mainButtonColor, width: 5)
-                .cornerRadius(6)
+                .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
+                .cornerRadius(btnStyle.getBtnRadius())
                 .padding(.bottom, 250)
             }
         }
+        .preferredColorScheme(btnStyle.getStudentScheme() == 0 ? .light : .dark)
     }
 }
 struct StudentDeleteAdminView_Previews: PreviewProvider{
