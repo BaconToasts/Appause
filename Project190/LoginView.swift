@@ -108,31 +108,19 @@ struct LoginView: View {
                             Button(action: {
                                 withAnimation {
                                     //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                                    showNextView = showTextFields ? .teacherRegister : .studentRegister
+                                    showNextView = .selectRegistration
                                 }
-                                
-                                //previous code used in place of registration
-                                /*
-                                let username = showTextFields ? usernameText : studentUsernameText
-                                let password = showTextFields ? passwordText : studentPasswordText
-                                let keychainUsernameKey = showTextFields ? "registeredTeacherUsername" : "registeredStudentUsername"
-                                let keychainPasswordKey = showTextFields ? "registeredTeacherPassword" : "registeredStudentPassword"
-                                
-                                if username != "" && password != "" {
-                                    keychain.set(username, forKey: keychainUsernameKey)
-                                    keychain.set(password, forKey: keychainPasswordKey)
-                                    showTextFields ? (isRegistrationSuccessful = true) : (isStudentRegistrationSuccessful = true)
-                                } else {
-                                    showTextFields ? (isRegistrationSuccessful = false) : (isStudentRegistrationSuccessful = false)
-                                }*/
                             }) {
                                 Text("Register")
+                                    .fontWeight(.bold)
                                     .foregroundColor(.white)
-                                    .frame(width: 125, height: 20, alignment: .center)
+                                    .frame(width: 75, height: 20, alignment: .center)
+                                    
                             }
                             .padding()
-                            .background(buttonColorBottom)
-                            .cornerRadius(10)
+                            .background(Color.gray.opacity(0.9))
+                            .cornerRadius(100)
+                            .padding(.leading, 20)
                             
                             if showErrorMessages && errorMessages == "registration" {
                                 Text("Incorrect Username and Password. Try again.")
@@ -166,12 +154,13 @@ struct LoginView: View {
                             }) {
                                 Text("Login")
                                     .foregroundColor(.white)
-                                    .frame(width: 125, height: 20, alignment: .center)
+                                    .frame(width: 130, height: 20, alignment: .center)
                             }
                             .padding()
-                            .background(buttonColorTop)
+                            .background(Color.blue)
                             .cornerRadius(10)
                             .offset(x: shakeOffset)
+                            .padding(.leading, 30)
                         
                             //~~~~~~~~~~~~~~~~~ END OF LOGIN BUTTON ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
                             
