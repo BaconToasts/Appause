@@ -116,7 +116,8 @@ struct TeacherAppRequestView: View {
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
                 
-                NavigationLink(destination: TeacherDeleteStudentView()) {
+                NavigationLink(destination: TeacherDeleteStudentView()
+                    .navigationBarHidden(true)) {
                         Text("Delete User")
                         .padding()
                         .fontWeight(btnStyle.getFont())
