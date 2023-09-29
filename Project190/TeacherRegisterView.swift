@@ -56,6 +56,7 @@ struct TeacherRegisterView: View {
                 "First Name",
                 text: $firstName
             )
+            .disableAutocorrection(true)
             .padding(10)
             .background(Color.gray.opacity(0.2))
             .multilineTextAlignment(.leading)
@@ -67,6 +68,7 @@ struct TeacherRegisterView: View {
                 "Last Name",
                 text: $lastName
             )
+            .disableAutocorrection(true)
             .padding(10)
             .background(Color.gray.opacity(0.2))
             .multilineTextAlignment(.leading)
@@ -78,6 +80,7 @@ struct TeacherRegisterView: View {
                 "Email Address",
                 text: $email
             )
+            .disableAutocorrection(true)
             .padding(10)
             .background(Color.gray.opacity(0.2))
             .multilineTextAlignment(.leading)
