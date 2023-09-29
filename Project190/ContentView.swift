@@ -56,7 +56,7 @@ struct ContentView: View {
             case .resetPassword:
                 ResetPasswordView(showNextView: $displayState)
             case .teacherManageUsers:
-                TeacherManageUsers(showNextView: $displayState)
+                TeacherManageUsers()
             case .studentRegister:
                 StudentRegisterView(showNextView: $displayState)
             case .teacherRegister:

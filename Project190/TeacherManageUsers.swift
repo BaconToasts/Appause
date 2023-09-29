@@ -9,8 +9,7 @@ import SwiftUI
 
 struct TeacherManageUsers: View
 {
-    //Add this binding state for transitions from view to view
-    @Binding var showNextView: DisplayState
+    @Environment(\.dismiss) private var dismiss
     @State var studentName = ""
     @State var studentList = [
         "John Doe",
@@ -25,11 +24,7 @@ struct TeacherManageUsers: View
         NavigationView{
             VStack
             {
-                Button(action: {
-                    withAnimation {
-                        //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                        showNextView = .mainTeacher}
-                }){
+                Button(action: {dismiss()}){
                     Text("MAIN / MANAGE USERS")
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getPathFontColor())
@@ -78,10 +73,8 @@ struct TeacherManageUsers: View
     }
     
     struct TeacherManageUsers_Previews: PreviewProvider {
-        @State static private var showNextView: DisplayState = .teacherManageUsers
-        
         static var previews: some View {
-            TeacherManageUsers(showNextView: $showNextView)
+            TeacherManageUsers()
         }
     }
 }
