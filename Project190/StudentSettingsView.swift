@@ -1,13 +1,6 @@
-//
-//  StudentSettingsView.swift
-//  Project190
-//
-//  Created by Luis Campos on 4/17/23.
-//
-
 import SwiftUI
 
-struct StudentSettingsView: View{
+struct StudentSettingsView: View {
     @Binding var showNextView: DisplayState
     
     @State var firstButton = "MAIN / SETTINGS"
@@ -16,11 +9,19 @@ struct StudentSettingsView: View{
     @State var fourthButton = "Disable Bluetooth"
     @State var fifthButton = "Dark Mode"
     
-    @State private var colorScheme =  btnStyle.getStudentScheme()
+    // Fetch the 2FA setting for the current logged-in student
+    @State var isTwoFactorEnabled: Bool = {
+        if let user = currentLoggedInUser {
+            return UserDefaults.standard.bool(forKey: "\(user)_studentIsTwoFactorEnabled")
+        }
+        return false
+    }()
+
+    @State private var colorScheme = btnStyle.getStudentScheme()
     
-    var body: some View{
-        VStack{
-            Button(action:{withAnimation{showNextView = .mainStudent}}){
+    var body: some View {
+        VStack {
+            Button(action: { withAnimation { showNextView = .mainStudent } }) {
                 Text(firstButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getPathFontColor())
@@ -34,7 +35,7 @@ struct StudentSettingsView: View{
             .padding(.top)
             Spacer()
             
-            Button(action:{withAnimation{showNextView = .emailCode}}){
+            Button(action: { withAnimation { showNextView = .emailCode } }) {
                 Text(secondButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
@@ -48,8 +49,19 @@ struct StudentSettingsView: View{
             .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
-            Button(action:{}){
-                Text(thirdButton).fontWeight(.bold).fontWeight(btnStyle.getFont())
+            Toggle(isOn: $isTwoFactorEnabled) {
+                Text("Enable 2-Factor Authentication")
+            }
+            .onChange(of: isTwoFactorEnabled) { newValue in
+                if let user = currentLoggedInUser {
+                    UserDefaults.standard.set(newValue, forKey: "\(user)_studentIsTwoFactorEnabled")
+                }
+            }
+            .padding()
+            
+            Button(action: {}) {
+                Text(thirdButton)
+                    .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
                     .frame(width: btnStyle.getWidth(),
                            height: btnStyle.getHeight(),
@@ -60,8 +72,8 @@ struct StudentSettingsView: View{
             .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
             .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
-
-            Button(action:{}){
+            
+            Button(action: {}) {
                 Text(fourthButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
@@ -75,17 +87,15 @@ struct StudentSettingsView: View{
             .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
-            Button(action:{
+            Button(action: {
                 btnStyle.setStudentScheme()
                 colorScheme = btnStyle.getStudentScheme()
-                if colorScheme == 0{
+                if colorScheme == 0 {
                     fifthButton = "Dark Mode"
-                }
-                else
-                {
+                } else {
                     fifthButton = "Light Mode"
                 }
-            }){
+            }) {
                 Text(fifthButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
@@ -103,9 +113,9 @@ struct StudentSettingsView: View{
     }
 }
 
-struct StudentSettingsView_Previews: PreviewProvider{
+struct StudentSettingsView_Previews: PreviewProvider {
     @State static private var showNextView: DisplayState = .studentSettings
-    static var previews: some View{
+    static var previews: some View {
         StudentSettingsView(showNextView: $showNextView)
     }
 }
