@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import Combine
 
+private var codeIn = ""
+
 struct EmailCodeView: View {
     @Binding var showNextView: DisplayState
     
@@ -59,7 +61,8 @@ struct EmailCodeView: View {
     
     func generateRandomCode() -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<5).map{ _ in letters.randomElement()! })
+        codeIn = String((0..<5).map{ _ in letters.randomElement()! });
+        return codeIn
     }
     
     
@@ -119,3 +122,10 @@ struct EmailCodeView_Previews: PreviewProvider {
     }
 }
 
+internal struct EmailCode {
+    static let shared = EmailCode()
+    
+    public func grabRandCode() -> String {
+        return codeIn
+    }
+}
