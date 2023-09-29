@@ -1,12 +1,6 @@
-//
-//  TeacherSettingsView.swift
-//  Project190
-//
-//  Created by Luis Campos on 4/18/23.
-//
-
 import SwiftUI
-struct TeacherSettingsView: View{
+
+struct TeacherSettingsView: View {
     @Binding var showNextView: DisplayState
     
     @State var firstButton = "MAIN / SETTINGS"
@@ -15,11 +9,19 @@ struct TeacherSettingsView: View{
     @State var fourthButton = "Disable Bluetooth"
     @State var fifthButton = "Dark Mode"
     
-    @State private var colorScheme =  btnStyle.getTeacherScheme()
+    // Fetch the 2FA setting for the current logged-in user
+    @State var isTwoFactorEnabled: Bool = {
+        if let user = currentLoggedInUser {
+            return UserDefaults.standard.bool(forKey: "\(user)_teacherIsTwoFactorEnabled")
+        }
+        return false
+    }()
     
-    var body: some View{
-        VStack{
-            Button(action:{withAnimation{showNextView = .mainTeacher}}){
+    @State private var colorScheme = btnStyle.getTeacherScheme()
+    
+    var body: some View {
+        VStack {
+            Button(action: { withAnimation { showNextView = .mainTeacher } }) {
                 Text(firstButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getPathFontColor())
@@ -33,7 +35,7 @@ struct TeacherSettingsView: View{
             .padding(.top)
             Spacer()
             
-            Button(action:{withAnimation{showNextView = .emailCode}}){
+            Button(action: { withAnimation { showNextView = .emailCode } }) {
                 Text(secondButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
@@ -47,8 +49,17 @@ struct TeacherSettingsView: View{
             .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
+            Toggle(isOn: $isTwoFactorEnabled) {
+                Text("Enable 2-Factor Authentication")
+            }
+            .onChange(of: isTwoFactorEnabled) { newValue in
+                if let user = currentLoggedInUser {
+                    UserDefaults.standard.set(newValue, forKey: "\(user)_teacherIsTwoFactorEnabled")
+                }
+            }
+            .padding()
             
-            Button(action:{}){
+            Button(action: {}) {
                 Text(thirdButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
@@ -62,8 +73,7 @@ struct TeacherSettingsView: View{
             .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
-            
-            Button(action:{}){
+            Button(action: {}) {
                 Text(fourthButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
@@ -77,17 +87,15 @@ struct TeacherSettingsView: View{
             .cornerRadius(btnStyle.getBtnRadius())
             .padding(.bottom, 10)
             
-            Button(action:{
+            Button(action: {
                 btnStyle.setTeacherScheme()
                 colorScheme = btnStyle.getTeacherScheme()
-                if colorScheme == 0{
+                if colorScheme == 0 {
                     fifthButton = "Dark Mode"
-                }
-                else
-                {
+                } else {
                     fifthButton = "Light Mode"
                 }
-            }){
+            }) {
                 Text(fifthButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
@@ -104,9 +112,10 @@ struct TeacherSettingsView: View{
         .preferredColorScheme(colorScheme == 0 ? .light : .dark)
     }
 }
-struct TeacherSettingsView_Previews: PreviewProvider{
+
+struct TeacherSettingsView_Previews: PreviewProvider {
     @State static private var showNextView: DisplayState = .teacherSettings
-    static var previews: some View{
+    static var previews: some View {
         TeacherSettingsView(showNextView: $showNextView)
     }
 }

@@ -10,13 +10,15 @@ import SwiftUI
 // add aditional display states here for additional View transitions
 enum DisplayState {
 
-    case eula, login, emailCode, mainTeacher, mainStudent, connectCode, teacherMasterControl, logout, studentConnectCode, studentSettings, teacherSettings, teacherDeleteStudent, studentDeleteAdmin, studentChooseAdmin, studentRegister, teacherRegister, selectRegistration, resetPassword, teacherAppRequest, teacherManageUsers, teacherWhitelist
+    case eula, login, emailCode, mainTeacher, mainStudent, connectCode, teacherMasterControl, logout, studentConnectCode, studentSettings, teacherSettings, teacherDeleteStudent, studentDeleteAdmin, studentChooseAdmin, studentRegister, teacherRegister, selectRegistration, resetPassword, teacherAppRequest, teacherManageUsers, teacherWhitelist, twoFactorAuth
 
 }
 
 struct ContentView: View {
     @State private var displayState: DisplayState = .eula
-
+    @State private var email: String = "test@example.com"
+    @State private var show2FAInput: Bool = true // Add this line
+    
     var body: some View {
         VStack {
             //add DisplayState transitions here
@@ -63,6 +65,11 @@ struct ContentView: View {
                 SelectRegistrationView(showNextView: $displayState)
             case .emailCode:
                 EmailCodeView(showNextView: $displayState)
+            case .twoFactorAuth:
+                TwoFactorAuthView(showNextView: $displayState, email: email, onVerificationSuccess: {
+                    // You can add actions here that should be performed on successful verification
+                    print("Verification successful!")}, show2FAInput: $show2FAInput)
+
             }
         }
     }

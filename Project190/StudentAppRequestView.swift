@@ -111,7 +111,7 @@ struct StudentAppRequestView: View {
                 //should open list of apps installed on phone
                 //user selects one to add a new request to appList
                 //currently just adds to appList to demonstrate UI functionality
-                var newAppName = "App " + String(appList.count)
+                let newAppName = "App " + String(appList.count)
                 appList.append(RequestData(appName: newAppName, approved: ApproveStatus.unprocessed))
             }) {
                 Text("+ New")
