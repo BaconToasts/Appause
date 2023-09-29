@@ -6,6 +6,7 @@ import CoreHaptics
 
 var currentLoggedInUser: String? = nil
 
+private var isTeacherLogin = false
 struct LoginView: View {
     public var keychain = KeychainSwift()
     @State private var show2FAInput = false
@@ -53,7 +54,7 @@ struct LoginView: View {
     @State var isRegistrationSuccessful = false
     @State var isStudentRegistrationSuccessful = false
     @State var isStudentLoginSuccessful = false
-    @State private var isTeacherLogin = false
+//    @State var isTeacherLogin = false
 
     var body: some View {
         VStack {
@@ -230,5 +231,12 @@ struct LoginView_Previews: PreviewProvider {
     
     static var previews: some View {
         LoginView(showNextView: $showNextView)
+    }
+}
+internal struct Login{
+    @State static private var showNextView: DisplayState = .login
+    static let logV = Login()
+    public func getIsTeacher() -> Bool{
+        return isTeacherLogin
     }
 }

@@ -22,7 +22,7 @@ struct ResetPasswordView: View{
     @State private var studentDiffPassword = false
     @State private var teacherDiffPassword = false
     @State private var confirmColor = Color.green
-    
+    @State private var userType = Login.logV.getIsTeacher()
     private let kc = KeychainSwift()
     
     var body: some View{
@@ -129,38 +129,48 @@ struct ResetPasswordView: View{
                 let npass = newPassword
                 let cNPass = confirmNewPassword
                 let passCheck = npass==cNPass
+                let studentName = kc.get("studentUserKey")
                 /*These variables are supposed to store whether or not if the student's new password
                  or the teacher's new password matches their previous password. If it does then it will
                  remain on the reset page until they type in a new password*/
                 studentDiffPassword = (npass != kc.get("studentPassKey"))
                 teacherDiffPassword = (npass != kc.get("teacherPassKey"))
                 if(npass != "" && cNPass != ""){
-                    if(passCheck && studentDiffPassword == true){
-                        displayText="Correct New Password"
-                        kc.set(npass, forKey: "studentPassKey")
-                        nextView = .login
-                        confirmColor = Color.green
+                    if(userType == false){
+                        if(passCheck && studentDiffPassword == true){
+                            displayText="Correct New Password"
+                            kc.set(npass, forKey: "studentPassKey")
+                            nextView = .login
+                            confirmColor = Color.green
+                        }
+                        else if (passCheck == true && studentDiffPassword == false){
+                            displayText = "Enter Unique Password"
+                            nextView = .resetPassword
+                            confirmColor = Color.red
+                        }
+                        else if (passCheck == false){
+                            displayText = "Enter the same new password"
+                            nextView = .resetPassword
+                            confirmColor = Color.red
+                        }
                     }
-                    else if(passCheck && teacherDiffPassword == true){
-                        displayText="Correct New Password"
-                        kc.set(npass, forKey: "teacherPassKey")
-                        nextView = .login
-                        confirmColor = Color.green
-                    }
-                    else if (passCheck == true && studentDiffPassword == false){
-                        displayText = "Enter Unique Password"
-                        nextView = .resetPassword
-                        confirmColor = Color.red
-                    }
-                    else if (passCheck == true && teacherDiffPassword == false){
-                        displayText = "Enter Unique Password"
-                        nextView = .resetPassword
-                        confirmColor = Color.red
-                    }
-                    else if (passCheck == false){
-                        displayText = "Enter the same new password"
-                        nextView = .resetPassword
-                        confirmColor = Color.red
+                    else{
+                        if(passCheck && teacherDiffPassword == true){
+                            displayText="Correct New Password"
+                            kc.set(npass, forKey: "teacherPassKey")
+                            nextView = .login
+                            confirmColor = Color.green
+                        }
+                        else if (passCheck == true && teacherDiffPassword == false){
+                            displayText = "Enter Unique Password"
+                            nextView = .resetPassword
+                            confirmColor = Color.red
+                        }
+                        else if (passCheck == false){
+                            displayText = "Enter the same new password"
+                            nextView = .resetPassword
+                            confirmColor = Color.red
+                        }
                     }
                 }
                 else{
