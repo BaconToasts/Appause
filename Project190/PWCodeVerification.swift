@@ -17,6 +17,7 @@ struct PWCodeVerificationView: View
     @State private var resetCode: String = ""
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var codeIn = EmailCode.shared.grabRandCode()
     
     var body: some View
     {
@@ -54,34 +55,34 @@ struct PWCodeVerificationView: View
             
             Button(action: {
                 withAnimation {
-                    showNextView = .mainStudent //main student is placeholder for proper connections
-                    
+                    showNextView = .resetPassword
                 }
-                if isValidCode(resetCode) {
+                if isSameCode(resetCode) {
+                    showNextView = .resetPassword
                 } else {
                     alertMessage = "Invalid reset code"
                     showAlert = true
                 }
-            }) {
-                /*.alert(isPresented: $showAlert) {
-                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                }*/
+            }){
+                Text("Submit")
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .frame(width: 100, height: 20, alignment: .center)
+                    .padding()
+                    .background(Color.gray.opacity(0.25))
+                    .border(Color.black, width: 5)
+                    .cornerRadius(6)
             }
-                .padding()
-                .frame(width: 300.0, height: 30.0)
-                .background(.black)
-                .foregroundColor(.white)
-                .cornerRadius(100)
-                
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
-            .padding(.bottom, 400)
-            .cornerRadius(100)
+        }
+        .padding(.bottom, 400)
+        .cornerRadius(100)
         }
         
-        func isValidCode(_ code: String) -> Bool {
-            let codeFormat = "[A-Z0-9a-z]}"
-            let codePredicate = NSPredicate(format:"SELF MATCHES %@", codeFormat)
-            return codePredicate.evaluate(with: code)
+    func isSameCode(_ code: String) -> Bool {
+            return code == codeIn
         }
     }
 
@@ -89,6 +90,6 @@ struct PWCodeVerificationView_Previews: PreviewProvider {
     @State static private var showNextView: DisplayState = .mainStudent
 
     static var previews: some View {
-        StudentConnectCodeView(showNextView: $showNextView)
+        PWCodeVerificationView(showNextView: $showNextView)
     }
 }
