@@ -1,9 +1,7 @@
 //
 //  TeacherWhitelist.swift
 //
-//
 //  Created by Nav Bernal on 9/28/23
-//
 //
 
 
