@@ -59,6 +59,16 @@ struct LoginView: View {
     var body: some View {
         VStack {
             if !show2FAInput {
+                
+                
+                Text("Appause")
+                    .font(.system(size: 36))
+                    .padding(.top, 75)
+                
+                Spacer()
+                Spacer()
+                Spacer()
+                
                 Button(action: {
                     self.showCodeField = false
                     self.showTextFields.toggle()
@@ -72,6 +82,8 @@ struct LoginView: View {
                 .padding()
                 .background(buttonColorTop)
                 .cornerRadius(10)
+                
+                //Spacer()
                 
                 Button(action: {
                     self.showTextFields = false
@@ -131,8 +143,8 @@ struct LoginView: View {
                                 let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
                                 let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
                                 
-                                let username = showTextFields ? usernameText : studentUsernameText
-                                let password = showTextFields ? passwordText : studentPasswordText
+                                let username = (showTextFields ? usernameText : studentUsernameText).lowercased()
+                                let password = (showTextFields ? passwordText : studentPasswordText).lowercased()
                                 
                                 let isSuccessful = username == registeredUsername && password == registeredPassword
                                 
@@ -177,6 +189,18 @@ struct LoginView: View {
                     }, show2FAInput: $show2FAInput)
                 }
             }
+            Spacer()
+            
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 150)
+                .padding(.bottom, 65)
+            
+          
+
+            
+            //Spacer()
         }
         .onAppear {
             currentLoggedInUser = nil
