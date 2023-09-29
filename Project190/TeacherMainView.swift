@@ -56,7 +56,10 @@ struct TeacherMainView: View {
             .padding(.bottom, 10)
             
             // create Whitelist button
-            Button(action:{})
+            Button(action:{
+                withAnimation {
+                    showNextView = .teacherWhitelist}
+                })
             {
                 Text("Whitelist")
                     .padding(.leading, 20)
