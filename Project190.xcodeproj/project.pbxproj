@@ -25,6 +25,7 @@
 		31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */; };
 		4D87CD532AC55C5400E7912F /* SelectRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87CD522AC55C5400E7912F /* SelectRegistrationView.swift */; };
 		4DE605A22AB6AED100620120 /* TeacherRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE605A12AB6AED100620120 /* TeacherRegisterView.swift */; };
+		7B4D40AA2AC6538400175A30 /* TeacherWhitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D40A92AC6538400175A30 /* TeacherWhitelist.swift */; };
 		7F0987C429EF1C8300D7ABFA /* TeacherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */; };
 		7F3ACD9029F0D83900EB12B4 /* TeacherDeleteStudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */; };
 		7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */; };
@@ -55,6 +56,7 @@
 		31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConnectCodeView.swift; sourceTree = "<group>"; };
 		4D87CD522AC55C5400E7912F /* SelectRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegistrationView.swift; sourceTree = "<group>"; };
 		4DE605A12AB6AED100620120 /* TeacherRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherRegisterView.swift; sourceTree = "<group>"; };
+		7B4D40A92AC6538400175A30 /* TeacherWhitelist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherWhitelist.swift; sourceTree = "<group>"; };
 		7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSettingsView.swift; sourceTree = "<group>"; };
 		7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherDeleteStudentView.swift; sourceTree = "<group>"; };
 		7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSettingsView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				4DE605A12AB6AED100620120 /* TeacherRegisterView.swift */,
 				3197738D29E51FF100596D4C /* TeacherMainView.swift */,
 				BE0FDCDF29F0F18300D9EBE3 /* TeacherAppRequestView.swift */,
+				7B4D40A92AC6538400175A30 /* TeacherWhitelist.swift */,
 				0068778A29F23F720007F94A /* TeacherManageUsers.swift */,
 				7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */,
 				7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */,
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3197737729E51DF000596D4C /* ContentView.swift in Sources */,
+				7B4D40AA2AC6538400175A30 /* TeacherWhitelist.swift in Sources */,
 				BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */,
 				3197737529E51DF000596D4C /* Project190App.swift in Sources */,
 				7F3ACD9029F0D83900EB12B4 /* TeacherDeleteStudentView.swift in Sources */,
