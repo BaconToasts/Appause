@@ -138,10 +138,10 @@ func sendEmail(code: String, email: String) {
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("api-XXXXXXXXXXXXXXXXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
+    request.addValue("api-x", forHTTPHeaderField: "Key") // Replace with your API key
 
     let body: [String: Any] = [
-        "api_key": "api-XXXXXXXXXXXXXXXXXXXXXXXXXXX", // Your API key
+        "api_key": "api-x", // Your API key
         "to": ["<\(email)>"], // The recipient's email address, formatted correctly
         "sender": "appaused.service@gmail.com", // Our service email address
         "subject": "Your Verification Code",

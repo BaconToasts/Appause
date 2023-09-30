@@ -125,7 +125,7 @@ struct TeacherRegisterView: View {
                     registerError = ""
                     
                     //adds information into the keychain
-                    keychain.set(email, forKey: "teacherUserKey")
+                    keychain.set(email.lowercased(), forKey: "teacherUserKey")
                     keychain.set(password, forKey: "teacherPassKey")
                     keychain.set(firstName, forKey: "teacherFirstNameKey")
                     keychain.set(lastName, forKey: "teacherLastNameKey")
