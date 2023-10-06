@@ -3,7 +3,7 @@
 //  Project190
 //
 //  Created by Mark Zhang on 9/16/23.
-//
+//  Updated by Luis Campos on 10/5/23 12:57 pm
 
 import SwiftUI
 import Foundation //used for regex verification
@@ -23,6 +23,9 @@ struct TeacherRegisterView: View {
     
     //String variable used in error messages
     @State private var registerError: String = " "
+    
+    @State private var passwordStatus: String = ""
+    @State private var confirmStatus: String = ""
     
     //keychain variable
     let keychain = KeychainSwift()
@@ -86,29 +89,80 @@ struct TeacherRegisterView: View {
             .multilineTextAlignment(.leading)
             .cornerRadius(10)
             .padding([.trailing, .leading], 50)
-            .padding(.bottom, 5)
+            .padding(.bottom, 10)
             
-            SecureField(
-                "Password",
-                text: $password
-            )
-            .padding(10)
-            .background(Color.gray.opacity(0.2))
-            .multilineTextAlignment(.leading)
-            .cornerRadius(10)
-            .padding([.trailing, .leading], 50)
-            .padding(.bottom, 5)
-            
-            SecureField(
-                "Confirm Password",
-                text: $passConfirm
-            )
-            .padding(10)
-            .background(Color.gray.opacity(0.2))
-            .multilineTextAlignment(.leading)
-            .cornerRadius(10)
-            .padding([.trailing, .leading], 50)
-            .padding(.bottom, 5)
+            if(passwordStatus == "visible"){
+                HStack{
+                    TextField("Password", text: $password)
+                        .padding(10)
+                        .background(Color.gray.opacity(0.2))
+                        .multilineTextAlignment(.leading)
+                        .cornerRadius(10)
+                        .padding(.leading, 50)
+                        .padding(.bottom, 5)
+                    Button(action:{passwordStatus = "hidden"}){
+                        Image(systemName: "eye.slash")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding(.trailing, 13)
+                    }
+                }
+                .padding(.bottom, 5)
+            }
+            else{
+                HStack{
+                    SecureField("Password", text: $password)
+                        .padding(10)
+                        .background(Color.gray.opacity(0.2))
+                        .multilineTextAlignment(.leading)
+                        .cornerRadius(10)
+                        .padding(.leading, 50)
+                        .padding(.bottom, 5)
+                    Button(action:{passwordStatus = "visible"}){
+                        Image(systemName: "eye")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding(.trailing, 13)
+                    }
+                }
+                .padding(.bottom, 5)
+            }
+            if(confirmStatus == "visible"){
+                HStack{
+                    TextField("Confirm Password", text: $passConfirm)
+                        .padding(10)
+                        .background(Color.gray.opacity(0.2))
+                        .multilineTextAlignment(.leading)
+                        .cornerRadius(10)
+                        .padding(.leading, 50)
+                        .padding(.bottom, 5)
+                    Button(action:{confirmStatus = "hidden"}){
+                        Image(systemName: "eye.slash")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding(.trailing, 13)
+                    }
+                }
+                .padding(.bottom, 5)
+            }
+            else{
+                HStack{
+                    SecureField("Confirm Password", text: $passConfirm)
+                        .padding(10)
+                        .background(Color.gray.opacity(0.2))
+                        .multilineTextAlignment(.leading)
+                        .cornerRadius(10)
+                        .padding(.leading, 50)
+                        .padding(.bottom, 5)
+                    Button(action:{confirmStatus = "visible"}){
+                        Image(systemName: "eye")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.bold)
+                            .padding(.trailing, 13)
+                    }
+                }
+                .padding(.bottom, 5)
+            }
             
             Button(action: {
                 if (firstName == "" || lastName == "" || email == "" || password == "" || passConfirm == ""){

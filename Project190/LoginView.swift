@@ -54,7 +54,9 @@ struct LoginView: View {
     @State var isRegistrationSuccessful = false
     @State var isStudentRegistrationSuccessful = false
     @State var isStudentLoginSuccessful = false
-//    @State var isTeacherLogin = false
+    
+    @State var studentPassVisibility: String = ""
+    @State var teacherPassVisibility: String = ""
 
     var body: some View {
         VStack {
@@ -109,13 +111,69 @@ struct LoginView: View {
                                 .cornerRadius(10)
                                 .frame(width: 180)
                         }
+                        .padding(.trailing, 40)
                         HStack {
                             Text(showTextFields ? "Teacher Password:" : "Student Password:")
-                            SecureField("Enter Password", text: showTextFields ? $passwordText : $studentPasswordText)
-                                .padding()
-                                .background(textFieldOpacity)
-                                .cornerRadius(10)
-                                .frame(width: 180)
+                            if(buttonColorTop == Color.blue){
+                                if(teacherPassVisibility=="visible"){
+                                    HStack{
+                                        TextField("Enter Password", text: $passwordText)
+                                            .padding()
+                                            .background(textFieldOpacity)
+                                            .cornerRadius(10)
+                                            .frame(width: 180)
+                                        Button(action:{teacherPassVisibility = "hidden"}){
+                                            Image(systemName: "eye.slash")
+                                                .foregroundColor(buttonColorTopIdle)
+                                                .fontWeight(.bold)
+                                        }
+                                    }
+                                }
+                                else{
+                                    HStack{
+                                        SecureField("Enter Password", text: $passwordText)
+                                            .padding()
+                                            .background(textFieldOpacity)
+                                            .cornerRadius(10)
+                                            .frame(width: 180)
+                                        Button(action:{teacherPassVisibility = "visible"}){
+                                            Image(systemName: "eye")
+                                                .foregroundColor(buttonColorTopIdle)
+                                                .fontWeight(.bold)
+                                        }
+                                    }
+                                }
+                            }
+                            else{
+                                if(studentPassVisibility=="visible"){
+                                    HStack{
+                                        TextField("Enter Password", text: $studentPasswordText)
+                                            .padding()
+                                            .background(textFieldOpacity)
+                                            .cornerRadius(10)
+                                            .frame(width: 180)
+                                        Button(action:{studentPassVisibility = "hidden"}){
+                                            Image(systemName: "eye.slash")
+                                                .foregroundColor(buttonColorTopIdle)
+                                                .fontWeight(.bold)
+                                        }
+                                    }
+                                }
+                                else{
+                                    HStack{
+                                        SecureField("Enter Password", text: $studentPasswordText)
+                                            .padding()
+                                            .background(textFieldOpacity)
+                                            .cornerRadius(10)
+                                            .frame(width: 180)
+                                        Button(action:{studentPassVisibility = "visible"}){
+                                            Image(systemName: "eye")
+                                                .foregroundColor(buttonColorTopIdle)
+                                                .fontWeight(.bold)
+                                        }
+                                    }
+                                }
+                            }
                         }
                         HStack {
                             Button(action: {
