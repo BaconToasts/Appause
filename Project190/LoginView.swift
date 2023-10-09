@@ -10,13 +10,13 @@ private var isTeacherLogin = false
 struct LoginView: View {
     public var keychain = KeychainSwift()
     @State private var show2FAInput = false
-   /* var isTwoFactorEnabled: Bool {
-            if let user = currentLoggedInUser {
-                return UserDefaults.standard.bool(forKey: "\(user)_isTwoFactorEnabled")
-            }
-            return false
-        }
-    */
+    /* var isTwoFactorEnabled: Bool {
+     if let user = currentLoggedInUser {
+     return UserDefaults.standard.bool(forKey: "\(user)_isTwoFactorEnabled")
+     }
+     return false
+     }
+     */
     var isTwoFactorEnabled: Bool {
         if let user = currentLoggedInUser {
             let accountType = isTeacherLogin ? "teacher" : "student"
@@ -24,7 +24,7 @@ struct LoginView: View {
         }
         return false
     }
-
+    
     @State var emailFor2FA: String = ""
     @State private var showErrorMessages = false
     @State private var errorMessages = ""
@@ -57,54 +57,97 @@ struct LoginView: View {
     
     @State var studentPassVisibility: String = ""
     @State var teacherPassVisibility: String = ""
-
+    
     var body: some View {
         VStack {
             if !show2FAInput {
                 
                 
                 Text("Appause")
+                    .fontWeight(.bold)
                     .font(.system(size: 36))
                     .padding(.top, 75)
                 
                 Spacer()
                 Spacer()
-                Spacer()
-                
-                Button(action: {
-                    self.showCodeField = false
-                    self.showTextFields.toggle()
-                    self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
-                    self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
-                }) {
-                    Text(buttonNameTop)
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 20, alignment: .center)
+        //        Spacer()
+           
+                if (buttonColorTop==Color.black && buttonColorBottom==Color.black){
+                    VStack{
+                        Button(action: {
+                            self.showCodeField = false
+                            self.showTextFields.toggle()
+                            self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
+                            self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
+                        }) {
+                            Text(buttonNameTop)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 300, height: 20, alignment: .center)
+                        }
+                        .padding()
+                        .background(buttonColorTop)
+                        .cornerRadius(10)
+                        
+                        //Spacer()
+                        
+                        Button(action: {
+                            self.showTextFields = false
+                            self.showCodeField.toggle()
+                            self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
+                            self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
+                        }) {
+                            Text(buttonNameBottom)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 300, height: 20, alignment: .center)
+                        }
+                        .padding()
+                        .background(buttonColorBottom)
+                        .cornerRadius(10)
+                    }
                 }
-                .padding()
-                .background(buttonColorTop)
-                .cornerRadius(10)
-                
-                //Spacer()
-                
-                Button(action: {
-                    self.showTextFields = false
-                    self.showCodeField.toggle()
-                    self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
-                    self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
-                }) {
-                    Text(buttonNameBottom)
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 20, alignment: .center)
+                else{
+                    HStack{
+                        Button(action: {
+                            self.showCodeField = false
+                            self.showTextFields.toggle()
+                            self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
+                            self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
+                        }) {
+                            Text(buttonNameTop)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 150, height: 20, alignment: .center)
+                        }
+                        .padding()
+                        .background(buttonColorTop)
+                        .cornerRadius(10)
+                        
+                        //Spacer()
+                        
+                        Button(action: {
+                            self.showTextFields = false
+                            self.showCodeField.toggle()
+                            self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
+                            self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
+                        }) {
+                            Text(buttonNameBottom)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 150, height: 20, alignment: .center)
+                        }
+                        .padding()
+                        .background(buttonColorBottom)
+                        .cornerRadius(10)
+                    }
                 }
-                .padding()
-                .background(buttonColorBottom)
-                .cornerRadius(10)
                 
                 if showTextFields || showCodeField {
                     VStack {
                         HStack {
                             Text(showTextFields ? "Teacher Username:" : "Student Username:")
+                                .fontWeight(.bold)
                             TextField("Enter Username", text: showTextFields ? $usernameText : $studentUsernameText)
                                 .padding()
                                 .background(textFieldOpacity)
@@ -114,6 +157,7 @@ struct LoginView: View {
                         .padding(.trailing, 40)
                         HStack {
                             Text(showTextFields ? "Teacher Password:" : "Student Password:")
+                                .fontWeight(.bold)
                             if(buttonColorTop == Color.blue){
                                 if(teacherPassVisibility=="visible"){
                                     HStack{
@@ -227,6 +271,7 @@ struct LoginView: View {
                                 self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
                             }) {
                                 Text("Login")
+                                    .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .frame(width: 130, height: 20, alignment: .center)
                             }
@@ -255,8 +300,8 @@ struct LoginView: View {
                 .frame(width: 150, height: 150)
                 .padding(.bottom, 65)
             
-          
-
+            
+    
             
             //Spacer()
         }
