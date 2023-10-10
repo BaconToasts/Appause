@@ -31,12 +31,12 @@ struct LoginView: View {
     @State private var shakeOffset: CGFloat = 0.0
     @Binding var showNextView: DisplayState
     @State var buttonNameTop = "Teacher Login"
-    @State var buttonColorTopIdle = Color.black
-    @State var buttonColorTopActive = Color.blue
-    @State var buttonColorLogin = Color.blue
+    @State var buttonColorTopIdle = Color.gray                  // Color.black
+    @State var buttonColorTopActive = Color.black                // Color.blue
+    @State var buttonColorLogin = Color.blue                    // Color.blue
     @State var buttonNameBottom = "Student Login"
-    @State var buttonColorBottomIdle = Color.black
-    @State var buttonColorBottomActive = Color.blue
+    @State var buttonColorBottomIdle = Color.gray              // Color.black
+    @State var buttonColorBottomActive = Color.black            // Color.blue
     @State var buttonColorTopSucess = Color.green
     @State var textFieldOpacity = Color.gray.opacity(0.2)
     @State var buttonColorTop = Color.black
@@ -69,56 +69,30 @@ struct LoginView: View {
                     .padding(.top, 75)
                 
                 Spacer()
-                Spacer()
+         //       Spacer()
         //        Spacer()
            
-                if (buttonColorTop==Color.black && buttonColorBottom==Color.black){
-                    VStack{
-                        Button(action: {
-                            self.showCodeField = false
-                            self.showTextFields.toggle()
-                            self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
-                            self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
-                        }) {
-                            Text(buttonNameTop)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .frame(width: 300, height: 20, alignment: .center)
-                        }
-                        .padding()
-                        .background(buttonColorTop)
-                        .cornerRadius(10)
-                        
-                        //Spacer()
-                        
-                        Button(action: {
-                            self.showTextFields = false
-                            self.showCodeField.toggle()
-                            self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
-                            self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
-                        }) {
-                            Text(buttonNameBottom)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .frame(width: 300, height: 20, alignment: .center)
-                        }
-                        .padding()
-                        .background(buttonColorBottom)
-                        .cornerRadius(10)
-                    }
-                }
-                else{
                     HStack{
                         Button(action: {
                             self.showCodeField = false
                             self.showTextFields.toggle()
                             self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
                             self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
+                            if(buttonColorTop == buttonColorTopIdle){
+                                buttonColorTop = Color.black
+                                buttonColorBottom = Color.black
+                            }
                         }) {
-                            Text(buttonNameTop)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .frame(width: 150, height: 20, alignment: .center)
+                            VStack{
+                                Text(buttonNameTop)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .frame(width: 150, height: 20, alignment: .center)
+                                Image(systemName: "graduationcap")
+                                    .fontWeight(.bold)
+                                    .imageScale(.large)
+                                    .foregroundColor(.white)
+                            }
                         }
                         .padding()
                         .background(buttonColorTop)
@@ -131,17 +105,27 @@ struct LoginView: View {
                             self.showCodeField.toggle()
                             self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
                             self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
+                            if(buttonColorBottom == buttonColorBottomIdle){
+                                buttonColorTop = Color.black
+                                buttonColorBottom = Color.black
+                            }
                         }) {
-                            Text(buttonNameBottom)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .frame(width: 150, height: 20, alignment: .center)
+                            VStack{
+                                Text(buttonNameBottom)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .frame(width: 150, height: 20, alignment: .center)
+                                Image(systemName: "square.and.pencil")
+                                    .padding(4)
+                                    .fontWeight(.bold)
+                                    .imageScale(.large)
+                                    .foregroundColor(.white)
+                            }
                         }
                         .padding()
                         .background(buttonColorBottom)
                         .cornerRadius(10)
                     }
-                }
                 
                 if showTextFields || showCodeField {
                     VStack {
@@ -158,7 +142,7 @@ struct LoginView: View {
                         HStack {
                             Text(showTextFields ? "Teacher Password:" : "Student Password:")
                                 .fontWeight(.bold)
-                            if(buttonColorTop == Color.blue){
+                            if(buttonColorTop == Color.blue){           // Color.blue
                                 if(teacherPassVisibility=="visible"){
                                     HStack{
                                         TextField("Enter Password", text: $passwordText)
@@ -168,7 +152,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{teacherPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)            // buttonColorTopIdle
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -182,7 +166,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{teacherPassVisibility = "visible"}){
                                             Image(systemName: "eye")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)        // buttonColorTopIdle
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -198,7 +182,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{studentPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)    // buttonColorTopIdle
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -212,7 +196,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{studentPassVisibility = "visible"}){
                                             Image(systemName: "eye")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)  // buttonColorTopIdle
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -231,7 +215,8 @@ struct LoginView: View {
                                     .frame(width: 75, height: 20, alignment: .center)
                             }
                             .padding()
-                            .background(Color.gray.opacity(0.9))
+                       //     .background(Color.gray.opacity(0.9))
+                            .background(Color.black)
                             .cornerRadius(100)
                             .padding(.leading, 20)
                             
@@ -276,7 +261,7 @@ struct LoginView: View {
                                     .frame(width: 130, height: 20, alignment: .center)
                             }
                             .padding()
-                            .background(Color.blue)
+                            .background(Color.black)            // Color.blue
                             .cornerRadius(10)
                             .offset(x: shakeOffset)
                             .padding(.leading, 30)
