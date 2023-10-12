@@ -68,6 +68,7 @@
 		BE0FDCDF29F0F18300D9EBE3 /* TeacherAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppRequestView.swift; sourceTree = "<group>"; };
 		BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppDescription.swift; sourceTree = "<group>"; };
 		CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyleVar.swift; sourceTree = "<group>"; };
+		CE2886E52AD7732300BEBF64 /* Project190.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project190.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +102,7 @@
 		3197737329E51DF000596D4C /* Project190 */ = {
 			isa = PBXGroup;
 			children = (
+				CE2886E52AD7732300BEBF64 /* Project190.entitlements */,
 				3197737429E51DF000596D4C /* Project190App.swift */,
 				3197737629E51DF000596D4C /* ContentView.swift */,
 				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
@@ -368,6 +370,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Project190/Project190.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Project190/Preview Content\"";
@@ -398,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Project190/Project190.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Project190/Preview Content\"";

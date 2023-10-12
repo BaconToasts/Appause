@@ -10,13 +10,13 @@ private var isTeacherLogin = false
 struct LoginView: View {
     public var keychain = KeychainSwift()
     @State private var show2FAInput = false
-   /* var isTwoFactorEnabled: Bool {
-            if let user = currentLoggedInUser {
-                return UserDefaults.standard.bool(forKey: "\(user)_isTwoFactorEnabled")
-            }
-            return false
-        }
-    */
+    /* var isTwoFactorEnabled: Bool {
+     if let user = currentLoggedInUser {
+     return UserDefaults.standard.bool(forKey: "\(user)_isTwoFactorEnabled")
+     }
+     return false
+     }
+     */
     var isTwoFactorEnabled: Bool {
         if let user = currentLoggedInUser {
             let accountType = isTeacherLogin ? "teacher" : "student"
@@ -24,19 +24,19 @@ struct LoginView: View {
         }
         return false
     }
-
+    
     @State var emailFor2FA: String = ""
     @State private var showErrorMessages = false
     @State private var errorMessages = ""
     @State private var shakeOffset: CGFloat = 0.0
     @Binding var showNextView: DisplayState
     @State var buttonNameTop = "Teacher Login"
-    @State var buttonColorTopIdle = Color.black
-    @State var buttonColorTopActive = Color.blue
-    @State var buttonColorLogin = Color.blue
+    @State var buttonColorTopIdle = Color.gray                 // Color.black (original value)
+    @State var buttonColorTopActive = Color.black                // Color.blue (original value)
+    @State var buttonColorLogin = Color.black                    // Color.blue (original value)
     @State var buttonNameBottom = "Student Login"
-    @State var buttonColorBottomIdle = Color.black
-    @State var buttonColorBottomActive = Color.blue
+    @State var buttonColorBottomIdle = Color.gray              // Color.black  (original value)
+    @State var buttonColorBottomActive = Color.black            // Color.blue  (original value)
     @State var buttonColorTopSucess = Color.green
     @State var textFieldOpacity = Color.gray.opacity(0.2)
     @State var buttonColorTop = Color.black
@@ -57,54 +57,80 @@ struct LoginView: View {
     
     @State var studentPassVisibility: String = ""
     @State var teacherPassVisibility: String = ""
-
+    
     var body: some View {
         VStack {
             if !show2FAInput {
                 
-                
                 Text("Appause")
+                    .fontWeight(.bold)
                     .font(.system(size: 36))
                     .padding(.top, 75)
                 
                 Spacer()
-                Spacer()
-                Spacer()
-                
-                Button(action: {
-                    self.showCodeField = false
-                    self.showTextFields.toggle()
-                    self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
-                    self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
-                }) {
-                    Text(buttonNameTop)
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 20, alignment: .center)
-                }
-                .padding()
-                .background(buttonColorTop)
-                .cornerRadius(10)
-                
-                //Spacer()
-                
-                Button(action: {
-                    self.showTextFields = false
-                    self.showCodeField.toggle()
-                    self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
-                    self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
-                }) {
-                    Text(buttonNameBottom)
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 20, alignment: .center)
-                }
-                .padding()
-                .background(buttonColorBottom)
-                .cornerRadius(10)
+         //       Spacer()
+        //        Spacer()
+           
+                    HStack{
+                        Button(action: {
+                            self.showCodeField = false
+                            self.showTextFields.toggle()
+                            self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
+                            self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
+                            if(buttonColorTop == buttonColorTopIdle){
+                                buttonColorTop = Color.black
+                                buttonColorBottom = Color.black
+                            }
+                        }) {
+                            VStack{
+                                Text(buttonNameTop)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .frame(width: 150, height: 20, alignment: .center)
+                                Image(systemName: "graduationcap")
+                                    .fontWeight(.bold)
+                                    .imageScale(.large)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .padding()
+                        .background(buttonColorTop)
+                        .cornerRadius(10)
+                        
+                        //Spacer()
+                        
+                        Button(action: {
+                            self.showTextFields = false
+                            self.showCodeField.toggle()
+                            self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
+                            self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
+                            if(buttonColorBottom == buttonColorBottomIdle){
+                                buttonColorTop = Color.black
+                                buttonColorBottom = Color.black
+                            }
+                        }) {
+                            VStack{
+                                Text(buttonNameBottom)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .frame(width: 150, height: 20, alignment: .center)
+                                Image(systemName: "square.and.pencil")
+                                    .padding(4)
+                                    .fontWeight(.bold)
+                                    .imageScale(.large)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .padding()
+                        .background(buttonColorBottom)
+                        .cornerRadius(10)
+                    }
                 
                 if showTextFields || showCodeField {
                     VStack {
                         HStack {
                             Text(showTextFields ? "Teacher Username:" : "Student Username:")
+                                .fontWeight(.bold)
                             TextField("Enter Username", text: showTextFields ? $usernameText : $studentUsernameText)
                                 .padding()
                                 .background(textFieldOpacity)
@@ -114,7 +140,8 @@ struct LoginView: View {
                         .padding(.trailing, 40)
                         HStack {
                             Text(showTextFields ? "Teacher Password:" : "Student Password:")
-                            if(buttonColorTop == Color.blue){
+                                .fontWeight(.bold)
+                            if(buttonColorTop == Color.black){           // Color.blue (original parameter)
                                 if(teacherPassVisibility=="visible"){
                                     HStack{
                                         TextField("Enter Password", text: $passwordText)
@@ -124,7 +151,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{teacherPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -138,7 +165,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{teacherPassVisibility = "visible"}){
                                             Image(systemName: "eye")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -154,7 +181,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{studentPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -168,7 +195,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{studentPassVisibility = "visible"}){
                                             Image(systemName: "eye")
-                                                .foregroundColor(buttonColorTopIdle)
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -187,7 +214,7 @@ struct LoginView: View {
                                     .frame(width: 75, height: 20, alignment: .center)
                             }
                             .padding()
-                            .background(Color.gray.opacity(0.9))
+                            .background(Color.black)
                             .cornerRadius(100)
                             .padding(.leading, 20)
                             
@@ -224,14 +251,23 @@ struct LoginView: View {
                                     }
                                     performShakeAnimation()
                                 }
-                                self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                
+                                if (buttonColorTop == buttonColorTopActive){
+                                    self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                }
+                                
+                                if (buttonColorBottom == buttonColorBottomActive){
+                                    self.buttonColorBottom = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                }
+                                
                             }) {
                                 Text("Login")
+                                    .fontWeight(.bold)
                                     .foregroundColor(.white)
                                     .frame(width: 130, height: 20, alignment: .center)
                             }
                             .padding()
-                            .background(Color.blue)
+                            .background(Color.black)            // Color.blue (original parameter)
                             .cornerRadius(10)
                             .offset(x: shakeOffset)
                             .padding(.leading, 30)
@@ -255,8 +291,8 @@ struct LoginView: View {
                 .frame(width: 150, height: 150)
                 .padding(.bottom, 65)
             
-          
-
+            
+    
             
             //Spacer()
         }
