@@ -31,12 +31,12 @@ struct LoginView: View {
     @State private var shakeOffset: CGFloat = 0.0
     @Binding var showNextView: DisplayState
     @State var buttonNameTop = "Teacher Login"
-    @State var buttonColorTopIdle = Color.gray                  // Color.black
-    @State var buttonColorTopActive = Color.black                // Color.blue
-    @State var buttonColorLogin = Color.blue                    // Color.blue
+    @State var buttonColorTopIdle = Color.gray                 // Color.black (original value)
+    @State var buttonColorTopActive = Color.black                // Color.blue (original value)
+    @State var buttonColorLogin = Color.black                    // Color.blue (original value)
     @State var buttonNameBottom = "Student Login"
-    @State var buttonColorBottomIdle = Color.gray              // Color.black
-    @State var buttonColorBottomActive = Color.black            // Color.blue
+    @State var buttonColorBottomIdle = Color.gray              // Color.black  (original value)
+    @State var buttonColorBottomActive = Color.black            // Color.blue  (original value)
     @State var buttonColorTopSucess = Color.green
     @State var textFieldOpacity = Color.gray.opacity(0.2)
     @State var buttonColorTop = Color.black
@@ -61,7 +61,6 @@ struct LoginView: View {
     var body: some View {
         VStack {
             if !show2FAInput {
-                
                 
                 Text("Appause")
                     .fontWeight(.bold)
@@ -142,7 +141,7 @@ struct LoginView: View {
                         HStack {
                             Text(showTextFields ? "Teacher Password:" : "Student Password:")
                                 .fontWeight(.bold)
-                            if(buttonColorTop == Color.blue){           // Color.blue
+                            if(buttonColorTop == Color.black){           // Color.blue (original parameter)
                                 if(teacherPassVisibility=="visible"){
                                     HStack{
                                         TextField("Enter Password", text: $passwordText)
@@ -152,7 +151,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{teacherPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
-                                                .foregroundColor(Color.black)            // buttonColorTopIdle
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -166,7 +165,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{teacherPassVisibility = "visible"}){
                                             Image(systemName: "eye")
-                                                .foregroundColor(Color.black)        // buttonColorTopIdle
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -182,7 +181,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{studentPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
-                                                .foregroundColor(Color.black)    // buttonColorTopIdle
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -196,7 +195,7 @@ struct LoginView: View {
                                             .frame(width: 180)
                                         Button(action:{studentPassVisibility = "visible"}){
                                             Image(systemName: "eye")
-                                                .foregroundColor(Color.black)  // buttonColorTopIdle
+                                                .foregroundColor(Color.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
@@ -215,7 +214,6 @@ struct LoginView: View {
                                     .frame(width: 75, height: 20, alignment: .center)
                             }
                             .padding()
-                       //     .background(Color.gray.opacity(0.9))
                             .background(Color.black)
                             .cornerRadius(100)
                             .padding(.leading, 20)
@@ -253,7 +251,15 @@ struct LoginView: View {
                                     }
                                     performShakeAnimation()
                                 }
-                                self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                
+                                if (buttonColorTop == buttonColorTopActive){
+                                    self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                }
+                                
+                                if (buttonColorBottom == buttonColorBottomActive){
+                                    self.buttonColorBottom = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                }
+                                
                             }) {
                                 Text("Login")
                                     .fontWeight(.bold)
@@ -261,7 +267,7 @@ struct LoginView: View {
                                     .frame(width: 130, height: 20, alignment: .center)
                             }
                             .padding()
-                            .background(Color.black)            // Color.blue
+                            .background(Color.black)            // Color.blue (original parameter)
                             .cornerRadius(10)
                             .offset(x: shakeOffset)
                             .padding(.leading, 30)
