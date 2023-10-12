@@ -5,7 +5,6 @@ struct TeacherSettingsView: View {
     
     @State var firstButton = "MAIN / SETTINGS"
     @State var secondButton = "Change Password"
-    @State var thirdButton = "Enable FaceID"
     @State var fourthButton = "Disable Bluetooth"
     @State var fifthButton = "Dark Mode"
     
@@ -59,19 +58,6 @@ struct TeacherSettingsView: View {
             }
             .padding()
             
-            Button(action: {}) {
-                Text(thirdButton)
-                    .fontWeight(btnStyle.getFont())
-                    .foregroundColor(btnStyle.getBtnFontColor())
-                    .frame(width: btnStyle.getWidth(),
-                           height: btnStyle.getHeight(),
-                           alignment: btnStyle.getAlignment())
-            }
-            .padding()
-            .background(btnStyle.getBtnColor())
-            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
-            .cornerRadius(btnStyle.getBtnRadius())
-            .padding(.bottom, 10)
             
             Button(action: {}) {
                 Text(fourthButton)
