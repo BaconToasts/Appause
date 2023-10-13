@@ -28,6 +28,9 @@ struct TeacherManageUsers: View
             activeNavigationLink = newValue ? item : nil
         }
     }
+    //activeNavigationLink and stackingPermitted (in child views) is required to allow TeacherDeleteStudentView to go back to TeacherManageUsers when deleting a student from the list.
+    //activeNavigationLink should be passed to child views. Set to nil when returning to TeacherManageUsers is desired.
+    //My best understanding is that by doing so you are setting isActive on the NavigationLink to something falsy.
     
     var body: some View
     {

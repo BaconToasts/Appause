@@ -8,8 +8,9 @@
 import SwiftUI
 struct TeacherDeleteStudentView: View{
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var studentList: StudentList
     @Binding var stackingPermitted : String?
-    
+    @State var studentName: String
     @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
     @State var thirdButton = "No"
@@ -34,8 +35,13 @@ struct TeacherDeleteStudentView: View{
                 .padding()
             HStack{
                 Button(action:{
-                    stackingPermitted = nil
-                    dismiss()}){
+                    if let index = studentList.students.firstIndex(of: studentName) {
+                        studentList.students.remove(at: index)
+                    }
+                    stackingPermitted = nil}){
+                    //This button only works if TeacherManageUsers is a parent view.
+                    //More specifically, this relies on the isActive value on a NavigationLink from a parent.
+                    //Account for this if adding any views that could path into TeacherUserRequestView.
                     Text(secondButton)
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getPathFontColor())
@@ -47,9 +53,7 @@ struct TeacherDeleteStudentView: View{
                 .padding(.trailing, 100)
                 .padding(.bottom, 250)
                 
-                Button(action: {
-                    //stackingPermitted = true
-                    dismiss()}) {
+                Button(action: {dismiss()}) {
                     Text(thirdButton)
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getBtnFontColor())
@@ -65,7 +69,9 @@ struct TeacherDeleteStudentView: View{
     }
 }
 struct TeacherDeleteStudentView_Previews: PreviewProvider{
+    @StateObject var studentList = StudentList()
     static var previews: some View{
-        TeacherDeleteStudentView(stackingPermitted: .constant(nil))
+        TeacherDeleteStudentView(stackingPermitted: .constant(nil), studentName: "Student")
+            .environmentObject(StudentList())
     }
 }

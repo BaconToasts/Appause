@@ -117,7 +117,7 @@ struct TeacherUserRequestView: View {
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
                 
-                NavigationLink(destination: TeacherDeleteStudentView(stackingPermitted: self.$stackingPermitted)
+                NavigationLink(destination: TeacherDeleteStudentView(stackingPermitted: self.$stackingPermitted, studentName: userName)
                     .navigationBarHidden(true)) {
                         Text("Delete User")
                         .padding()
