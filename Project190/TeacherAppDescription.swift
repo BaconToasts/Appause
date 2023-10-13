@@ -10,6 +10,7 @@ import SwiftUI
 struct TeacherAppDescription: View {
     @Environment(\.dismiss) private var dismiss
     @State var appData = RequestData(appName:"App", approved: ApproveStatus.unprocessed)
+    @State var parentNavText = "MANAGE USER / "
     @State var studentName = "Student"
     @State var requestReason = "Generic Request Reason"
     @State private var hours = 0
@@ -25,7 +26,7 @@ struct TeacherAppDescription: View {
     var body: some View {
         VStack{
             Button(action: {dismiss()}) {
-                Text("MANAGE USER / " + studentName + " / " + appData.appName)
+                Text(parentNavText + studentName + " / " + appData.appName)
                     .textCase(.uppercase)
             }
             .buttonStyle()

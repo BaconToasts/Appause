@@ -8,9 +8,20 @@
 
 import SwiftUI
 
+class StudentList: ObservableObject {
+    @Published var students = [
+        "John Doe",
+        "John Jackson",
+        "Danny Devito",
+        "Taylor Newall",
+        "Xavier Desmond",
+        "Ronald McDonald"]
+}
+
 struct TeacherMainView: View {
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState
+    @StateObject var studentList = StudentList()
         
     var body: some View {
         NavigationView {
@@ -31,7 +42,7 @@ struct TeacherMainView: View {
                 Spacer()
                 
                 // create Requests button
-                NavigationLink(destination: TeacherAppRequestView()
+                NavigationLink(destination: TeacherAllRequestsView()
                     .navigationBarHidden(true)) {
                     Text("Requests")
                         .padding(.leading, 25)
@@ -76,7 +87,8 @@ struct TeacherMainView: View {
                 
                 // create Manage Users button
                 NavigationLink(destination: TeacherManageUsers()
-                    .navigationBarHidden(true)) {
+                    .navigationBarHidden(true)
+                    .environmentObject(studentList)){
                     Text("Manage Users")
                         .padding(.leading, 25)
                         .fontWeight(btnStyle.getFont())

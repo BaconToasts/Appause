@@ -8,7 +8,9 @@
 import SwiftUI
 struct TeacherDeleteStudentView: View{
     @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var studentList: StudentList
+    @Binding var stackingPermitted : String?
+    @State var studentName: String
     @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
     @State var thirdButton = "No"
@@ -32,7 +34,14 @@ struct TeacherDeleteStudentView: View{
             Text("Are you sure that you want to permanently delete this student from your list of registered users?").fontWeight(.bold).multilineTextAlignment(.center).frame(width:300, height:150, alignment:.center)
                 .padding()
             HStack{
-                Button(action:{}){
+                Button(action:{
+                    if let index = studentList.students.firstIndex(of: studentName) {
+                        studentList.students.remove(at: index)
+                    }
+                    stackingPermitted = nil}){
+                    //This button only works if TeacherManageUsers is a parent view.
+                    //More specifically, this relies on the isActive value on a NavigationLink from a parent.
+                    //Account for this if adding any views that could path into TeacherUserRequestView.
                     Text(secondButton)
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getPathFontColor())
@@ -60,7 +69,9 @@ struct TeacherDeleteStudentView: View{
     }
 }
 struct TeacherDeleteStudentView_Previews: PreviewProvider{
+    @StateObject var studentList = StudentList()
     static var previews: some View{
-        TeacherDeleteStudentView()
+        TeacherDeleteStudentView(stackingPermitted: .constant(nil), studentName: "Student")
+            .environmentObject(StudentList())
     }
 }

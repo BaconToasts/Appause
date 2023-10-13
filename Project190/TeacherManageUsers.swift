@@ -7,17 +7,30 @@
 
 import SwiftUI
 
+
+
+
+
 struct TeacherManageUsers: View
 {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var studentList: StudentList
     @State var studentName = ""
-    @State var studentList = [
-        "John Doe",
-        "John Jackson",
-        "Danny Devito",
-        "Taylor Newall",
-        "Xavier Desmond",
-        "Ronald McDonald"]
+    @State private var activeNavigationLink: String? = nil
+    
+    //This function is required to provide an activeNavigationLink for every value in studentList
+    //Without this, every NavigationLink will be registered as active simultaneously.
+    //Credit to user jnpdx on StackOverflow for this.
+    func bindingForItem(item: String) -> Binding<Bool> {
+        .init {
+            activeNavigationLink == item
+        } set: { newValue in
+            activeNavigationLink = newValue ? item : nil
+        }
+    }
+    //activeNavigationLink and stackingPermitted (in child views) is required to allow TeacherDeleteStudentView to go back to TeacherManageUsers when deleting a student from the list.
+    //activeNavigationLink should be passed to child views. Set to nil when returning to TeacherManageUsers is desired.
+    //My best understanding is that by doing so you are setting isActive on the NavigationLink to something falsy.
     
     var body: some View
     {
@@ -48,15 +61,18 @@ struct TeacherManageUsers: View
                     .padding(.top, 30)
                 
                 List {
-                    ForEach(studentList, id:\.self) { student in
+                    ForEach(studentList.students, id:\.self) { student in
                         if(studentName.isEmpty || student.contains(studentName))
                         {
-                            NavigationLink(destination:TeacherAppRequestView(userName: student)
-                                .navigationBarHidden(true)){
+                            NavigationLink(
+                                destination:TeacherUserRequestView(stackingPermitted: self.$activeNavigationLink, userName: student)
+                                .navigationBarHidden(true),
+                                isActive: bindingForItem(item: student)){
                                 Text(student)
                                     .font(.callout)
                                     .foregroundColor(btnStyle.getBtnFontColor())
                             }
+                                .isDetailLink(false)
                         }
                     }
                 }
@@ -66,15 +82,16 @@ struct TeacherManageUsers: View
                        maxHeight: UIScreen.main.bounds.size.height*0.75)
                 .padding(.bottom, 300)
                 .cornerRadius(5)
-                
             }
         }
         .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
     
     struct TeacherManageUsers_Previews: PreviewProvider {
+        @StateObject var studentList = StudentList()
         static var previews: some View {
             TeacherManageUsers()
+                .environmentObject(StudentList())
         }
     }
 }
