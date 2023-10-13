@@ -51,7 +51,7 @@ struct TeacherManageUsers: View
                     ForEach(studentList, id:\.self) { student in
                         if(studentName.isEmpty || student.contains(studentName))
                         {
-                            NavigationLink(destination:TeacherAppRequestView(userName: student)
+                            NavigationLink(destination:TeacherUserRequestView(userName: student)
                                 .navigationBarHidden(true)){
                                 Text(student)
                                     .font(.callout)

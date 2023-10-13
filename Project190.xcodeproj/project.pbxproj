@@ -33,7 +33,7 @@
 		7F9ACC452AB14C02006A6762 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */; };
 		BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */; };
 		BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */; };
-		BE0FDCE029F0F18300D9EBE3 /* TeacherAppRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDF29F0F18300D9EBE3 /* TeacherAppRequestView.swift */; };
+		BE0FDCE029F0F18300D9EBE3 /* TeacherUserRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDF29F0F18300D9EBE3 /* TeacherUserRequestView.swift */; };
 		BE7C4E832AC0F5270091E6F1 /* TeacherAppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */; };
 		CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */; };
 /* End PBXBuildFile section */
@@ -65,7 +65,7 @@
 		7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentChooseAdminView.swift; sourceTree = "<group>"; };
 		BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAppRequestView.swift; sourceTree = "<group>"; };
-		BE0FDCDF29F0F18300D9EBE3 /* TeacherAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppRequestView.swift; sourceTree = "<group>"; };
+		BE0FDCDF29F0F18300D9EBE3 /* TeacherUserRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherUserRequestView.swift; sourceTree = "<group>"; };
 		BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppDescription.swift; sourceTree = "<group>"; };
 		CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyleVar.swift; sourceTree = "<group>"; };
 		CE2886E52AD7732300BEBF64 /* Project190.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project190.entitlements; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 				7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */,
 				4DE605A12AB6AED100620120 /* TeacherRegisterView.swift */,
 				3197738D29E51FF100596D4C /* TeacherMainView.swift */,
-				BE0FDCDF29F0F18300D9EBE3 /* TeacherAppRequestView.swift */,
+				BE0FDCDF29F0F18300D9EBE3 /* TeacherUserRequestView.swift */,
 				7B4D40A92AC6538400175A30 /* TeacherWhitelist.swift */,
 				0068778A29F23F720007F94A /* TeacherManageUsers.swift */,
 				7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */,
@@ -234,7 +234,7 @@
 				0068778B29F23F720007F94A /* TeacherManageUsers.swift in Sources */,
 				3197738C29E51FA300596D4C /* TeacherConnectCodeView.swift in Sources */,
 				4D87CD532AC55C5400E7912F /* SelectRegistrationView.swift in Sources */,
-				BE0FDCE029F0F18300D9EBE3 /* TeacherAppRequestView.swift in Sources */,
+				BE0FDCE029F0F18300D9EBE3 /* TeacherUserRequestView.swift in Sources */,
 				CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */,
 				3197739029E5203B00596D4C /* TeacherMasterControlView.swift in Sources */,
 				BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */,

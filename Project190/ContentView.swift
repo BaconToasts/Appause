@@ -50,7 +50,7 @@ struct ContentView: View {
             case .studentChooseAdmin:
                 StudentChooseAdminView(showNextView: $displayState)
             case .teacherAppRequest:
-                TeacherAppRequestView()
+                TeacherUserRequestView()
             case .teacherWhitelist:
                 TeacherWhitelist()
             case .resetPassword:
