@@ -8,7 +8,7 @@
 import SwiftUI
 struct TeacherDeleteStudentView: View{
     @Environment(\.dismiss) private var dismiss
-    @Binding var stackingPermitted : Bool
+    @Binding var stackingPermitted : String?
     
     @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
@@ -34,7 +34,7 @@ struct TeacherDeleteStudentView: View{
                 .padding()
             HStack{
                 Button(action:{
-                    stackingPermitted = false
+                    stackingPermitted = nil
                     dismiss()}){
                     Text(secondButton)
                         .fontWeight(btnStyle.getFont())
@@ -48,7 +48,7 @@ struct TeacherDeleteStudentView: View{
                 .padding(.bottom, 250)
                 
                 Button(action: {
-                    stackingPermitted = true
+                    //stackingPermitted = true
                     dismiss()}) {
                     Text(thirdButton)
                         .fontWeight(btnStyle.getFont())
@@ -66,6 +66,6 @@ struct TeacherDeleteStudentView: View{
 }
 struct TeacherDeleteStudentView_Previews: PreviewProvider{
     static var previews: some View{
-        TeacherDeleteStudentView(stackingPermitted: .constant(false))
+        TeacherDeleteStudentView(stackingPermitted: .constant(nil))
     }
 }

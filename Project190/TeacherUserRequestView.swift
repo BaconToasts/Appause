@@ -64,7 +64,7 @@ struct TeacherAppView: View {
 
 struct TeacherUserRequestView: View {
     @Environment(\.dismiss) private var dismiss
-    @Binding var stackingPermitted : Bool
+    @Binding var stackingPermitted : String?
     
     @State private var searchAppName: String = ""
     var userName = "User"
@@ -137,6 +137,6 @@ struct TeacherUserRequestView: View {
 
 struct TeacherAppRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        TeacherUserRequestView(stackingPermitted: .constant(false))
+        TeacherUserRequestView(stackingPermitted: .constant(nil))
     }
 }
