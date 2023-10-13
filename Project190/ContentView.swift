@@ -44,13 +44,13 @@ struct ContentView: View {
             case .teacherSettings:
                 TeacherSettingsView(showNextView: $displayState)
             case .teacherDeleteStudent:
-                TeacherDeleteStudentView()
+                TeacherDeleteStudentView(stackingPermitted: .constant(false))
             case .studentDeleteAdmin:
                 StudentDeleteAdminView()
             case .studentChooseAdmin:
                 StudentChooseAdminView(showNextView: $displayState)
             case .teacherAppRequest:
-                TeacherUserRequestView()
+                TeacherUserRequestView(stackingPermitted: .constant(false))
             case .teacherWhitelist:
                 TeacherWhitelist()
             case .resetPassword:

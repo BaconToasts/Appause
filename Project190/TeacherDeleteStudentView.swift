@@ -8,6 +8,7 @@
 import SwiftUI
 struct TeacherDeleteStudentView: View{
     @Environment(\.dismiss) private var dismiss
+    @Binding var stackingPermitted : Bool
     
     @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
@@ -32,7 +33,9 @@ struct TeacherDeleteStudentView: View{
             Text("Are you sure that you want to permanently delete this student from your list of registered users?").fontWeight(.bold).multilineTextAlignment(.center).frame(width:300, height:150, alignment:.center)
                 .padding()
             HStack{
-                Button(action:{}){
+                Button(action:{
+                    stackingPermitted = false
+                    dismiss()}){
                     Text(secondButton)
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getPathFontColor())
@@ -44,7 +47,9 @@ struct TeacherDeleteStudentView: View{
                 .padding(.trailing, 100)
                 .padding(.bottom, 250)
                 
-                Button(action: {dismiss()}) {
+                Button(action: {
+                    stackingPermitted = true
+                    dismiss()}) {
                     Text(thirdButton)
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getBtnFontColor())
@@ -61,6 +66,6 @@ struct TeacherDeleteStudentView: View{
 }
 struct TeacherDeleteStudentView_Previews: PreviewProvider{
     static var previews: some View{
-        TeacherDeleteStudentView()
+        TeacherDeleteStudentView(stackingPermitted: .constant(false))
     }
 }

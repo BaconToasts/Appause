@@ -64,6 +64,7 @@ struct TeacherAppView: View {
 
 struct TeacherUserRequestView: View {
     @Environment(\.dismiss) private var dismiss
+    @Binding var stackingPermitted : Bool
     
     @State private var searchAppName: String = ""
     var userName = "User"
@@ -116,7 +117,7 @@ struct TeacherUserRequestView: View {
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
                 
-                NavigationLink(destination: TeacherDeleteStudentView()
+                NavigationLink(destination: TeacherDeleteStudentView(stackingPermitted: self.$stackingPermitted)
                     .navigationBarHidden(true)) {
                         Text("Delete User")
                         .padding()
@@ -126,6 +127,7 @@ struct TeacherUserRequestView: View {
                         .cornerRadius(25)
                     
                 }
+                    .isDetailLink(false)
                     .padding(.top, 10)
             }
         }
@@ -135,6 +137,6 @@ struct TeacherUserRequestView: View {
 
 struct TeacherAppRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        TeacherUserRequestView()
+        TeacherUserRequestView(stackingPermitted: .constant(false))
     }
 }

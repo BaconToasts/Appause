@@ -10,6 +10,7 @@ import SwiftUI
 struct TeacherManageUsers: View
 {
     @Environment(\.dismiss) private var dismiss
+    @State var stackingPermitted : Bool = false
     @State var studentName = ""
     @State var studentList = [
         "John Doe",
@@ -51,12 +52,15 @@ struct TeacherManageUsers: View
                     ForEach(studentList, id:\.self) { student in
                         if(studentName.isEmpty || student.contains(studentName))
                         {
-                            NavigationLink(destination:TeacherUserRequestView(userName: student)
-                                .navigationBarHidden(true)){
+                            NavigationLink(
+                                destination:TeacherUserRequestView(stackingPermitted: self.$stackingPermitted, userName: student)
+                                .navigationBarHidden(true),
+                                isActive: self.$stackingPermitted){
                                 Text(student)
                                     .font(.callout)
                                     .foregroundColor(btnStyle.getBtnFontColor())
                             }
+                                .isDetailLink(false)
                         }
                     }
                 }
@@ -66,7 +70,6 @@ struct TeacherManageUsers: View
                        maxHeight: UIScreen.main.bounds.size.height*0.75)
                 .padding(.bottom, 300)
                 .cornerRadius(5)
-                
             }
         }
         .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
