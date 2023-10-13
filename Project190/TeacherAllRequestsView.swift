@@ -52,7 +52,7 @@ struct TeacherAllRequestsView: View {
                     ForEach(appList) { request in
                         if(searchAppName.isEmpty ||
                            request.appName.contains(searchAppName)) {
-                            TeacherAppView(request: request, studentName: userName)
+                            TeacherAppView(request: request, studentName: userName, parentNavText: "MAIN / REQUESTS / ")
                         }
                     }
                 }

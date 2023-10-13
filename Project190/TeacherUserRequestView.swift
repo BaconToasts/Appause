@@ -12,13 +12,14 @@ import SwiftUI
 struct TeacherAppView: View {
     @State var request: RequestData
     @State var studentName: String
+    @State var parentNavText: String
    
     var body: some View {
         ZStack {
             Image(systemName:"applelogo")
                 .frame(maxWidth:.infinity, alignment:.leading)
             
-            NavigationLink(destination: TeacherAppDescription(appData: request)
+            NavigationLink(destination: TeacherAppDescription(appData: request, parentNavText: parentNavText, studentName: studentName)
                 .navigationBarHidden(true)) {
                 Text(request.appName)
                     .frame(maxWidth:.infinity, alignment:.center)
@@ -108,7 +109,7 @@ struct TeacherUserRequestView: View {
                     ForEach(appList) { request in
                         if(searchAppName.isEmpty ||
                            request.appName.contains(searchAppName)) {
-                            TeacherAppView(request: request, studentName: userName)
+                            TeacherAppView(request: request, studentName: userName, parentNavText: "MANAGE USER / ")
                         }
                     }
                 }
