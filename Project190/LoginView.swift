@@ -141,6 +141,8 @@ struct LoginView: View {
                                 .background(textFieldOpacity)
                                 .cornerRadius(10)
                                 .frame(width: 180)
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
                         }
                         .padding(.trailing, 40)
                         HStack {
@@ -154,6 +156,8 @@ struct LoginView: View {
                                             .background(textFieldOpacity)
                                             .cornerRadius(10)
                                             .frame(width: 180)
+                                            .disableAutocorrection(true)
+                                            .autocapitalization(.none)
                                         Button(action:{teacherPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
                                                 .foregroundColor(Color.black)
@@ -168,6 +172,8 @@ struct LoginView: View {
                                             .background(textFieldOpacity)
                                             .cornerRadius(10)
                                             .frame(width: 180)
+                                            .disableAutocorrection(true)
+                                            .autocapitalization(.none)
                                         Button(action:{teacherPassVisibility = "visible"}){
                                             Image(systemName: "eye")
                                                 .foregroundColor(Color.black)
@@ -184,6 +190,8 @@ struct LoginView: View {
                                             .background(textFieldOpacity)
                                             .cornerRadius(10)
                                             .frame(width: 180)
+                                            .disableAutocorrection(true)
+                                            .autocapitalization(.none)
                                         Button(action:{studentPassVisibility = "hidden"}){
                                             Image(systemName: "eye.slash")
                                                 .foregroundColor(Color.black)
