@@ -31,7 +31,7 @@ struct TeacherMainView: View {
                 Spacer()
                 
                 // create Requests button
-                NavigationLink(destination: TeacherUserRequestView()
+                NavigationLink(destination: TeacherAllRequestsView()
                     .navigationBarHidden(true)) {
                     Text("Requests")
                         .padding(.leading, 25)

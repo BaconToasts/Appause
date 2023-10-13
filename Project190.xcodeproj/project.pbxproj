@@ -35,6 +35,7 @@
 		BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */; };
 		BE0FDCE029F0F18300D9EBE3 /* TeacherUserRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDF29F0F18300D9EBE3 /* TeacherUserRequestView.swift */; };
 		BE7C4E832AC0F5270091E6F1 /* TeacherAppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */; };
+		BED1FA242AD9DC93005CCD24 /* TeacherAllRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */; };
 		CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAppRequestView.swift; sourceTree = "<group>"; };
 		BE0FDCDF29F0F18300D9EBE3 /* TeacherUserRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherUserRequestView.swift; sourceTree = "<group>"; };
 		BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppDescription.swift; sourceTree = "<group>"; };
+		BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAllRequestsView.swift; sourceTree = "<group>"; };
 		CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyleVar.swift; sourceTree = "<group>"; };
 		CE2886E52AD7732300BEBF64 /* Project190.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project190.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 				3197737A29E51DF200596D4C /* Preview Content */,
 				BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */,
 				31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */,
+				BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */,
 			);
 			path = Project190;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				3197738A29E51F5A00596D4C /* StudentMainView.swift in Sources */,
 				3197738329E51E7400596D4C /* EULAView.swift in Sources */,
 				31256F9B2AC61BDB008A38C6 /* 2FactorAuthentication.swift in Sources */,
+				BED1FA242AD9DC93005CCD24 /* TeacherAllRequestsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
