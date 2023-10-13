@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import KeychainSwift
 
 struct SelectRegistrationView: View {
     @Binding var showNextView: DisplayState
+    @State private var registerError: String = " "
+    
+    let keychain = KeychainSwift()
     
     var body: some View {
         VStack{
@@ -24,18 +28,29 @@ struct SelectRegistrationView: View {
                     .foregroundColor(.white)
                     .cornerRadius(100)
                     .padding(.trailing, 130)
-                    .padding(.bottom, 70)
+                    .padding(.bottom, 38)
             }
             Text("Are you a student or a teacher?")
                 .font(.custom("large", size: 25))
                 .padding([.top, .bottom], 50)
+            
+            Text(registerError)
+                .fontWeight(.bold)
+                .foregroundColor(.red)
             HStack{
                 Button(action: {
-                    withAnimation {
-                        //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                        showNextView = .studentRegister}
+                    let registeredUsername = keychain.get("teacherUserKey")
+                    let registeredPassword = keychain.get("teacherPassKey")
+                    if(registeredUsername != nil && registeredPassword != nil){
+                        registerError = "There is already a registered teacher."
+                    }
+                    else{
+                        withAnimation {
+                            //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                            showNextView = .teacherRegister}
+                    }
                 }) {
-                    Text("I am a student")
+                    Text("I am a Teacher")
                         .font(.custom("large", size: 25))
                         .frame(width: 140, height: 140, alignment: .center)
                         .background(Color.white.opacity(0.9))
@@ -48,11 +63,18 @@ struct SelectRegistrationView: View {
                         .padding(.trailing, 20)
                 }
                 Button(action: {
-                    withAnimation {
-                        //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                        showNextView = .teacherRegister}
+                    let registeredUsername = keychain.get("studentUserKey")
+                    let registeredPassword = keychain.get("studentPassKey")
+                    if(registeredUsername != nil && registeredPassword != nil){
+                        registerError = "There is already a registered student."
+                    }
+                    else{
+                        withAnimation {
+                            //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                            showNextView = .studentRegister}
+                    }
                 }) {
-                    Text("I am a teacher")
+                    Text("I am a Student")
                         .font(.custom("large", size: 25))
                         .frame(width: 140, height: 140, alignment: .center)
                         .background(Color.white.opacity(0.9))
