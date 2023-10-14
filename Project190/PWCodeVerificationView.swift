@@ -55,7 +55,7 @@ struct PWCodeVerificationView: View
             
             Button(action: {
                 withAnimation {
-                    showNextView = .pWCodeVerification
+                    showNextView = .resetPassword
                 }
                 if isSameCode(resetCode) {
                     showNextView = .resetPassword
