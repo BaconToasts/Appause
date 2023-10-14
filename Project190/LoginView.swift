@@ -219,14 +219,14 @@ struct LoginView: View {
                             Button(action: {
                                 let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
                                 let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
-                                if(registeredUsername != nil && registeredPassword != nil){
+                               // if(registeredUsername != nil && registeredPassword != nil){
                                     
-                                }
-                                else{
+                               // }
+                                //else{
                                     withAnimation {
                                         showNextView = .selectRegistration
                                     }
-                                }
+                                //}
                             }) {
                                 Text("Register")
                                     .fontWeight(.bold)
