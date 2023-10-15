@@ -231,13 +231,13 @@ struct LoginView: View {
                             }
                         }
                         
-                        // "Forgot Password?" button aligned to the right
+                        // "Forgot password?" button aligned to the right
                         HStack {
                             Button(action: {                                withAnimation {
                                 showNextView = .resetPassword
                             }
                             }) {
-                                Text("Forgot Password?")
+                                Text("Forgot password?")
                                     .foregroundColor(.blue)
                             }
                             .padding(.leading, 235.0)
