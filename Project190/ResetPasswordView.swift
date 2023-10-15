@@ -9,7 +9,7 @@ import SwiftUI
 import KeychainSwift
 
 struct ResetPasswordView: View{
-    @Binding var showNextView: DisplayState
+    @Binding var showNextView: DisplayState // Define a binding property
     
     @State private var displayText:String = "Please enter your new password"
     @State private var newPassword:String = ""
@@ -28,11 +28,15 @@ struct ResetPasswordView: View{
     var body: some View{
         VStack{
             
-            Button(action:{}){
-                Text("MAIN/PASSWORD RESET")
+            Button(action:{                withAnimation {
+                    showNextView = .login
+                }
+            }){
+                Text("MAIN / PASSWORD RESET")
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(width:300, height:20, alignment: .center)
+                
             }
             .padding()
             .background(Color.black)
