@@ -256,7 +256,7 @@ struct LoginView: View {
                                 let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
                                 let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
                                 let username = (showTextFields ? usernameText : studentUsernameText).lowercased()
-                                let password = (showTextFields ? passwordText : studentPasswordText).lowercased()
+                                let password = (showTextFields ? passwordText : studentPasswordText)
                                 let isSuccessful = username == registeredUsername && password == registeredPassword
                                 
                                 if isSuccessful {
