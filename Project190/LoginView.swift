@@ -70,6 +70,7 @@ struct LoginView: View {
     @State var isRegistrationSuccessful = false
     @State var isStudentRegistrationSuccessful = false
     @State var isStudentLoginSuccessful = false
+    @State private var isResetPasswordViewActive = false
     
     // Password visibility
     @State var studentPassVisibility: String = ""
@@ -121,223 +122,236 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-                if !show2FAInput {
-                    
-                    Spacer()
-                    
-                    Image("logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 150)
-                        .padding(-15.0)
-                    
-                    Text("Appause")
-                        .fontWeight(.bold)
-                        .font(.system(size: 36))
-                    
-                    Spacer()
-                    
-                    HStack{
-                        Button(action: {
-                            self.showCodeField = false
-                            self.showTextFields.toggle()
-                            self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
-                            self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
-                            if(buttonColorTop == buttonColorTopIdle){
-                                buttonColorTop = Color.black
-                                buttonColorBottom = Color.black
-                            }
-                        }) {
-                            // Teacher login button
-                            VStack{
-                                Text(buttonNameTop)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(width: 150, height: 20, alignment: .center)
-                                Image(systemName: "graduationcap")
-                                    .fontWeight(.bold)
-                                    .imageScale(.large)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        .padding()
-                        .background(buttonColorTop)
-                        .cornerRadius(10)
-                        
-                        Button(action: {
-                            self.showTextFields = false
-                            self.showCodeField.toggle()
-                            self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
-                            self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
-                            if(buttonColorBottom == buttonColorBottomIdle){
-                                buttonColorTop = Color.black
-                                buttonColorBottom = Color.black
-                            }
-                        }) {
-                            // Student login button
-                            VStack{
-                                Text(buttonNameBottom)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(width: 150, height: 16, alignment: .center)
-                                Image(systemName: "studentdesk")
-                                    .padding(4)
-                                    .fontWeight(.bold)
-                                    .imageScale(.large)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                        .padding()
-                        .background(buttonColorBottom)
-                        .cornerRadius(10)
-                    }
-                    
-                    if showTextFields || showCodeField {
-                        VStack {
-                            HStack {
-                                /*
-                                 Text(showTextFields ? "Teacher Username:" : "Student Username:")
-                                 .fontWeight(.bold)
-                                 */
-                                
-                                TextField("Email", text: showTextFields ? $usernameText : $studentUsernameText)
-                                    .padding()
-                                    .background(textFieldOpacity)
-                                    .cornerRadius(10)
-                                    .frame(width: 370)
-                                    .disableAutocorrection(true)
-                                    .autocapitalization(.none)
-                                    .padding(.vertical, 5.0)
-                            }
-                            
-                            HStack {
-                                if buttonColorTop == Color.black {
-                                    if teacherPassVisibility == "visible" {
-                                        // Use the custom TextFieldWithEyeIcon view for the teacher's password
-                                        TextFieldWithEyeIcon(placeholder: "Password", text: $passwordText, isSecure: false, visibility: $teacherPassVisibility)
-                                    } else {
-                                        // Use the custom TextFieldWithEyeIcon view for securely entering the teacher's password
-                                        TextFieldWithEyeIcon(placeholder: "Password", text: $passwordText, isSecure: true, visibility: $teacherPassVisibility)
-                                    }
-                                } else {
-                                    if studentPassVisibility == "visible" {
-                                        // Use the custom TextFieldWithEyeIcon view for the student's password
-                                        TextFieldWithEyeIcon(placeholder: "Password", text: $studentPasswordText, isSecure: false, visibility: $studentPassVisibility)
-                                    } else {
-                                        // Use the custom TextFieldWithEyeIcon view for securely entering the student's password
-                                        TextFieldWithEyeIcon(placeholder: "Password", text: $studentPasswordText, isSecure: true, visibility: $studentPassVisibility)
-                                    }
-                                }
-                            }
-                            
-                            HStack {
-                                
-                                // Register button code
-                                Button(action: {
-                                    let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
-                                    let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
-                                    withAnimation {
-                                        showNextView = .selectRegistration
-                                    }
-                                }) {
-                                    Text("Register")
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white)
-                                        .frame(width: 75, height: 20, alignment: .center)
-                                }
-                                .padding()
-                                .background(Color.black)
-                                .cornerRadius(100)
-                                .padding(.leading, 20)
-                                
-                                if showErrorMessages && errorMessages == "registration" {
-                                    Text("Incorrect Username and Password. Try again.")
-                                        .foregroundColor(.red)
-                                        .font(.caption)
-                                }
-                                
-                                // Login button code
-                                Button(action: {
-                                    let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
-                                    let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
-                                    let username = (showTextFields ? usernameText : studentUsernameText).lowercased()
-                                    let password = (showTextFields ? passwordText : studentPasswordText).lowercased()
-                                    let isSuccessful = username == registeredUsername && password == registeredPassword
-                                    
-                                    if isSuccessful {
-                                        isTeacherLogin = showTextFields
-                                        currentLoggedInUser = username
-                                        if isTwoFactorEnabled {
-                                            emailFor2FA = username
-                                            show2FAInput = true
-                                        } else {
-                                            showNextView = isTeacherLogin ? .mainTeacher : .mainStudent
-                                        }
-                                    } else {
-                                        withAnimation(.easeInOut(duration: 0.05).repeatCount(4, autoreverses: true)) {
-                                            shakeOffset = 6
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                                shakeOffset = 0
-                                            }
-                                        }
-                                        performShakeAnimation()
-                                    }
-                                    
-                                    if (buttonColorTop == buttonColorTopActive){
-                                        self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
-                                    }
-                                    
-                                    if (buttonColorBottom == buttonColorBottomActive){
-                                        self.buttonColorBottom = isSuccessful ? buttonColorTopSucess : buttonColorLogin
-                                    }
-                                }) {
-                                    Text("Login")
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white)
-                                        .frame(width: 130, height: 20, alignment: .center)
-                                }
-                                .padding()
-                                .background(Color.black)
-                                .cornerRadius(10)
-                                .offset(x: shakeOffset)
-                                .padding(.leading, 10)
-                                .padding()
-                                Button(action: authenticateWithFaceID) {
-                                    HStack {
-                                        Image(systemName: "faceid")
-                                            .imageScale(.large)
-                                            .foregroundColor(.white)
-                                            .foregroundColor(.white)
-                                    }
-                                    .frame(width: 20, height: 20, alignment: .center)
-                                }
-                                .padding()
-                                .background(Color.black)
-                                .cornerRadius(100)
-                                .padding(.leading, -17)
-                                .alert(isPresented: $showAlert) {
-                                    Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    if show2FAInput {
-                        TwoFactorAuthView(showNextView: $showNextView, email: emailFor2FA, onVerificationSuccess: {
-                            show2FAInput = false
-                            showNextView = isTeacherLogin ? .mainTeacher : .mainStudent
-                        }, show2FAInput: $show2FAInput)
-                    }
-                }
+            if !show2FAInput {
+                
                 Spacer()
                 
-                Image("")
+                Image("logo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
+                    .padding(-15.0)
+                
+                Text("Appause")
+                    .fontWeight(.bold)
+                    .font(.system(size: 36))
                 
                 Spacer()
+                
+                HStack{
+                    Button(action: {
+                        self.showCodeField = false
+                        self.showTextFields.toggle()
+                        self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
+                        self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
+                        if(buttonColorTop == buttonColorTopIdle){
+                            buttonColorTop = Color.black
+                            buttonColorBottom = Color.black
+                        }
+                    }) {
+                        // Teacher login button
+                        VStack{
+                            Text(buttonNameTop)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 150, height: 20, alignment: .center)
+                            Image(systemName: "graduationcap")
+                                .fontWeight(.bold)
+                                .imageScale(.large)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .padding()
+                    .background(buttonColorTop)
+                    .cornerRadius(10)
+                    
+                    Button(action: {
+                        self.showTextFields = false
+                        self.showCodeField.toggle()
+                        self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
+                        self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
+                        if(buttonColorBottom == buttonColorBottomIdle){
+                            buttonColorTop = Color.black
+                            buttonColorBottom = Color.black
+                        }
+                    }) {
+                        // Student login button
+                        VStack{
+                            Text(buttonNameBottom)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 150, height: 16, alignment: .center)
+                            Image(systemName: "studentdesk")
+                                .padding(4)
+                                .fontWeight(.bold)
+                                .imageScale(.large)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .padding()
+                    .background(buttonColorBottom)
+                    .cornerRadius(10)
+                }
+                
+                if showTextFields || showCodeField {
+                    VStack {
+                        HStack {
+                            /*
+                             Text(showTextFields ? "Teacher Username:" : "Student Username:")
+                             .fontWeight(.bold)
+                             */
+                            
+                            TextField("Email", text: showTextFields ? $usernameText : $studentUsernameText)
+                                .padding()
+                                .background(textFieldOpacity)
+                                .cornerRadius(10)
+                                .frame(width: 370)
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
+                                .padding(.vertical, 5.0)
+                        }
+                        
+                        HStack {
+                            if buttonColorTop == Color.black {
+                                if teacherPassVisibility == "visible" {
+                                    // Use the custom TextFieldWithEyeIcon view for the teacher's password
+                                    TextFieldWithEyeIcon(placeholder: "Password", text: $passwordText, isSecure: false, visibility: $teacherPassVisibility)
+                                } else {
+                                    // Use the custom TextFieldWithEyeIcon view for securely entering the teacher's password
+                                    TextFieldWithEyeIcon(placeholder: "Password", text: $passwordText, isSecure: true, visibility: $teacherPassVisibility)
+                                }
+                            } else {
+                                if studentPassVisibility == "visible" {
+                                    // Use the custom TextFieldWithEyeIcon view for the student's password
+                                    TextFieldWithEyeIcon(placeholder: "Password", text: $studentPasswordText, isSecure: false, visibility: $studentPassVisibility)
+                                } else {
+                                    // Use the custom TextFieldWithEyeIcon view for securely entering the student's password
+                                    TextFieldWithEyeIcon(placeholder: "Password", text: $studentPasswordText, isSecure: true, visibility: $studentPassVisibility)
+                                }
+                            }
+                        }
+                        
+                        // "Forgot Password?" button aligned to the right
+                        HStack {
+                            Button(action: {                                withAnimation {
+                                    showNextView = .resetPassword
+                                }
+                            }) {
+                                Text("Forgot Password?")
+                                    .foregroundColor(.blue)
+                            }
+                            .padding(.leading, 235.0)
+                            .padding(.bottom, -10)
+                        }
+                        
+                        HStack {
+                            if showErrorMessages && errorMessages == "registration" {
+                                Text("Incorrect Username/Password. Try again.")
+                                    .foregroundColor(.red)
+                                    .font(.caption)
+                            }
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
+                                let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
+                                let username = (showTextFields ? usernameText : studentUsernameText).lowercased()
+                                let password = (showTextFields ? passwordText : studentPasswordText).lowercased()
+                                let isSuccessful = username == registeredUsername && password == registeredPassword
+                                
+                                if isSuccessful {
+                                    isTeacherLogin = showTextFields
+                                    currentLoggedInUser = username
+                                    if isTwoFactorEnabled {
+                                        emailFor2FA = username
+                                        show2FAInput = true
+                                    } else {
+                                        showNextView = isTeacherLogin ? .mainTeacher : .mainStudent
+                                    }
+                                } else {
+                                    withAnimation(.easeInOut(duration: 0.05).repeatCount(4, autoreverses: true)) {
+                                        shakeOffset = 6
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                            shakeOffset = 0
+                                        }
+                                    }
+                                    performShakeAnimation()
+                                }
+                                
+                                if (buttonColorTop == buttonColorTopActive) {
+                                    self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                }
+                                
+                                if (buttonColorBottom == buttonColorBottomActive) {
+                                    self.buttonColorBottom = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                                }
+                            }) {
+                                Text("Login")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .frame(width: 280, height: 20, alignment: .center)
+                            }
+                            .padding()
+                            .background(Color.black)
+                            .cornerRadius(10)
+                            .padding([.top, .trailing], 25.0)
+                            .offset(x: shakeOffset)
+                            
+                            Button(action: authenticateWithFaceID) {
+                                HStack {
+                                    Image(systemName: "faceid")
+                                        .padding()
+                                        .imageScale(.large)
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 20, height: 20, alignment: .center)
+                            }
+                            .padding()
+                            .background(Color.black)
+                            .cornerRadius(100)
+                            .padding(.leading, -15.0)
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                            }
+                        }
+                        
+                        HStack {
+                            Text("Don't have an account?")
+                            
+                            Button(action: {
+                                let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
+                                let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
+                                withAnimation {
+                                    showNextView = .selectRegistration
+                                }
+                            }) {
+                                Text("Sign up here!")
+                                    .foregroundColor(.blue)
+                            }
+                            .padding(.trailing)
+                            // Adjust the padding to move it to the bottom
+                        }
+                    }
+                }
+                
+            } else {
+                if show2FAInput {
+                    TwoFactorAuthView(showNextView: $showNextView, email: emailFor2FA, onVerificationSuccess: {
+                        show2FAInput = false
+                        showNextView = isTeacherLogin ? .mainTeacher : .mainStudent
+                    }, show2FAInput: $show2FAInput)
+                }
             }
+            Spacer()
+            
+            Image("")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 150)
+            
+            Spacer()
+        }
     }
     
     // Authenticate with Face ID

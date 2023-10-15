@@ -28,11 +28,15 @@ struct ResetPasswordView: View{
     var body: some View{
         VStack{
             
-            Button(action:{}){
+            Button(action:{                withAnimation {
+                    showNextView = .login
+                }
+            }){
                 Text("MAIN / PASSWORD RESET")
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(width:300, height:20, alignment: .center)
+                
             }
             .padding()
             .background(Color.black)
