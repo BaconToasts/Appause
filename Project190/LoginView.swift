@@ -234,14 +234,13 @@ struct LoginView: View {
                         // "Forgot Password?" button aligned to the right
                         HStack {
                             Button(action: {                                withAnimation {
-                                    showNextView = .resetPassword
-                                }
+                                showNextView = .resetPassword
+                            }
                             }) {
                                 Text("Forgot Password?")
                                     .foregroundColor(.blue)
                             }
                             .padding(.leading, 235.0)
-                            .padding(.bottom, -10)
                         }
                         
                         HStack {
@@ -290,18 +289,16 @@ struct LoginView: View {
                                 Text("Login")
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
-                                    .frame(width: 280, height: 20, alignment: .center)
+                                    .frame(width: 275, height: 20, alignment: .center)
                             }
                             .padding()
                             .background(Color.black)
                             .cornerRadius(10)
-                            .padding([.top, .trailing], 25.0)
                             .offset(x: shakeOffset)
                             
                             Button(action: authenticateWithFaceID) {
                                 HStack {
                                     Image(systemName: "faceid")
-                                        .padding()
                                         .imageScale(.large)
                                         .foregroundColor(.white)
                                 }
@@ -309,15 +306,16 @@ struct LoginView: View {
                             }
                             .padding()
                             .background(Color.black)
-                            .cornerRadius(100)
-                            .padding(.leading, -15.0)
-                            .alert(isPresented: $showAlert) {
+                            .cornerRadius(100)                            .alert(isPresented: $showAlert) {
                                 Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                             }
+                            Spacer()
                         }
                         
                         HStack {
+                            Spacer()
                             Text("Don't have an account?")
+                                //.padding(.leading, 15)
                             
                             Button(action: {
                                 let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
@@ -329,9 +327,9 @@ struct LoginView: View {
                                 Text("Sign up here!")
                                     .foregroundColor(.blue)
                             }
-                            .padding(.trailing)
-                            // Adjust the padding to move it to the bottom
+                            Spacer()
                         }
+                        
                     }
                 }
                 
