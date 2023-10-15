@@ -29,7 +29,7 @@ struct ResetPasswordView: View{
         VStack{
             
             Button(action:{}){
-                Text("MAIN/PASSWORD RESET")
+                Text("MAIN / PASSWORD RESET")
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(width:300, height:20, alignment: .center)

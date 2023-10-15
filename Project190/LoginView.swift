@@ -27,8 +27,8 @@ struct LoginView: View {
     }
     @State private var isFaceIDAuthenticated = false
     @State private var showAlert = false
-     @State private var alertTitle = ""
-     @State private var alertMessage = ""
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     @State var emailFor2FA: String = ""
     @State private var showErrorMessages = false
@@ -67,69 +67,73 @@ struct LoginView: View {
         VStack {
             if !show2FAInput {
                 
+                Spacer()
+                
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150, height: 150)
+                
                 Text("Appause")
                     .fontWeight(.bold)
                     .font(.system(size: 36))
-                    .padding(.top, 75)
                 
                 Spacer()
-         //       Spacer()
-        //        Spacer()
-           
-                    HStack{
-                        Button(action: {
-                            self.showCodeField = false
-                            self.showTextFields.toggle()
-                            self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
-                            self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
-                            if(buttonColorTop == buttonColorTopIdle){
-                                buttonColorTop = Color.black
-                                buttonColorBottom = Color.black
-                            }
-                        }) {
-                            VStack{
-                                Text(buttonNameTop)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(width: 150, height: 20, alignment: .center)
-                                Image(systemName: "graduationcap")
-                                    .fontWeight(.bold)
-                                    .imageScale(.large)
-                                    .foregroundColor(.white)
-                            }
+                
+                HStack{
+                    Button(action: {
+                        self.showCodeField = false
+                        self.showTextFields.toggle()
+                        self.buttonColorTop = self.showTextFields ? buttonColorTopActive: buttonColorTopIdle
+                        self.buttonColorBottom = self.showCodeField ? buttonColorTopActive : buttonColorTopIdle
+                        if(buttonColorTop == buttonColorTopIdle){
+                            buttonColorTop = Color.black
+                            buttonColorBottom = Color.black
                         }
-                        .padding()
-                        .background(buttonColorTop)
-                        .cornerRadius(10)
-                        
-                        //Spacer()
-                        
-                        Button(action: {
-                            self.showTextFields = false
-                            self.showCodeField.toggle()
-                            self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
-                            self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
-                            if(buttonColorBottom == buttonColorBottomIdle){
-                                buttonColorTop = Color.black
-                                buttonColorBottom = Color.black
-                            }
-                        }) {
-                            VStack{
-                                Text(buttonNameBottom)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(width: 150, height: 20, alignment: .center)
-                                Image(systemName: "square.and.pencil")
-                                    .padding(4)
-                                    .fontWeight(.bold)
-                                    .imageScale(.large)
-                                    .foregroundColor(.white)
-                            }
+                    }) {
+                        VStack{
+                            Text(buttonNameTop)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 150, height: 20, alignment: .center)
+                            Image(systemName: "graduationcap")
+                                .fontWeight(.bold)
+                                .imageScale(.large)
+                                .foregroundColor(.white)
                         }
-                        .padding()
-                        .background(buttonColorBottom)
-                        .cornerRadius(10)
                     }
+                    .padding()
+                    .background(buttonColorTop)
+                    .cornerRadius(10)
+                    
+                    //Spacer()
+                    
+                    Button(action: {
+                        self.showTextFields = false
+                        self.showCodeField.toggle()
+                        self.buttonColorTop = self.showTextFields ? buttonColorBottomActive: buttonColorBottomIdle
+                        self.buttonColorBottom = self.showCodeField ? buttonColorBottomActive : buttonColorBottomIdle
+                        if(buttonColorBottom == buttonColorBottomIdle){
+                            buttonColorTop = Color.black
+                            buttonColorBottom = Color.black
+                        }
+                    }) {
+                        VStack{
+                            Text(buttonNameBottom)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 150, height: 20, alignment: .center)
+                            Image(systemName: "square.and.pencil")
+                                .padding(4)
+                                .fontWeight(.bold)
+                                .imageScale(.large)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .padding()
+                    .background(buttonColorBottom)
+                    .cornerRadius(10)
+                }
                 
                 if showTextFields || showCodeField {
                     VStack {
@@ -219,13 +223,13 @@ struct LoginView: View {
                             Button(action: {
                                 let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
                                 let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
-                               // if(registeredUsername != nil && registeredPassword != nil){
-                                    
-                               // }
+                                // if(registeredUsername != nil && registeredPassword != nil){
+                                
+                                // }
                                 //else{
-                                    withAnimation {
-                                        showNextView = .selectRegistration
-                                    }
+                                withAnimation {
+                                    showNextView = .selectRegistration
+                                }
                                 //}
                             }) {
                                 Text("Register")
@@ -236,7 +240,7 @@ struct LoginView: View {
                             .padding()
                             .background(Color.black)
                             .cornerRadius(100)
-                           .padding(.leading, 20)
+                            .padding(.leading, 20)
                             
                             if showErrorMessages && errorMessages == "registration" {
                                 Text("Incorrect Username and Password. Try again.")
@@ -293,21 +297,21 @@ struct LoginView: View {
                             .padding(.leading, 10)
                             .padding()
                             Button(action: authenticateWithFaceID) {
-                                        HStack {
-                                            Image(systemName: "faceid")
-                                                .imageScale(.large)
-                                                .foregroundColor(.white)
-                                                .foregroundColor(.white)
-                                        }
-                                        .frame(width: 20, height: 20, alignment: .center)
-                                    }
-                                    .padding()
-                                    .background(Color.black)
-                                    .cornerRadius(100)
-                                    .padding(.leading, -17)
-                                    .alert(isPresented: $showAlert) {
-                                        Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                                    }
+                                HStack {
+                                    Image(systemName: "faceid")
+                                        .imageScale(.large)
+                                        .foregroundColor(.white)
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 20, height: 20, alignment: .center)
+                            }
+                            .padding()
+                            .background(Color.black)
+                            .cornerRadius(100)
+                            .padding(.leading, -17)
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                            }
                         }
                     }
                 }
@@ -321,14 +325,15 @@ struct LoginView: View {
             }
             Spacer()
             
-            Image("logo")
+            Image("")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 150, height: 150)
-                .padding(.bottom, 65)
+            
+            Spacer()
             
             
-    
+            
             
             //Spacer()
         }
@@ -339,44 +344,44 @@ struct LoginView: View {
     
     
     func authenticateWithFaceID() {
-           let context = LAContext()
-           var error: NSError?
-
-           if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-               let reason = "Identify yourself!"
-
-               context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                   DispatchQueue.main.async {
-                       if success {
-                           isFaceIDAuthenticated = true
-                           autofillCredentials()
-                       } else {
-                           showAlert(title: "Authentication Failed", message: "Sorry! Could not authenticate using Face ID.")
-                       }
-                   }
-               }
-           } else {
-               showAlert(title: "Face ID Unavailable", message: "Sorry! Your device does not support Face ID.")
-           }
-       }
-
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Identify yourself!"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        isFaceIDAuthenticated = true
+                        autofillCredentials()
+                    } else {
+                        showAlert(title: "Authentication Failed", message: "Sorry! Could not authenticate using Face ID.")
+                    }
+                }
+            }
+        } else {
+            showAlert(title: "Face ID Unavailable", message: "Sorry! Your device does not support Face ID.")
+        }
+    }
+    
     func autofillCredentials() {
-           if isFaceIDAuthenticated {
-               if showTextFields {  // Teacher Login
-                   usernameText = keychain.get("teacherUserKey") ?? ""
-                   passwordText = keychain.get("teacherPassKey") ?? ""
-               } else if showCodeField {  // Student Login
-                   studentUsernameText = keychain.get("studentUserKey") ?? ""
-                   studentPasswordText = keychain.get("studentPassKey") ?? ""
-               }
-           }
-       }
-       
+        if isFaceIDAuthenticated {
+            if showTextFields {  // Teacher Login
+                usernameText = keychain.get("teacherUserKey") ?? ""
+                passwordText = keychain.get("teacherPassKey") ?? ""
+            } else if showCodeField {  // Student Login
+                studentUsernameText = keychain.get("studentUserKey") ?? ""
+                studentPasswordText = keychain.get("studentPassKey") ?? ""
+            }
+        }
+    }
+    
     func showAlert(title: String, message: String) {
-           alertTitle = title
-           alertMessage = message
-           showAlert = true
-       }
+        alertTitle = title
+        alertMessage = message
+        showAlert = true
+    }
     
     public func performShakeAnimation() {
         if let engine = try? CHHapticEngine() {
