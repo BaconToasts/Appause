@@ -9,7 +9,7 @@ import SwiftUI
 import KeychainSwift
 
 struct ResetPasswordView: View{
-    @Binding var showNextView: DisplayState
+    @Binding var showNextView: DisplayState // Define a binding property
     
     @State private var displayText:String = "Please enter your new password"
     @State private var newPassword:String = ""
