@@ -23,35 +23,36 @@ struct PWCodeVerificationView: View
     {
         VStack
         {
-            Button(action: {
-                withAnimation {
-                    showNextView = .pwCodeVerification}
-            }){
-                Text("MAIN / PASSWORD RESET")
+            HStack{
+                Button(action:{}){
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(Color.black)
+                        .fontWeight(.bold)
+                        .font(.system(size: 19))
+                }
+                Text("Verify Email")
                     .padding()
                     .fontWeight(.bold)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .frame(width: 300,
-                           height: 20,
-                           alignment: .center)
-            }
-            .padding()
-            .background(Color.black)
-            .border(Color.black, width: 5)
-            .cornerRadius(100)
-            .padding(.bottom, 30)
+                    .font(.system(size: 30))
+            }.padding(.bottom, 30)
             
-            Text("Reset Verification Code")
-                .font(.title)
-                .padding(.top, 25)
+            Image(systemName: "magnifyingglass")
+                .fontWeight(.bold)
+                .font(.system(size:100))
+                .padding(.bottom, 50)
             
+            Text("To verify yourself please enter the reset code.")
+                .font(.body)
+                .multilineTextAlignment(.center)
+                .fontWeight(.bold)
             
             TextField("Insert Reset Code ", text:$resetCode)
-                .padding(25.0)
-                .frame(width: 250.0, height: 100.0)
+                .padding()
                 .disabled(false)
-                .textFieldStyle(.roundedBorder)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
+                .frame(width: 370)
+                .padding(.vertical, 25.0)
             
             Button(action: {
                 withAnimation {
@@ -66,18 +67,18 @@ struct PWCodeVerificationView: View
             }){
                 Text("Submit")
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .frame(width: 100, height: 20, alignment: .center)
+                    .foregroundColor(.white)
+                    .frame(width: 275, height: 20, alignment: .center)
                     .padding()
-                    .background(Color.gray.opacity(0.25))
+                    .background(Color.black)
                     .border(Color.black, width: 5)
-                    .cornerRadius(6)
+                    .cornerRadius(10)
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("ERROR"), message: Text(alertMessage), dismissButton: .default(Text("OKAY")))
             }
         }
-        .padding(.bottom, 400)
+        .padding(.bottom, 300)
         .cornerRadius(100)
         }
         
