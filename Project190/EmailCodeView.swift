@@ -20,11 +20,37 @@ struct EmailCodeView: View {
     
     var body: some View {
         VStack {
+            HStack{
+                Button(action:{}){
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(Color.black)
+                        .fontWeight(.bold)
+                        .font(.system(size: 19))
+                }
+                Text("Forgot Password?")
+                    .padding()
+                    .fontWeight(.bold)
+                    .font(.system(size: 35))
+            }.padding(.bottom, 45)
+            
+            Image(systemName: "questionmark")
+                .padding(.bottom, 60)
+                .fontWeight(.bold)
+                .font(.system(size: 100))
+            
+            Text("To start the reset process, enter your email")
+                .font(.body)
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                
+            
             TextField("Enter your email", text: $email)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
                 .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
+                .frame(width: 370)
+                .padding(.vertical, 25.0)
                 .disableAutocorrection(true)
             
             Button(action: {
@@ -45,12 +71,12 @@ struct EmailCodeView: View {
             }) {
                 Text("Generate and Send Code")
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .frame(width: 300, height: 20, alignment: .center)
+                    .foregroundColor(.white)
+                    .frame(width: 275, height: 20, alignment: .center)
                     .padding()
-                    .background(Color.gray.opacity(0.25))
-                    .border(Color.black, width: 5)
-                    .cornerRadius(6)
+                    .background(Color.black)
+                    .cornerRadius(10)
+                    .padding(.bottom, 300)
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
@@ -75,10 +101,10 @@ struct EmailCodeView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("api-F199C926535F11EE96AEF23C91C88F4E", forHTTPHeaderField: "Key") // Replace with your API key
+        request.addValue("api-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
 
         let body: [String: Any] = [
-            "api_key": "api-F199C926535F11EE96AEF23C91C88F4E", // Your API key
+            "api_key": "api-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", // Your API key
             "to": ["<\(email)>"], // The recipient's email address, formatted correctly
             "sender": "appaused.service@gmail.com", // Your email address
             "subject": "Your Verification Code",

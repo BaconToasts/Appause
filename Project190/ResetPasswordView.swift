@@ -25,107 +25,87 @@ struct ResetPasswordView: View{
     @State private var userType = Login.logV.getIsTeacher()
     private let kc = KeychainSwift()
     
+    struct TextFieldEyeIcon: View{
+        var placeholderText: String
+        @Binding var userInput: String
+        var isFieldSecure: Bool
+        @Binding var visibility: String
+        
+        var body: some View{
+            HStack{
+                if(isFieldSecure==true){
+                    SecureField(placeholderText, text: $userInput)
+                }
+                else if(isFieldSecure==false){
+                    TextField(placeholderText, text: $userInput)
+                }
+                Button(action:{visibility = isFieldSecure ? "visible" :"hidden"}){
+                    Image(systemName: isFieldSecure ? "eye" : "eye.slash")
+                        .foregroundColor(Color.black)
+                        .fontWeight(.bold)
+                }
+            }
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(10)
+            .frame(width: 370)
+            .autocorrectionDisabled(true)
+            .textInputAutocapitalization(TextInputAutocapitalization.never)
+        }
+    }
     var body: some View{
         VStack{
             
-            Button(action:{                withAnimation {
-                    showNextView = .login
+            HStack{
+                Button(action:{}){
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(Color.black)
+                        .fontWeight(.bold)
+                        .font(.system(size:20))
                 }
-            }){
-                Text("MAIN / PASSWORD RESET")
+                Text("Create a new password")
                     .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .frame(width:300, height:20, alignment: .center)
-                
-            }
-            .padding()
-            .background(Color.black)
-            .cornerRadius(100)
-            .padding(.bottom, 200)
+                    .font(.system(size:30))
+            }.padding(.bottom, 30)
+            Image(systemName: "pencil.and.outline")
+                .fontWeight(.bold)
+                .font(.system(size: 100))
             
             //Displaying the prompt for creating a new password
             Text(displayText)
                 .fontWeight(.bold)
+                .padding(.top, 85)
+                .padding(.bottom, 10)
             
             /*These if else statements are supposed to help display the text field entry
              for the users new password and depending on if the user clicks on the show
              button it will display the new password or hide it if they click hide.*/
             if(newPasswordViewStatus == "visible"){
                 HStack{
-                    TextField("New Password: ", text: $newPassword)
-                        .padding(.leading, 20)
-                        .padding(.bottom, 10)
-                        .padding(.top, 50)
-                        .multilineTextAlignment(.leading)
-                        .textFieldStyle(.roundedBorder)
-                        .autocorrectionDisabled(true)
-                        .textInputAutocapitalization(TextInputAutocapitalization.never)
-                    Button(action: {newPasswordViewStatus = "hidden"}){
-                        Image(systemName: "eye.slash")
-                            .foregroundColor(Color.black)
-                            .fontWeight(.bold)
-                            .padding(.top, 40)
-                            .padding(.trailing, 50)
-                    }
+                    TextFieldEyeIcon(placeholderText: "New Password", userInput: $newPassword, isFieldSecure: false, visibility: $newPasswordViewStatus)
                 }
+                .padding(.bottom, 10)
             }
             else{
                 HStack{
-                    SecureField("New Password: ", text:$newPassword)
-                        .padding(.leading, 20)
-                        .padding(.bottom, 10)
-                        .padding(.top, 50)
-                        .multilineTextAlignment(.leading)
-                        .textFieldStyle(.roundedBorder)
-                        .autocorrectionDisabled(true)
-                        .textInputAutocapitalization(TextInputAutocapitalization.never)
-                    Button(action:{newPasswordViewStatus = "visible"}){
-                        Image(systemName: "eye")
-                            .foregroundColor(Color.black)
-                            .fontWeight(.bold)
-                            .padding(.top, 40)
-                            .padding(.trailing, 50)
-                    }
+                    TextFieldEyeIcon(placeholderText: "New Password", userInput: $newPassword, isFieldSecure: true, visibility: $newPasswordViewStatus)
                 }
+                .padding(.bottom, 10)
             }
             /*These if else statements are supposed to help display the text field entry
              for the users to confirm their new password and depending on if the user clicks
              on the show button it will display the new password or hide it if they click hide.*/
             if(confirmNewPasswordViewStatus == "visible"){
                 HStack{
-                    TextField("Confirm New Password: ", text: $confirmNewPassword)
-                        .padding(.leading, 20)
-                        .padding(.bottom, 20)
-                        .multilineTextAlignment(.leading)
-                        .textFieldStyle(.roundedBorder)
-                        .autocorrectionDisabled(true)
-                        .textInputAutocapitalization(TextInputAutocapitalization.never)
-                    Button(action: {confirmNewPasswordViewStatus = "hidden"}){
-                        Image(systemName: "eye.slash")
-                            .foregroundColor(Color.black)
-                            .fontWeight(.bold)
-                            .padding(.bottom, 20)
-                            .padding(.trailing, 50)
-                    }
+                    TextFieldEyeIcon(placeholderText: "Confirm New Password", userInput: $confirmNewPassword, isFieldSecure: false, visibility: $confirmNewPasswordViewStatus)
                 }
+                .padding(.bottom, 10)
             }
             else{
                 HStack{
-                    SecureField("Confirm New Password: ", text: $confirmNewPassword)
-                        .padding(.leading, 20)
-                        .padding(.bottom, 20)
-                        .multilineTextAlignment(.leading)
-                        .textFieldStyle(.roundedBorder)
-                        .autocorrectionDisabled(true)
-                        .textInputAutocapitalization(TextInputAutocapitalization.never)
-                    Button(action: {confirmNewPasswordViewStatus = "visible"}){
-                        Image(systemName: "eye")
-                            .foregroundColor(Color.black)
-                            .fontWeight(.bold)
-                            .padding([.bottom, .trailing], 20)
-                            .padding(.trailing, 30)
-                    }
+                    TextFieldEyeIcon(placeholderText: "Confirm New Password", userInput: $confirmNewPassword, isFieldSecure: true, visibility: $confirmNewPasswordViewStatus)
                 }
+                .padding(.bottom, 10)
             }
             /*Finally this section of code is for the confirmation button and it checks
              to see if both of the passwords that the user types into the fields are the same*/
@@ -191,7 +171,8 @@ struct ResetPasswordView: View{
             .padding()
             .background(confirmColor)
             .cornerRadius(100)
-            .padding(.top,180)
+            .padding(.top,170)
+            .padding(.bottom, 40)
         }
     }
 }

@@ -106,7 +106,7 @@ struct LoginView: View {
                     visibility = isSecure ? "visible" : "hidden"
                 }) {
                     // Show the "eye" icon for password visibility, or "eye.slash" for hidden
-                    Image(systemName: isSecure ? "eye.slash" : "eye")
+                    Image(systemName: isSecure ? "eye" : "eye.slash")
                         .foregroundColor(Color.black)
                         .fontWeight(.bold)
                 }
@@ -233,8 +233,8 @@ struct LoginView: View {
                         
                         // "Forgot password?" button aligned to the right
                         HStack {
-                            Button(action: {                                withAnimation {
-                                showNextView = .resetPassword
+                            Button(action: {withAnimation {
+                                showNextView = .emailCode
                             }
                             }) {
                                 Text("Forgot password?")
