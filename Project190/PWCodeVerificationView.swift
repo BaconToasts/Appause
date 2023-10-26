@@ -17,7 +17,7 @@ struct PWCodeVerificationView: View
     @State private var resetCode: String = ""
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @State private var codeIn = EmailCode.shared.grabRandCode()
+    @State private var codeIn = ForgotPassword.shared.grabRandCode()
     
     var body: some View
     {

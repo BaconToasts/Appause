@@ -11,7 +11,7 @@ import Combine
 
 private var codeIn = ""
 
-struct EmailCodeView: View {
+struct ForgotPasswordView: View {
     @Binding var showNextView: DisplayState
     
     @State private var email: String = ""
@@ -28,7 +28,7 @@ struct EmailCodeView: View {
                         .font(.system(size: 19))
                 }
                 Text("Forgot Password?")
-                    .padding()
+                    .padding(.top, 250)
                     .fontWeight(.bold)
                     .font(.system(size: 35))
             }.padding(.bottom, 45)
@@ -38,12 +38,15 @@ struct EmailCodeView: View {
                 .fontWeight(.bold)
                 .font(.system(size: 100))
             
-            Text("To start the reset process, enter your email")
+            Text("Please enter your email to receive a verification code")
+                .multilineTextAlignment(.center)
+                .lineLimit(2, reservesSpace: true)
                 .font(.body)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .fontWeight(.bold)
+                
                 
             
-            TextField("Enter your email", text: $email)
+            TextField("Email", text: $email)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
                 .padding()
@@ -69,7 +72,7 @@ struct EmailCodeView: View {
                     showAlert = true
                 }
             }) {
-                Text("Generate and Send Code")
+                Text("Send Code")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(width: 275, height: 20, alignment: .center)
@@ -139,17 +142,17 @@ struct EmailCodeView: View {
     }
 }
 
-struct EmailCodeView_Previews: PreviewProvider {
+struct ForgotPasswordView_Previews: PreviewProvider {
     
     @State static private var showNextView: DisplayState = .emailCode
     
     static var previews: some View {
-        EmailCodeView(showNextView: $showNextView)
+        ForgotPasswordView(showNextView: $showNextView)
     }
 }
 
-internal struct EmailCode {
-    static let shared = EmailCode()
+internal struct ForgotPassword {
+    static let shared = ForgotPassword()
     
     public func grabRandCode() -> String {
         return codeIn

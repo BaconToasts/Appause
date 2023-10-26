@@ -64,7 +64,7 @@ struct ContentView: View {
             case .selectRegistration:
                 SelectRegistrationView(showNextView: $displayState)
             case .emailCode:
-                EmailCodeView(showNextView: $displayState)
+                ForgotPasswordView(showNextView: $displayState)
             case .pwCodeVerification:
                 PWCodeVerificationView(showNextView: $displayState)
             case .twoFactorAuth:
