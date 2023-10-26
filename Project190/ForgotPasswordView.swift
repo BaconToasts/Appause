@@ -26,12 +26,15 @@ struct ForgotPasswordView: View {
                         .foregroundColor(Color.black)
                         .fontWeight(.bold)
                         .font(.system(size: 19))
+                        .padding(.top, 180)
+                        .padding(.bottom, 100)
                 }
-                Text("Forgot Password?")
-                    .padding(.top, 250)
-                    .fontWeight(.bold)
-                    .font(.system(size: 35))
-            }.padding(.bottom, 45)
+                Spacer()
+            }
+            Text("Forgot Password?")
+                .fontWeight(.bold)
+                .font(.system(size: 35))
+                .padding(.bottom, 45)
             
             Image(systemName: "questionmark")
                 .padding(.bottom, 60)
@@ -43,8 +46,8 @@ struct ForgotPasswordView: View {
                 .lineLimit(2, reservesSpace: true)
                 .font(.body)
                 .fontWeight(.bold)
-                
-                
+            
+            
             
             TextField("Email", text: $email)
                 .keyboardType(.emailAddress)
@@ -105,7 +108,7 @@ struct ForgotPasswordView: View {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("api-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
-
+        
         let body: [String: Any] = [
             "api_key": "api-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", // Your API key
             "to": ["<\(email)>"], // The recipient's email address, formatted correctly
@@ -114,7 +117,7 @@ struct ForgotPasswordView: View {
             "text_body": "Your verification code is: \(code)",
             "html_body": "<p>Your verification code is: \(code)</p>"
         ]
-
+        
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -130,11 +133,11 @@ struct ForgotPasswordView: View {
                 }
             }
         }
-
+        
         task.resume()
     }
-
-
+    
+    
     func isValidEmail(_ email: String) -> Bool {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
