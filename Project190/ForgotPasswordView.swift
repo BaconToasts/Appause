@@ -1,5 +1,5 @@
 //
-//  EmailCodeView.swift
+//  ResetPasswordView.swift
 //  Project190
 //
 //  Created by Vlad Puriy on 9/14/23.
