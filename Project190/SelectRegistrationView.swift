@@ -41,14 +41,14 @@ struct SelectRegistrationView: View {
                 Button(action: {
                     let registeredUsername = keychain.get("teacherUserKey")
                     let registeredPassword = keychain.get("teacherPassKey")
-                    if(registeredUsername != nil && registeredPassword != nil){
-                        registerError = "There is already a registered teacher."
-                    }
-                    else{
+////                    if(registeredUsername != nil && registeredPassword != nil){
+//                        registerError = "There is already a registered teacher."
+//                    }
+//                    else{
                         withAnimation {
                             //show nextView .whateverViewYouWantToShow defined in ContentView Enum
                             showNextView = .teacherRegister}
-                    }
+//                    }
                 }) {
                     Text("I am a Teacher")
                         .font(.custom("large", size: 25))
@@ -65,14 +65,14 @@ struct SelectRegistrationView: View {
                 Button(action: {
                     let registeredUsername = keychain.get("studentUserKey")
                     let registeredPassword = keychain.get("studentPassKey")
-                    if(registeredUsername != nil && registeredPassword != nil){
-                        registerError = "There is already a registered student."
-                    }
-                    else{
+//                    if(registeredUsername != nil && registeredPassword != nil){
+//                        registerError = "There is already a registered student."
+//                    }
+//                    else{
                         withAnimation {
                             //show nextView .whateverViewYouWantToShow defined in ContentView Enum
                             showNextView = .studentRegister}
-                    }
+ //                   }
                 }) {
                     Text("I am a Student")
                         .font(.custom("large", size: 25))

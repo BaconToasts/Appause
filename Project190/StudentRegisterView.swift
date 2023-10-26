@@ -172,6 +172,9 @@ struct StudentRegisterView: View {
                 else if (validateEmail(email) == false){
                     registerError = "Please enter a valid email address."
                 }
+                else if (validatePassword(password) == false){
+                    registerError = "Password Requires:\nat least 6 Characters and a Number"
+                }
                 else if (password != passConfirm){
                     registerError = "Passwords do not match. Try again."
                 }
@@ -205,6 +208,21 @@ struct StudentRegisterView: View {
     func validateEmail(_ email: String) -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$", options: [.caseInsensitive])
         return regex.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil
+    }
+    
+    func validatePassword(_ password: String) -> Bool{
+        let passwordLength = password.count
+        let regex = ".*[0-9]+.*"
+        let checkPass = NSPredicate(format: "SELF MATCHES %@", regex)
+        let hasNum = checkPass.evaluate(with: password)
+        var result: Bool = true
+        
+        // checks if password contains numbers and if the length of password is short
+        if (hasNum == false || passwordLength < 6){
+            result.toggle()
+        }
+        
+        return result
     }
 }
 
