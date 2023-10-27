@@ -127,11 +127,14 @@ struct ResetPasswordView: View{
                 teacherDiffPassword = (npass != kc.get("teacherPassKey"))
                 if(npass != "" && cNPass != ""){
                     if(userType == false){
-                        if(passCheck && studentDiffPassword == true){
+                        if(passCheck && studentDiffPassword == true && validatePassword(npass) == true){
                             displayText="Correct New Password"
                             kc.set(npass, forKey: "studentPassKey")
                             nextView = .login
                             confirmColor = Color.green
+                        }
+                        else if (validatePassword(npass) == false){
+                            displayText = "At least 6 Characters and a Number"
                         }
                         else if (passCheck == true && studentDiffPassword == false){
                             displayText = "Enter Unique Password"
@@ -145,11 +148,14 @@ struct ResetPasswordView: View{
                         }
                     }
                     else{
-                        if(passCheck && teacherDiffPassword == true){
+                        if(passCheck && teacherDiffPassword == true && validatePassword(npass) == true){
                             displayText="Correct New Password"
                             kc.set(npass, forKey: "teacherPassKey")
                             nextView = .login
                             confirmColor = Color.green
+                        }
+                        else if (validatePassword(npass) == false){
+                            displayText = "At least 6 Characters and a Number"
                         }
                         else if (passCheck == true && teacherDiffPassword == false){
                             displayText = "Enter Unique Password"
@@ -180,6 +186,21 @@ struct ResetPasswordView: View{
             .padding()
             .padding(.bottom, 300)
         }
+    }
+    
+    func validatePassword(_ password: String) -> Bool{
+        let passwordLength = password.count
+        let regex = ".*[0-9]+.*"
+        let checkPass = NSPredicate(format: "SELF MATCHES %@", regex)
+        let hasNum = checkPass.evaluate(with: password)
+        var result: Bool = true
+        
+        // checks if password contains numbers and if the length of password is short
+        if (hasNum == false || passwordLength < 6){
+            result.toggle()
+        }
+        
+        return result
     }
 }
 
