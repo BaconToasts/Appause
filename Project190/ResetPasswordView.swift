@@ -63,10 +63,16 @@ struct ResetPasswordView: View{
                         .fontWeight(.bold)
                         .font(.system(size:20))
                 }
-                Text("Create a new password")
-                    .fontWeight(.bold)
-                    .font(.system(size:30))
-            }.padding(.bottom, 30)
+                .padding(.top, 150)
+                .padding(.trailing, 350)
+                .padding(.bottom, 100)
+            }
+            
+            Text("Create a new password")
+                .fontWeight(.bold)
+                .font(.system(size:30))
+                .padding(.bottom, 20)
+            
             Image(systemName: "pencil.and.outline")
                 .fontWeight(.bold)
                 .font(.system(size: 100))
@@ -74,7 +80,7 @@ struct ResetPasswordView: View{
             //Displaying the prompt for creating a new password
             Text(displayText)
                 .fontWeight(.bold)
-                .padding(.top, 85)
+                .padding(.top, 5)
                 .padding(.bottom, 10)
             
             /*These if else statements are supposed to help display the text field entry
@@ -171,8 +177,8 @@ struct ResetPasswordView: View{
             .padding()
             .background(confirmColor)
             .cornerRadius(100)
-            .padding(.top,170)
-            .padding(.bottom, 40)
+            .padding()
+            .padding(.bottom, 300)
         }
     }
 }

@@ -14,6 +14,8 @@ private var codeIn = ""
 struct ForgotPasswordView: View {
     @Binding var showNextView: DisplayState
     
+    @State private var viewNext: DisplayState = .pwCodeVerification
+    
     @State private var email: String = ""
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -61,18 +63,20 @@ struct ForgotPasswordView: View {
             
             Button(action: {
                 print("Button was tapped")
-                withAnimation {
-                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                    showNextView = .pwCodeVerification
-                }
                 email = email.trimmingCharacters(in: .whitespacesAndNewlines)
                 if isValidEmail(email) {
                     print("Email to send to: \(email)")
                     let code = generateRandomCode()
                     sendEmail(code: code, email: email)
+                    viewNext = .pwCodeVerification
                 } else {
                     alertMessage = "Invalid email format"
                     showAlert = true
+                    viewNext = .emailCode
+                }
+                withAnimation {
+                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
+                    showNextView = viewNext
                 }
             }) {
                 Text("Send Code")
