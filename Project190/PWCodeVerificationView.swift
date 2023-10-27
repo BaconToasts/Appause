@@ -30,11 +30,15 @@ struct PWCodeVerificationView: View
                         .fontWeight(.bold)
                         .font(.system(size: 19))
                 }
-                Text("Verify Email")
-                    .padding()
-                    .fontWeight(.bold)
-                    .font(.system(size: 30))
-            }.padding(.bottom, 30)
+                .padding(.top, 150)
+                .padding(.trailing, 335)
+                .padding(.bottom, 100)
+            }
+            Text("Verify Email")
+                .padding()
+                .fontWeight(.bold)
+                .font(.system(size: 30))
+                .padding(.bottom, 30)
             
             Image(systemName: "magnifyingglass")
                 .fontWeight(.bold)
