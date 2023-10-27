@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-
 struct TeacherAppView: View {
     @State var request: RequestData
     @State var studentName: String
@@ -21,47 +20,13 @@ struct TeacherAppView: View {
             
             NavigationLink(destination: TeacherAppDescription(appData: request, parentNavText: parentNavText, studentName: studentName)
                 .navigationBarHidden(true)) {
-                Text(request.appName)
-                    .frame(maxWidth:.infinity, alignment:.center)
-                    
+                AppRequestView(request: request)
             }
-                
-            //Text(request.appName)
-                //.frame(maxWidth:.infinity, alignment:.center)
-            HStack {
-                Button(action:{ //Approve
-                    request = RequestData(appName: request.appName, approved: ApproveStatus.approved)
-                }) {
-                    if(request.approved == ApproveStatus.approved) {
-                        Image(systemName: "hand.thumbsup.fill")
-                            .foregroundColor(.green)
-                    }
-                    else {
-                        Image(systemName: "hand.thumbsup")
-                            .foregroundColor(.green)
-                    }
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                Button(action:{ //Deny
-                    request = RequestData(appName: request.appName, approved: ApproveStatus.denied)
-                }) {
-                    if(request.approved == ApproveStatus.denied) {
-                        Image(systemName: "hand.thumbsdown.fill")
-                            .foregroundColor(.red)
-                    }
-                    else {
-                        Image(systemName: "hand.thumbsdown")
-                            .foregroundColor(.red)
-                    }
-                }
-                .buttonStyle(BorderlessButtonStyle())
-            }
-            .frame(maxWidth:.infinity, alignment:.trailing)
         }
     }
 }
 
-//ApproveStatus and RequestData defined in StudentAppRequestView
+//ApproveStatus, RequestData, AppRequestView defined in RequestData
 
 struct TeacherUserRequestView: View {
     @Environment(\.dismiss) private var dismiss
@@ -71,9 +36,10 @@ struct TeacherUserRequestView: View {
     var userName = "User"
     
     @State var appList:[RequestData] = [
-        RequestData(appName: "App 1", approved: ApproveStatus.unprocessed),
-        RequestData(appName: "App 2", approved: ApproveStatus.approved),
-        RequestData(appName: "App 3", approved: ApproveStatus.denied)
+        RequestData(appName: "Unprocessed Request", approved: ApproveStatus.unprocessed),
+        RequestData(appName: "Approved App", approved: ApproveStatus.approved),
+        RequestData(appName: "Temporarily Approved App", approved: ApproveStatus.approvedTemporary),
+        RequestData(appName: "Denied App", approved: ApproveStatus.denied)
     ]
     
     var body: some View {

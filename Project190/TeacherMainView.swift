@@ -18,6 +18,10 @@ class StudentList: ObservableObject {
         "Ronald McDonald"]
 }
 
+class RequestList: ObservableObject {
+    
+}
+
 struct TeacherMainView: View {
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState

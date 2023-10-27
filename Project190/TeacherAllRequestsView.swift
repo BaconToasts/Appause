@@ -14,9 +14,10 @@ struct TeacherAllRequestsView: View {
     var userName = "User"
     
     @State var appList:[RequestData] = [
-        RequestData(appName: "App 1", approved: ApproveStatus.unprocessed),
-        RequestData(appName: "App 2", approved: ApproveStatus.approved),
-        RequestData(appName: "App 3", approved: ApproveStatus.denied)
+        RequestData(appName: "Unprocessed Request", approved: ApproveStatus.unprocessed),
+        RequestData(appName: "Approved App", approved: ApproveStatus.approved),
+        RequestData(appName: "Temporarily Approved App", approved: ApproveStatus.approvedTemporary),
+        RequestData(appName: "Denied App", approved: ApproveStatus.denied)
     ]
     
     var body: some View {
@@ -53,6 +54,7 @@ struct TeacherAllRequestsView: View {
                         if(searchAppName.isEmpty ||
                            request.appName.contains(searchAppName)) {
                             TeacherAppView(request: request, studentName: userName, parentNavText: "MAIN / REQUESTS / ")
+                            //TeacherAppView defined in TeacherUserRequestView
                         }
                     }
                 }
