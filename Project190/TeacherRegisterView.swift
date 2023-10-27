@@ -234,3 +234,19 @@ struct TeacherRegisterView_Previews: PreviewProvider {
     }
 }
 
+struct Validate {
+    func validatePassword(_ password: String) -> Bool{
+        let passwordLength = password.count
+        let regex = ".*[0-9]+.*"
+        let checkPass = NSPredicate(format: "SELF MATCHES %@", regex)
+        let hasNum = checkPass.evaluate(with: password)
+        var result: Bool = true
+        
+        // checks if password contains numbers and if the length of password is short
+        if (hasNum == false || passwordLength < 6){
+            result.toggle()
+        }
+        
+        return result
+    }
+}

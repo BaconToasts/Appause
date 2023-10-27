@@ -43,6 +43,7 @@
 		BED1FA242AD9DC93005CCD24 /* TeacherAllRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */; };
 		CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */; };
 		CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7165942AEB27E2009A18BD /* Project190Tests.swift */; };
+		CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		CE2886E52AD7732300BEBF64 /* Project190.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project190.entitlements; sourceTree = "<group>"; };
 		CE7165922AEB27E2009A18BD /* Project190Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7165942AEB27E2009A18BD /* Project190Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190Tests.swift; sourceTree = "<group>"; };
+		CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRequirementsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7165942AEB27E2009A18BD /* Project190Tests.swift */,
+				CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */,
 			);
 			path = Project190Tests;
 			sourceTree = "<group>";
@@ -330,13 +333,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FDCCA082AE97E8600DF9A2A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7FDE478E2AE8B8EF00720A68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */,
 				CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
