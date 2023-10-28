@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TeacherAppDescription: View {
     @Environment(\.dismiss) private var dismiss
-    @Binding var appData: RequestData
+    @ObservedObject var appData: RequestData
     @State var parentNavText = "MANAGE USER / "
     @State var studentName = "Student"
     @State var requestReason = "Generic Request Reason"
@@ -171,6 +171,6 @@ struct TeacherAppApproval_Previews: PreviewProvider {
     
     static var previews: some View {
         let appData = RequestData(appName:"App", approved: ApproveStatus.unprocessed)
-        TeacherAppDescription(appData: .constant(appData))
+        TeacherAppDescription(appData: appData)
     }
 }

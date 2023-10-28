@@ -11,13 +11,7 @@ struct StudentAppRequestView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var searchAppName: String = ""
     var adminName = "Admin"
-    
-    @State var appList:[RequestData] = [
-        RequestData(appName: "Unprocessed Request", approved: ApproveStatus.unprocessed),
-        RequestData(appName: "Approved App", approved: ApproveStatus.approved),
-        RequestData(appName: "Temporarily Approved App", approved: ApproveStatus.approvedTemporary),
-        RequestData(appName: "Denied App", approved: ApproveStatus.denied)
-    ]
+    @ObservedObject var appList: RequestList
     
     var body: some View {
         VStack {
@@ -49,12 +43,11 @@ struct StudentAppRequestView: View {
                 .stroke(lineWidth:1))
             .frame(maxWidth: UIScreen.main.bounds.size.width*0.75)
             
-            List {
-                ForEach(appList) { request in
-                    if(searchAppName.isEmpty ||
-                        request.appName.contains(searchAppName)) {
-                        AppRequestView(request: request)
-                    }
+            List(appList.requests) {
+                request in
+                if(searchAppName.isEmpty ||
+                    request.appName.contains(searchAppName)) {
+                    AppRequestView(request: request)
                 }
             }
             .overlay(RoundedRectangle(cornerRadius:10, style:.circular)
@@ -66,8 +59,8 @@ struct StudentAppRequestView: View {
                 //should open list of apps installed on phone
                 //user selects one to add a new request to appList
                 //currently just adds to appList to demonstrate UI functionality
-                let newAppName = "App " + String(appList.count)
-                appList.append(RequestData(appName: newAppName, approved: ApproveStatus.unprocessed))
+                let newAppName = "App " + String(appList.requests.count)
+                appList.requests.append(RequestData(appName: newAppName, approved: ApproveStatus.unprocessed))
             }) {
                 Text("+ New")
                     .padding()
@@ -84,6 +77,6 @@ struct StudentAppRequestView: View {
 
 struct StudentAppRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        StudentAppRequestView()
+        StudentAppRequestView(appList: defaultRequestArr())
     }
 }

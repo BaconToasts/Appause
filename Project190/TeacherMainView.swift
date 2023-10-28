@@ -8,25 +8,6 @@
 
 import SwiftUI
 
-class StudentList: ObservableObject {
-    @Published var students = [
-        "John Doe",
-        "John Jackson",
-        "Danny Devito",
-        "Taylor Newall",
-        "Xavier Desmond",
-        "Ronald McDonald"]
-}
-
-class RequestList: ObservableObject {
-    @Published var appRequests = [
-        RequestData(appName: "Unprocessed Request", approved: ApproveStatus.unprocessed),
-        RequestData(appName: "Approved App", approved: ApproveStatus.approved),
-        RequestData(appName: "Temporarily Approved App", approved: ApproveStatus.approvedTemporary),
-        RequestData(appName: "Denied App", approved: ApproveStatus.denied)
-    ]
-}
-
 struct TeacherMainView: View {
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState

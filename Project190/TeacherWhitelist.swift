@@ -18,7 +18,7 @@ struct TeacherWhitelistApp: View {
                 .frame(maxWidth:.infinity, alignment:.leading)
                 .foregroundColor(.green)
             
-            NavigationLink(destination: TeacherAppDescription(appData: $request)
+            NavigationLink(destination: TeacherAppDescription(appData: request)
                 .navigationBarHidden(true)) {
                 Text(request.appName)
                     .frame(maxWidth:.infinity, alignment:.center)
@@ -116,7 +116,7 @@ struct TeacherWhitelist: View {
                 Button(action: {
                     //should open list of apps installed on phone
                     //currently just adds to appList to demonstrate UI functionality
-                    var newAppName = "App " + String(appList.count)
+                    let newAppName = "App " + String(appList.count)
                     appList.append(RequestData(appName: newAppName, approved: ApproveStatus.unprocessed))
                 }) {
                     Text("+ New")

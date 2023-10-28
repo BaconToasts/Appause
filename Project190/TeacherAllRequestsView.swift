@@ -11,14 +11,7 @@ struct TeacherAllRequestsView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var searchAppName: String = ""
-    var userName = "User"
-    
-    @State var appList:[RequestData] = [
-        RequestData(appName: "Unprocessed Request", approved: ApproveStatus.unprocessed),
-        RequestData(appName: "Approved App", approved: ApproveStatus.approved),
-        RequestData(appName: "Temporarily Approved App", approved: ApproveStatus.approvedTemporary),
-        RequestData(appName: "Denied App", approved: ApproveStatus.denied)
-    ]
+    @State var student = StudentData(name:"Test", requests:defaultRequestArr())
     
     var body: some View {
         NavigationView {
@@ -49,13 +42,12 @@ struct TeacherAllRequestsView: View {
                     .stroke(lineWidth:1))
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.75)
                 
-                List {
-                    ForEach(appList) { request in
-                        if(searchAppName.isEmpty ||
-                           request.appName.contains(searchAppName)) {
-                            TeacherAppView(request: request, studentName: userName, parentNavText: "MAIN / REQUESTS / ")
-                            //TeacherAppView defined in TeacherUserRequestView
-                        }
+                
+                List($student.requestObject.requests) {
+                    $request in
+                    if(searchAppName.isEmpty ||
+                       request.appName.contains(searchAppName)) {
+                        TeacherAppView(request: request, studentName: student.name, parentNavText: "MANAGE USER / ")
                     }
                 }
                 .overlay(RoundedRectangle(cornerRadius:10, style:.circular)
