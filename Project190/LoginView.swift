@@ -12,6 +12,9 @@ private var isTeacherLogin = false
 struct LoginView: View {
     public var keychain = KeychainSwift()
     
+    //environment variable used for switching from the forgot password screen back to the login screen
+    @EnvironmentObject var viewSwitcher: ViewSwitcher
+    
     // MARK: - State Variables
     @State private var show2FAInput = false
     
@@ -233,9 +236,14 @@ struct LoginView: View {
                         
                         // "Forgot password?" button aligned to the right
                         HStack {
-                            Button(action: {withAnimation {
-                                showNextView = .emailCode
-                            }
+                            Button(action: {
+                                /* sets the last page that the user was at before entering the password reset process to
+                                   the login page so that if the user presses the back button it brings the user
+                                   back to the login page. */
+                                viewSwitcher.lastView = "login"
+                                withAnimation {
+                                    showNextView = .emailCode
+                                }
                             }) {
                                 Text("Forgot password?")
                                     .foregroundColor(.blue)
@@ -318,8 +326,6 @@ struct LoginView: View {
                                 //.padding(.leading, 15)
                             
                             Button(action: {
-                                let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
-                                let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
                                 withAnimation {
                                     showNextView = .selectRegistration
                                 }

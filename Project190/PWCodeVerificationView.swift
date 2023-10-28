@@ -20,14 +20,32 @@ struct PWCodeVerificationView: View
     @State private var codeIn = ForgotPassword.shared.codeIn
     @StateObject var timerViewModel = TimerViewModel()
     
+    //environment variable used in navigation when the back button is pressed
+    @EnvironmentObject var viewSwitcher: ViewSwitcher
+    
     var body: some View
     {
-        VStack{
-         
-
-            ZStack{
+        VStack
+        {
+            HStack{
                 Button(action:{
-                    showNextView = .emailCode
+                    /* depending on which page the user leaves when resetting their password, the back button brings them
+                       to the same page that they were at before they entered the password reset process */
+                    if(viewSwitcher.lastView == "studentSettings"){
+                        withAnimation {
+                            showNextView = .studentSettings
+                        }
+                    }
+                    if(viewSwitcher.lastView == "teacherSettings"){
+                        withAnimation {
+                            showNextView = .teacherSettings
+                        }
+                    }
+                    if(viewSwitcher.lastView == "login"){
+                        withAnimation {
+                            showNextView = .login
+                        }
+                    }
                 }){
                     Image(systemName: "arrow.left")
                         .foregroundColor(Color.black)

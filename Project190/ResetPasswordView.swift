@@ -25,6 +25,9 @@ struct ResetPasswordView: View{
     @State private var userType = Login.logV.getIsTeacher()
     private let kc = KeychainSwift()
     
+    //environment variable used in navigation when the back button is pressed
+    @EnvironmentObject var viewSwitcher: ViewSwitcher
+    
     struct TextFieldEyeIcon: View{
         var placeholderText: String
         @Binding var userInput: String
@@ -58,7 +61,23 @@ struct ResetPasswordView: View{
             
             HStack{
                 Button(action:{
-                    showNextView = .pwCodeVerification
+                    /* Depending on which page the user leaves when resetting their password, the back button brings them
+                      to the same page that they were at before resetting their password. */
+                    if(viewSwitcher.lastView == "studentSettings"){
+                        withAnimation {
+                            showNextView = .studentSettings
+                        }
+                    }
+                    if(viewSwitcher.lastView == "teacherSettings"){
+                        withAnimation {
+                            showNextView = .teacherSettings
+                        }
+                    }
+                    if(viewSwitcher.lastView == "login"){
+                        withAnimation {
+                            showNextView = .login
+                        }
+                    }
                 }){
                     Image(systemName: "arrow.left")
                         .foregroundColor(Color.black)
