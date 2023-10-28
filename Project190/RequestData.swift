@@ -33,6 +33,21 @@ struct RequestData: Hashable, Identifiable {
     }
 }
 
+struct StudentData: Hashable, Identifiable {
+    let id = UUID() //Required for Identifiable
+    var name: String
+    var requests: [RequestData]
+    
+    init(name:String, requests:[RequestData]) {
+        self.name = name
+        self.requests = requests
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+}
+
 struct AppThumb: View {
     @State var approveStatus: ApproveStatus = .unprocessed
     

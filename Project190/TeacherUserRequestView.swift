@@ -18,7 +18,7 @@ struct TeacherAppView: View {
             Image(systemName:"applelogo")
                 .frame(maxWidth:.infinity, alignment:.leading)
             
-            NavigationLink(destination: TeacherAppDescription(appData: request, parentNavText: parentNavText, studentName: studentName)
+            NavigationLink(destination: TeacherAppDescription(appData: $request, parentNavText: parentNavText, studentName: studentName)
                 .navigationBarHidden(true)) {
                 AppRequestView(request: request)
             }

@@ -18,7 +18,7 @@ struct TeacherWhitelistApp: View {
                 .frame(maxWidth:.infinity, alignment:.leading)
                 .foregroundColor(.green)
             
-            NavigationLink(destination: TeacherAppDescription(appData: request)
+            NavigationLink(destination: TeacherAppDescription(appData: $request)
                 .navigationBarHidden(true)) {
                 Text(request.appName)
                     .frame(maxWidth:.infinity, alignment:.center)

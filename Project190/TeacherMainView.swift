@@ -19,7 +19,12 @@ class StudentList: ObservableObject {
 }
 
 class RequestList: ObservableObject {
-    
+    @Published var appRequests = [
+        RequestData(appName: "Unprocessed Request", approved: ApproveStatus.unprocessed),
+        RequestData(appName: "Approved App", approved: ApproveStatus.approved),
+        RequestData(appName: "Temporarily Approved App", approved: ApproveStatus.approvedTemporary),
+        RequestData(appName: "Denied App", approved: ApproveStatus.denied)
+    ]
 }
 
 struct TeacherMainView: View {
