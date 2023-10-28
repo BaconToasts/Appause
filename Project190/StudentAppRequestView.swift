@@ -11,7 +11,7 @@ struct StudentAppRequestView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var searchAppName: String = ""
     var adminName = "Admin"
-    @ObservedObject var appList: RequestList
+    @State var appList: RequestList
     
     var body: some View {
         VStack {

@@ -32,8 +32,9 @@ struct TeacherMainView: View {
                 Spacer()
                 
                 // create Requests button
-                NavigationLink(destination: TeacherAllRequestsView()
-                    .navigationBarHidden(true)) {
+                NavigationLink(destination: TeacherAllRequestsView(studentList: studentList)
+                    .navigationBarHidden(true)
+                    .environmentObject(studentList)) {
                     Text("Requests")
                         .padding(.leading, 25)
                         .fontWeight(btnStyle.getFont())

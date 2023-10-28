@@ -72,8 +72,8 @@ class StudentList: ObservableObject {
         StudentData(name: "Ronald McDonald", requests: defaultRequestArr())]
 }
 
-class RequestList: ObservableObject, Hashable {
-    @Published var requests: [RequestData] = []
+struct RequestList: Hashable {
+    var requests: [RequestData] = []
     
     init(requests:[RequestData]) {
         self.requests = requests
