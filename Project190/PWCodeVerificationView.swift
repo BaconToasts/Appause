@@ -17,23 +17,31 @@ struct PWCodeVerificationView: View
     @State private var resetCode: String = ""
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @State private var codeIn = ForgotPassword.shared.grabRandCode()
+    @State private var codeIn = ForgotPassword.shared.codeIn
+    @StateObject var timerViewModel = TimerViewModel()
     
     var body: some View
     {
-        VStack
-        {
-            HStack{
-                Button(action:{}){
+        VStack{
+         
+
+            ZStack{
+                Button(action:{
+                    showNextView = .emailCode
+                }){
                     Image(systemName: "arrow.left")
                         .foregroundColor(Color.black)
                         .fontWeight(.bold)
                         .font(.system(size: 19))
                 }
-                .padding(.top, 150)
+                .padding(.top, 210)
                 .padding(.trailing, 335)
                 .padding(.bottom, 100)
             }
+            Text(timerViewModel.timeString)
+                 .font(.system(size: 20))
+                 .foregroundColor(Color.green)
+                 .padding(.top, 20) // Adjust padding as needed
             Text("Verify Email")
                 .padding()
                 .fontWeight(.bold)
@@ -57,18 +65,21 @@ struct PWCodeVerificationView: View
                 .cornerRadius(10)
                 .frame(width: 370)
                 .padding(.vertical, 25.0)
+                .autocapitalization(.none)
             
             Button(action: {
-                withAnimation {
-                    showNextView = .resetPassword
-                }
-                if isSameCode(resetCode) {
-                    showNextView = .resetPassword
+                if resetCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    alertMessage = "Please enter a reset code"
+                    showAlert = true
+                } else if isSameCode(resetCode) {
+                    withAnimation {
+                        showNextView = .resetPassword
+                    }
                 } else {
                     alertMessage = "Invalid reset code"
                     showAlert = true
                 }
-            }){
+            }) {
                 Text("Submit")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -78,18 +89,43 @@ struct PWCodeVerificationView: View
                     .border(Color.black, width: 5)
                     .cornerRadius(10)
             }
+            .disabled(resetCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) // This disables the button when resetCode is empty or just contains whitespace.
+
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("ERROR"), message: Text(alertMessage), dismissButton: .default(Text("OKAY")))
             }
         }
         .padding(.bottom, 300)
-        .cornerRadius(100)
+            .cornerRadius(100)
+            .onAppear {
+                timerViewModel.startTimer()  // Start the timer when the view appears
+            }
+            .onDisappear {
+                timerViewModel.stopTimer()  // Stop the timer when the view disappears
+            }
+        }
+
+        
+        func isSameCode(_ code: String) -> Bool {
+            return code == ForgotPassword.shared.codeIn
+        }
+
+    }
+
+struct FiveBoxesShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        let boxWidth: CGFloat = rect.width / 5
+        for i in 0..<5 {
+            let start = CGPoint(x: CGFloat(i) * boxWidth, y: 0)
+            let boxRect = CGRect(origin: start, size: CGSize(width: boxWidth, height: rect.height))
+            path.addRect(boxRect)
         }
         
-    func isSameCode(_ code: String) -> Bool {
-            return code == codeIn
-        }
+        return path
     }
+}
 
 struct PWCodeVerificationView_Previews: PreviewProvider {
     @State static private var showNextView: DisplayState = .pwCodeVerification
