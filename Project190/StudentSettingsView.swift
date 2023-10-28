@@ -8,6 +8,9 @@ struct StudentSettingsView: View {
     @State var fourthButton = "Disable Bluetooth"
     @State var fifthButton = "Dark Mode"
     
+    //environment variable used in navigation when the back button is pressed during the password reset process
+    @EnvironmentObject var viewSwitcher: ViewSwitcher
+    
     // Fetch the 2FA setting for the current logged-in student
     @State var isTwoFactorEnabled: Bool = {
         if let user = currentLoggedInUser {
@@ -34,7 +37,13 @@ struct StudentSettingsView: View {
             .padding(.top)
             Spacer()
             
-            Button(action: { withAnimation { showNextView = .emailCode } }) {
+            Button(action: {
+                /* sets the last page that the user was at before entering the password reset process to
+                   the student settings page so that if the user presses the back button it brings the user
+                   back to the student settings page. */
+                viewSwitcher.lastView = "studentSettings"
+                withAnimation { showNextView = .emailCode }
+            }) {
                 Text(secondButton)
                     .fontWeight(btnStyle.getFont())
                     .foregroundColor(btnStyle.getBtnFontColor())
