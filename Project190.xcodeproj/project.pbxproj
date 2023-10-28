@@ -10,6 +10,7 @@
 		0068778929F23E300007F94A /* StudentDeleteAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778829F23E300007F94A /* StudentDeleteAdminView.swift */; };
 		0068778B29F23F720007F94A /* TeacherManageUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778A29F23F720007F94A /* TeacherManageUsers.swift */; };
 		00CE9AF829F2FF2000AAEE3C /* StudentRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */; };
+		31035C182AECA082006348D1 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31035C172AECA082006348D1 /* TimerViewModel.swift */; };
 		31256F992AB547EA008A38C6 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */; };
 		31256F9B2AC61BDB008A38C6 /* 2FactorAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */; };
 		3197737529E51DF000596D4C /* Project190App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197737429E51DF000596D4C /* Project190App.swift */; };
@@ -67,6 +68,7 @@
 		0068778829F23E300007F94A /* StudentDeleteAdminView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDeleteAdminView.swift; sourceTree = "<group>"; };
 		0068778A29F23F720007F94A /* TeacherManageUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherManageUsers.swift; sourceTree = "<group>"; };
 		00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentRegisterView.swift; sourceTree = "<group>"; };
+		31035C172AECA082006348D1 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2FactorAuthentication.swift; sourceTree = "<group>"; };
 		3197737129E51DF000596D4C /* Project190.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project190.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,11 +160,11 @@
 				CE2886E52AD7732300BEBF64 /* Project190.entitlements */,
 				3197737429E51DF000596D4C /* Project190App.swift */,
 				3197737629E51DF000596D4C /* ContentView.swift */,
-				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
 				3197738229E51E7400596D4C /* EULAView.swift */,
 				3197738429E51EF500596D4C /* LoginView.swift */,
 				31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */,
 				70C01AF72ADA4BA30056340A /* PWCodeVerificationView.swift */,
+				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
 				4D87CD522AC55C5400E7912F /* SelectRegistrationView.swift */,
 				00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */,
 				3197738929E51F5A00596D4C /* StudentMainView.swift */,
@@ -182,10 +184,11 @@
 				7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */,
 				CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */,
 				3197737829E51DF200596D4C /* Assets.xcassets */,
-				3197737A29E51DF200596D4C /* Preview Content */,
 				BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */,
+				31035C172AECA082006348D1 /* TimerViewModel.swift */,
 				31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */,
 				BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */,
+				3197737A29E51DF200596D4C /* Preview Content */,
 			);
 			path = Project190;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */,
 				70C01AF82ADA4BA30056340A /* PWCodeVerificationView.swift in Sources */,
 				7F9ACC452AB14C02006A6762 /* ResetPasswordView.swift in Sources */,
+				31035C182AECA082006348D1 /* TimerViewModel.swift in Sources */,
 				31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */,
 				31256F992AB547EA008A38C6 /* ForgotPasswordView.swift in Sources */,
 				7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */,

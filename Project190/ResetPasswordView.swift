@@ -57,7 +57,9 @@ struct ResetPasswordView: View{
         VStack{
             
             HStack{
-                Button(action:{}){
+                Button(action:{
+                    showNextView = .pwCodeVerification
+                }){
                     Image(systemName: "arrow.left")
                         .foregroundColor(Color.black)
                         .fontWeight(.bold)
