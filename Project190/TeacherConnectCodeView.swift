@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TeacherConnectCodeView: View {
     //Add this binding state for transitions from view to view
-    @Binding var showNextView: DisplayState
+    @Environment(\.dismiss) private var dismiss
     
     @State private var generatedCode: String = ""
     
@@ -23,11 +23,7 @@ struct TeacherConnectCodeView: View {
     var body: some View {
         VStack{
             //create into a button
-            Button(action: {
-                withAnimation {
-                    //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                    showNextView = .mainTeacher}
-            }){
+            Button(action: {dismiss()}){
                 //button defining text enclosed by brackets
                 Text("MAIN / CONNECT CODE")
                     .fontWeight(btnStyle.getFont())
@@ -83,11 +79,9 @@ struct TeacherConnectCodeView: View {
         .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
 }
-struct TeacherConnectCodeView_Previews: PreviewProvider {
-    @State static private var showNextView: DisplayState = .connectCode
-    
+struct TeacherConnectCodeView_Previews: PreviewProvider {    
     static var previews: some View {
-        TeacherConnectCodeView(showNextView: $showNextView)
+        TeacherConnectCodeView()
     }
     
 }

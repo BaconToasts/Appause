@@ -101,13 +101,7 @@ struct TeacherMainView: View {
                 .padding(.bottom, 10)
                 
                 // create Connect Code button
-                Button(action:{
-                    withAnimation {
-                        //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                        showNextView = .connectCode}
-                    
-                })
-                {
+                NavigationLink(destination: TeacherConnectCodeView()) {
                     Text("Connect Code")
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getBtnFontColor())
