@@ -57,7 +57,7 @@ struct StudentChooseAdminView: View {
                                 .frame(maxWidth:.infinity, alignment:.center)
                                 .foregroundColor(Color("BlackWhite"))
                             
-                            NavigationLink(destination: StudentAppRequestView(adminName: admin)
+                            NavigationLink(destination: StudentAppRequestView(adminName: admin, appList:  defaultRequestArr())
                                 .navigationBarHidden(true)) {
                                 Image(systemName: "hand.raised.fill")
                                     .foregroundColor(Color.yellow)

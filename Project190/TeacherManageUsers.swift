@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-
-
-
-
 struct TeacherManageUsers: View
 {
     @Environment(\.dismiss) private var dismiss
@@ -60,20 +56,19 @@ struct TeacherManageUsers: View
                     .padding(.bottom, 25)
                     .padding(.top, 30)
                 
-                List {
-                    ForEach(studentList.students, id:\.self) { student in
-                        if(studentName.isEmpty || student.contains(studentName))
-                        {
-                            NavigationLink(
-                                destination:TeacherUserRequestView(stackingPermitted: self.$activeNavigationLink, userName: student)
-                                .navigationBarHidden(true),
-                                isActive: bindingForItem(item: student)){
-                                Text(student)
-                                    .font(.callout)
-                                    .foregroundColor(btnStyle.getBtnFontColor())
-                            }
-                                .isDetailLink(false)
+                List($studentList.students) {
+                    $student in
+                    if(student.name.isEmpty || student.name.contains(student.name))
+                    {
+                        NavigationLink(
+                            destination:TeacherUserRequestView(stackingPermitted: self.$activeNavigationLink, student: student)
+                            .navigationBarHidden(true),
+                            isActive: bindingForItem(item: student.name)){
+                                Text(student.name)
+                                .font(.callout)
+                                .foregroundColor(btnStyle.getBtnFontColor())
                         }
+                            .isDetailLink(false)
                     }
                 }
                 .overlay(RoundedRectangle(cornerRadius:10, style:.circular)

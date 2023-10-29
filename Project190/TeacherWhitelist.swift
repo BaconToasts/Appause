@@ -116,7 +116,7 @@ struct TeacherWhitelist: View {
                 Button(action: {
                     //should open list of apps installed on phone
                     //currently just adds to appList to demonstrate UI functionality
-                    var newAppName = "App " + String(appList.count)
+                    let newAppName = "App " + String(appList.count)
                     appList.append(RequestData(appName: newAppName, approved: ApproveStatus.unprocessed))
                 }) {
                     Text("+ New")

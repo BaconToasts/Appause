@@ -40,8 +40,10 @@
 		BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */; };
 		BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */; };
 		BE0FDCE029F0F18300D9EBE3 /* TeacherUserRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0FDCDF29F0F18300D9EBE3 /* TeacherUserRequestView.swift */; };
+		BE2EB6ED2AEC5C7D00FC854D /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2EB6EC2AEC5C7D00FC854D /* RequestData.swift */; };
 		BE7C4E832AC0F5270091E6F1 /* TeacherAppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */; };
 		BED1FA242AD9DC93005CCD24 /* TeacherAllRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */; };
+		BEF999E22AEDD61900B7FD1C /* RequestsUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */; };
 		CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */; };
 		CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7165942AEB27E2009A18BD /* Project190Tests.swift */; };
 		CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */; };
@@ -99,8 +101,10 @@
 		BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentChooseAdminView.swift; sourceTree = "<group>"; };
 		BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAppRequestView.swift; sourceTree = "<group>"; };
 		BE0FDCDF29F0F18300D9EBE3 /* TeacherUserRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherUserRequestView.swift; sourceTree = "<group>"; };
+		BE2EB6EC2AEC5C7D00FC854D /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppDescription.swift; sourceTree = "<group>"; };
 		BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAllRequestsView.swift; sourceTree = "<group>"; };
+		BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsUITest.swift; sourceTree = "<group>"; };
 		CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyleVar.swift; sourceTree = "<group>"; };
 		CE2886E52AD7732300BEBF64 /* Project190.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project190.entitlements; sourceTree = "<group>"; };
 		CE7165922AEB27E2009A18BD /* Project190Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +192,7 @@
 				31035C172AECA082006348D1 /* TimerViewModel.swift */,
 				31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */,
 				BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */,
+				BE2EB6EC2AEC5C7D00FC854D /* RequestData.swift */,
 				3197737A29E51DF200596D4C /* Preview Content */,
 			);
 			path = Project190;
@@ -208,6 +213,7 @@
 				7FDCCA032AE9752600DF9A2A /* LoginEmailCodeUITest.swift */,
 				7FDE47942AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift */,
 				7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */,
+				BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */,
 			);
 			path = Project190UITests;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 				BE0FDCDE29F0D8FC00D9EBE3 /* StudentAppRequestView.swift in Sources */,
 				3197737529E51DF000596D4C /* Project190App.swift in Sources */,
 				7F3ACD9029F0D83900EB12B4 /* TeacherDeleteStudentView.swift in Sources */,
+				BE2EB6ED2AEC5C7D00FC854D /* RequestData.swift in Sources */,
 				4DE605A22AB6AED100620120 /* TeacherRegisterView.swift in Sources */,
 				3197738E29E51FF100596D4C /* TeacherMainView.swift in Sources */,
 				0068778929F23E300007F94A /* StudentDeleteAdminView.swift in Sources */,
@@ -404,6 +411,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FDE47932AE8B8EF00720A68 /* Project190UITests.swift in Sources */,
+				7FDE47952AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift in Sources */,
+				7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
+				7FDCCA052AE975F900DF9A2A /* LoginEmailCodeUITest.swift in Sources */,
 				CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */,
 				CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */,
 			);

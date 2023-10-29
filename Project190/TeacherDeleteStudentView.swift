@@ -10,7 +10,7 @@ struct TeacherDeleteStudentView: View{
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var studentList: StudentList
     @Binding var stackingPermitted : String?
-    @State var studentName: String
+    @State var student: StudentData
     @State var firstButton = "MAIN / MANAGE USERS / DELETE STUDENT"
     @State var secondButton = "Yes"
     @State var thirdButton = "No"
@@ -35,7 +35,7 @@ struct TeacherDeleteStudentView: View{
                 .padding()
             HStack{
                 Button(action:{
-                    if let index = studentList.students.firstIndex(of: studentName) {
+                    if let index = studentList.students.firstIndex(of: student) {
                         studentList.students.remove(at: index)
                     }
                     stackingPermitted = nil}){
@@ -71,7 +71,8 @@ struct TeacherDeleteStudentView: View{
 struct TeacherDeleteStudentView_Previews: PreviewProvider{
     @StateObject var studentList = StudentList()
     static var previews: some View{
-        TeacherDeleteStudentView(stackingPermitted: .constant(nil), studentName: "Student")
+        let student = StudentData(name:"Don Joe", requests:defaultRequestArr())
+        TeacherDeleteStudentView(stackingPermitted: .constant(nil), student: student)
             .environmentObject(StudentList())
     }
 }

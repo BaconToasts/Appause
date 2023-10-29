@@ -8,9 +8,8 @@
 
 import SwiftUI
 
-
 struct TeacherAppView: View {
-    @State var request: RequestData
+    @ObservedObject var request: RequestData
     @State var studentName: String
     @State var parentNavText: String
    
@@ -21,66 +20,25 @@ struct TeacherAppView: View {
             
             NavigationLink(destination: TeacherAppDescription(appData: request, parentNavText: parentNavText, studentName: studentName)
                 .navigationBarHidden(true)) {
-                Text(request.appName)
-                    .frame(maxWidth:.infinity, alignment:.center)
-                    
+                AppRequestView(request: request)
             }
-                
-            //Text(request.appName)
-                //.frame(maxWidth:.infinity, alignment:.center)
-            HStack {
-                Button(action:{ //Approve
-                    request = RequestData(appName: request.appName, approved: ApproveStatus.approved)
-                }) {
-                    if(request.approved == ApproveStatus.approved) {
-                        Image(systemName: "hand.thumbsup.fill")
-                            .foregroundColor(.green)
-                    }
-                    else {
-                        Image(systemName: "hand.thumbsup")
-                            .foregroundColor(.green)
-                    }
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                Button(action:{ //Deny
-                    request = RequestData(appName: request.appName, approved: ApproveStatus.denied)
-                }) {
-                    if(request.approved == ApproveStatus.denied) {
-                        Image(systemName: "hand.thumbsdown.fill")
-                            .foregroundColor(.red)
-                    }
-                    else {
-                        Image(systemName: "hand.thumbsdown")
-                            .foregroundColor(.red)
-                    }
-                }
-                .buttonStyle(BorderlessButtonStyle())
-            }
-            .frame(maxWidth:.infinity, alignment:.trailing)
         }
     }
 }
 
-//ApproveStatus and RequestData defined in StudentAppRequestView
+//ApproveStatus, RequestData, AppRequestView defined in RequestData
 
 struct TeacherUserRequestView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var stackingPermitted : String?
-    
     @State private var searchAppName: String = ""
-    var userName = "User"
-    
-    @State var appList:[RequestData] = [
-        RequestData(appName: "App 1", approved: ApproveStatus.unprocessed),
-        RequestData(appName: "App 2", approved: ApproveStatus.approved),
-        RequestData(appName: "App 3", approved: ApproveStatus.denied)
-    ]
+    @ObservedObject var student: StudentData
     
     var body: some View {
         NavigationView {
             VStack {
                 Button(action: {dismiss()}) {
-                        Text("MAIN / MANAGE USER / " + String(userName).uppercased())
+                    Text("MAIN / MANAGE USER / " + String(student.name).uppercased())
                             .fontWeight(btnStyle.getFont())
                             .foregroundColor(btnStyle.getPathFontColor())
                             .frame(width: btnStyle.getWidth(),
@@ -105,12 +63,11 @@ struct TeacherUserRequestView: View {
                     .stroke(lineWidth:1))
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.75)
                 
-                List {
-                    ForEach(appList) { request in
-                        if(searchAppName.isEmpty ||
-                           request.appName.contains(searchAppName)) {
-                            TeacherAppView(request: request, studentName: userName, parentNavText: "MANAGE USER / ")
-                        }
+                List($student.requestObject.requests) {
+                    $request in
+                    if(searchAppName.isEmpty ||
+                       request.appName.contains(searchAppName)) {
+                        TeacherAppView(request: request, studentName: student.name, parentNavText: "MANAGE USER / ")
                     }
                 }
                 .overlay(RoundedRectangle(cornerRadius:10, style:.circular)
@@ -118,7 +75,7 @@ struct TeacherUserRequestView: View {
                 .frame(maxWidth: UIScreen.main.bounds.size.width*0.85,
                        maxHeight: UIScreen.main.bounds.size.height*0.7)
                 
-                NavigationLink(destination: TeacherDeleteStudentView(stackingPermitted: self.$stackingPermitted, studentName: userName)
+                NavigationLink(destination: TeacherDeleteStudentView(stackingPermitted: self.$stackingPermitted, student: student)
                     .navigationBarHidden(true)) {
                         Text("Delete User")
                         .padding()
@@ -137,7 +94,10 @@ struct TeacherUserRequestView: View {
 }
 
 struct TeacherAppRequestView_Previews: PreviewProvider {
+    @StateObject var student = StudentData(name:"Test", requests:defaultRequestArr())
+    
     static var previews: some View {
-        TeacherUserRequestView(stackingPermitted: .constant(nil))
+        let student = StudentData(name:"Don Joe", requests:defaultRequestArr())
+        TeacherUserRequestView(stackingPermitted: .constant(nil), student: student)
     }
 }

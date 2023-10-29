@@ -8,16 +8,6 @@
 
 import SwiftUI
 
-class StudentList: ObservableObject {
-    @Published var students = [
-        "John Doe",
-        "John Jackson",
-        "Danny Devito",
-        "Taylor Newall",
-        "Xavier Desmond",
-        "Ronald McDonald"]
-}
-
 struct TeacherMainView: View {
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState
@@ -42,8 +32,9 @@ struct TeacherMainView: View {
                 Spacer()
                 
                 // create Requests button
-                NavigationLink(destination: TeacherAllRequestsView()
-                    .navigationBarHidden(true)) {
+                NavigationLink(destination: TeacherAllRequestsView(studentList: studentList)
+                    .navigationBarHidden(true)
+                    .environmentObject(studentList)) {
                     Text("Requests")
                         .padding(.leading, 25)
                         .fontWeight(btnStyle.getFont())
@@ -110,13 +101,7 @@ struct TeacherMainView: View {
                 .padding(.bottom, 10)
                 
                 // create Connect Code button
-                Button(action:{
-                    withAnimation {
-                        //show nextView .whateverViewYouWantToShow defined in ContentView Enum
-                        showNextView = .connectCode}
-                    
-                })
-                {
+                NavigationLink(destination: TeacherConnectCodeView()) {
                     Text("Connect Code")
                         .fontWeight(btnStyle.getFont())
                         .foregroundColor(btnStyle.getBtnFontColor())
