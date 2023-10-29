@@ -105,7 +105,8 @@ struct TeacherAppDescription: View {
                     case ApproveStatus.approved:
                         appData.approvedDuration = .infinity
                     case ApproveStatus.approvedTemporary:
-                        if(hours == 0 && minutes == 0) {
+                        if((hours == 0 && minutes == 0) ||
+                            (hours < 0 || minutes < 0)) {
                             showAlert = true
                             return
                         }
