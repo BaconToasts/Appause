@@ -10,6 +10,7 @@
 		0068778929F23E300007F94A /* StudentDeleteAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778829F23E300007F94A /* StudentDeleteAdminView.swift */; };
 		0068778B29F23F720007F94A /* TeacherManageUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778A29F23F720007F94A /* TeacherManageUsers.swift */; };
 		00CE9AF829F2FF2000AAEE3C /* StudentRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */; };
+		31035C182AECA082006348D1 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31035C172AECA082006348D1 /* TimerViewModel.swift */; };
 		31256F992AB547EA008A38C6 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */; };
 		31256F9B2AC61BDB008A38C6 /* 2FactorAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */; };
 		3197737529E51DF000596D4C /* Project190App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197737429E51DF000596D4C /* Project190App.swift */; };
@@ -44,17 +45,19 @@
 		BED1FA242AD9DC93005CCD24 /* TeacherAllRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */; };
 		BEF999E22AEDD61900B7FD1C /* RequestsUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */; };
 		CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */; };
+		CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7165942AEB27E2009A18BD /* Project190Tests.swift */; };
+		CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7FDCCA0E2AE97E8600DF9A2A /* PBXContainerItemProxy */ = {
+		7FDE47962AE8B8EF00720A68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3197736929E51DF000596D4C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3197737029E51DF000596D4C;
 			remoteInfo = Project190;
 		};
-		7FDE47962AE8B8EF00720A68 /* PBXContainerItemProxy */ = {
+		CE7165962AEB27E2009A18BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3197736929E51DF000596D4C /* Project object */;
 			proxyType = 1;
@@ -67,6 +70,7 @@
 		0068778829F23E300007F94A /* StudentDeleteAdminView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDeleteAdminView.swift; sourceTree = "<group>"; };
 		0068778A29F23F720007F94A /* TeacherManageUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherManageUsers.swift; sourceTree = "<group>"; };
 		00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentRegisterView.swift; sourceTree = "<group>"; };
+		31035C172AECA082006348D1 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2FactorAuthentication.swift; sourceTree = "<group>"; };
 		3197737129E51DF000596D4C /* Project190.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project190.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +95,6 @@
 		7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSettingsView.swift; sourceTree = "<group>"; };
 		7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		7FDCCA032AE9752600DF9A2A /* LoginEmailCodeUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailCodeUITest.swift; sourceTree = "<group>"; };
-		7FDCCA0A2AE97E8600DF9A2A /* Project190Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDE47902AE8B8EF00720A68 /* Project190UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDE47922AE8B8EF00720A68 /* Project190UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190UITests.swift; sourceTree = "<group>"; };
 		7FDE47942AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -104,6 +107,9 @@
 		BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsUITest.swift; sourceTree = "<group>"; };
 		CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyleVar.swift; sourceTree = "<group>"; };
 		CE2886E52AD7732300BEBF64 /* Project190.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project190.entitlements; sourceTree = "<group>"; };
+		CE7165922AEB27E2009A18BD /* Project190Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7165942AEB27E2009A18BD /* Project190Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190Tests.swift; sourceTree = "<group>"; };
+		CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRequirementsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,14 +121,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FDCCA072AE97E8600DF9A2A /* Frameworks */ = {
+		7FDE478D2AE8B8EF00720A68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FDE478D2AE8B8EF00720A68 /* Frameworks */ = {
+		CE71658F2AEB27E2009A18BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -137,6 +143,7 @@
 			children = (
 				3197737329E51DF000596D4C /* Project190 */,
 				7FDE47912AE8B8EF00720A68 /* Project190UITests */,
+				CE7165932AEB27E2009A18BD /* Project190Tests */,
 				3197737229E51DF000596D4C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,7 +153,7 @@
 			children = (
 				3197737129E51DF000596D4C /* Project190.app */,
 				7FDE47902AE8B8EF00720A68 /* Project190UITests.xctest */,
-				7FDCCA0A2AE97E8600DF9A2A /* Project190Tests.xctest */,
+				CE7165922AEB27E2009A18BD /* Project190Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,11 +164,11 @@
 				CE2886E52AD7732300BEBF64 /* Project190.entitlements */,
 				3197737429E51DF000596D4C /* Project190App.swift */,
 				3197737629E51DF000596D4C /* ContentView.swift */,
-				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
 				3197738229E51E7400596D4C /* EULAView.swift */,
 				3197738429E51EF500596D4C /* LoginView.swift */,
 				31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */,
 				70C01AF72ADA4BA30056340A /* PWCodeVerificationView.swift */,
+				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
 				4D87CD522AC55C5400E7912F /* SelectRegistrationView.swift */,
 				00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */,
 				3197738929E51F5A00596D4C /* StudentMainView.swift */,
@@ -181,11 +188,12 @@
 				7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */,
 				CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */,
 				3197737829E51DF200596D4C /* Assets.xcassets */,
-				3197737A29E51DF200596D4C /* Preview Content */,
 				BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */,
+				31035C172AECA082006348D1 /* TimerViewModel.swift */,
 				31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */,
 				BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */,
 				BE2EB6EC2AEC5C7D00FC854D /* RequestData.swift */,
+				3197737A29E51DF200596D4C /* Preview Content */,
 			);
 			path = Project190;
 			sourceTree = "<group>";
@@ -208,6 +216,15 @@
 				BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */,
 			);
 			path = Project190UITests;
+			sourceTree = "<group>";
+		};
+		CE7165932AEB27E2009A18BD /* Project190Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CE7165942AEB27E2009A18BD /* Project190Tests.swift */,
+				CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */,
+			);
+			path = Project190Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,24 +250,6 @@
 			productReference = 3197737129E51DF000596D4C /* Project190.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7FDCCA092AE97E8600DF9A2A /* Project190Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7FDCCA102AE97E8600DF9A2A /* Build configuration list for PBXNativeTarget "Project190Tests" */;
-			buildPhases = (
-				7FDCCA062AE97E8600DF9A2A /* Sources */,
-				7FDCCA072AE97E8600DF9A2A /* Frameworks */,
-				7FDCCA082AE97E8600DF9A2A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7FDCCA0F2AE97E8600DF9A2A /* PBXTargetDependency */,
-			);
-			name = Project190Tests;
-			productName = Project190Tests;
-			productReference = 7FDCCA0A2AE97E8600DF9A2A /* Project190Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		7FDE478F2AE8B8EF00720A68 /* Project190UITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FDE479A2AE8B8EF00720A68 /* Build configuration list for PBXNativeTarget "Project190UITests" */;
@@ -269,6 +268,24 @@
 			productReference = 7FDE47902AE8B8EF00720A68 /* Project190UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CE7165912AEB27E2009A18BD /* Project190Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7165982AEB27E2009A18BD /* Build configuration list for PBXNativeTarget "Project190Tests" */;
+			buildPhases = (
+				CE71658E2AEB27E2009A18BD /* Sources */,
+				CE71658F2AEB27E2009A18BD /* Frameworks */,
+				CE7165902AEB27E2009A18BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE7165972AEB27E2009A18BD /* PBXTargetDependency */,
+			);
+			name = Project190Tests;
+			productName = Project190Tests;
+			productReference = CE7165922AEB27E2009A18BD /* Project190Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -282,11 +299,11 @@
 					3197737029E51DF000596D4C = {
 						CreatedOnToolsVersion = 14.3;
 					};
-					7FDCCA092AE97E8600DF9A2A = {
+					7FDE478F2AE8B8EF00720A68 = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 3197737029E51DF000596D4C;
 					};
-					7FDE478F2AE8B8EF00720A68 = {
+					CE7165912AEB27E2009A18BD = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 3197737029E51DF000596D4C;
 					};
@@ -310,7 +327,7 @@
 			targets = (
 				3197737029E51DF000596D4C /* Project190 */,
 				7FDE478F2AE8B8EF00720A68 /* Project190UITests */,
-				7FDCCA092AE97E8600DF9A2A /* Project190Tests */,
+				CE7165912AEB27E2009A18BD /* Project190Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,14 +342,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FDCCA082AE97E8600DF9A2A /* Resources */ = {
+		7FDE478E2AE8B8EF00720A68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FDE478E2AE8B8EF00720A68 /* Resources */ = {
+		CE7165902AEB27E2009A18BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,6 +385,7 @@
 				BE0FDCDC29F0D82200D9EBE3 /* StudentChooseAdminView.swift in Sources */,
 				70C01AF82ADA4BA30056340A /* PWCodeVerificationView.swift in Sources */,
 				7F9ACC452AB14C02006A6762 /* ResetPasswordView.swift in Sources */,
+				31035C182AECA082006348D1 /* TimerViewModel.swift in Sources */,
 				31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */,
 				31256F992AB547EA008A38C6 /* ForgotPasswordView.swift in Sources */,
 				7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */,
@@ -378,18 +396,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FDCCA062AE97E8600DF9A2A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7FDE478C2AE8B8EF00720A68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEF999E22AEDD61900B7FD1C /* RequestsUITest.swift in Sources */,
 				7FDE47932AE8B8EF00720A68 /* Project190UITests.swift in Sources */,
 				7FDE47952AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift in Sources */,
 				7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
@@ -397,18 +407,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE71658E2AEB27E2009A18BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FDE47932AE8B8EF00720A68 /* Project190UITests.swift in Sources */,
+				7FDE47952AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift in Sources */,
+				7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
+				7FDCCA052AE975F900DF9A2A /* LoginEmailCodeUITest.swift in Sources */,
+				CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */,
+				CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7FDCCA0F2AE97E8600DF9A2A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3197737029E51DF000596D4C /* Project190 */;
-			targetProxy = 7FDCCA0E2AE97E8600DF9A2A /* PBXContainerItemProxy */;
-		};
 		7FDE47972AE8B8EF00720A68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3197737029E51DF000596D4C /* Project190 */;
 			targetProxy = 7FDE47962AE8B8EF00720A68 /* PBXContainerItemProxy */;
+		};
+		CE7165972AEB27E2009A18BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3197737029E51DF000596D4C /* Project190 */;
+			targetProxy = CE7165962AEB27E2009A18BD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -601,42 +624,6 @@
 			};
 			name = Release;
 		};
-		7FDCCA112AE97E8600DF9A2A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Macrosoft.Project190Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project190.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Project190";
-			};
-			name = Debug;
-		};
-		7FDCCA122AE97E8600DF9A2A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Macrosoft.Project190Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project190.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Project190";
-			};
-			name = Release;
-		};
 		7FDE47982AE8B8EF00720A68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -671,6 +658,42 @@
 			};
 			name = Release;
 		};
+		CE7165992AEB27E2009A18BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Macrosoft.Project190Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project190.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Project190";
+			};
+			name = Debug;
+		};
+		CE71659A2AEB27E2009A18BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Macrosoft.Project190Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project190.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Project190";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -692,20 +715,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7FDCCA102AE97E8600DF9A2A /* Build configuration list for PBXNativeTarget "Project190Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7FDCCA112AE97E8600DF9A2A /* Debug */,
-				7FDCCA122AE97E8600DF9A2A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7FDE479A2AE8B8EF00720A68 /* Build configuration list for PBXNativeTarget "Project190UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FDE47982AE8B8EF00720A68 /* Debug */,
 				7FDE47992AE8B8EF00720A68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE7165982AEB27E2009A18BD /* Build configuration list for PBXNativeTarget "Project190Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7165992AEB27E2009A18BD /* Debug */,
+				CE71659A2AEB27E2009A18BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

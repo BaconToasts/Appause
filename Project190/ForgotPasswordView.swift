@@ -9,21 +9,43 @@ import Foundation
 import SwiftUI
 import Combine
 
-private var codeIn = ""
+//@State private var codeIn = ""
 
 struct ForgotPasswordView: View {
     @Binding var showNextView: DisplayState
     
+    @State private var codeIn = ""
     @State private var viewNext: DisplayState = .pwCodeVerification
     
     @State private var email: String = ""
     @State private var showAlert = false
     @State private var alertMessage = ""
     
+    //environment variable used in navigation when the back button is pressed
+    @EnvironmentObject var viewSwitcher: ViewSwitcher
+    
     var body: some View {
         VStack {
             HStack{
-                Button(action:{}){
+                Button(action:{
+                    /* depending on which page the user leaves when resetting their password, the back button brings them
+                       to the same page that they were at before they entered the password reset process */
+                    if(viewSwitcher.lastView == "studentSettings"){
+                        withAnimation {
+                            showNextView = .studentSettings
+                        }
+                    }
+                    if(viewSwitcher.lastView == "teacherSettings"){
+                        withAnimation {
+                            showNextView = .teacherSettings
+                        }
+                    }
+                    if(viewSwitcher.lastView == "login"){
+                        withAnimation {
+                            showNextView = .login
+                        }
+                    }
+                }){
                     Image(systemName: "arrow.left")
                         .foregroundColor(Color.black)
                         .fontWeight(.bold)
@@ -60,6 +82,7 @@ struct ForgotPasswordView: View {
                 .frame(width: 370)
                 .padding(.vertical, 25.0)
                 .disableAutocorrection(true)
+                .autocapitalization(.none)
             
             Button(action: {
                 print("Button was tapped")
@@ -96,9 +119,7 @@ struct ForgotPasswordView: View {
     }
     
     func generateRandomCode() -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        codeIn = String((0..<5).map{ _ in letters.randomElement()! });
-        return codeIn
+        return ForgotPassword.shared.generateRandomCode()
     }
     
     
@@ -111,10 +132,10 @@ struct ForgotPasswordView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("api-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
+        request.addValue("api-XXXXXXXXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
         
         let body: [String: Any] = [
-            "api_key": "api-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", // Your API key
+            "api_key": "api-XXXXXXXXXXXXXXXXXXXXXXXX", // Your API key
             "to": ["<\(email)>"], // The recipient's email address, formatted correctly
             "sender": "appaused.service@gmail.com", // Your email address
             "subject": "Your Verification Code",
@@ -158,10 +179,13 @@ struct ForgotPasswordView_Previews: PreviewProvider {
     }
 }
 
-internal struct ForgotPassword {
+internal class ForgotPassword {
     static let shared = ForgotPassword()
-    
-    public func grabRandCode() -> String {
-        return codeIn
-    }
+     var codeIn: String = ""
+     
+     func generateRandomCode() -> String {
+         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+         codeIn = String((0..<5).map{ _ in letters.randomElement()! });
+         return codeIn
+     }
 }

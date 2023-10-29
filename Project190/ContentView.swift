@@ -19,6 +19,9 @@ struct ContentView: View {
     @State private var email: String = "test@example.com"
     @State private var show2FAInput: Bool = true // Add this line
     
+    //initializes the environment variable that comes from the Project190App file
+    @StateObject var viewSwitcher = ViewSwitcher()
+    
     var body: some View {
         VStack {
             //add DisplayState transitions here
@@ -68,6 +71,8 @@ struct ContentView: View {
 
             }
         }
+        //adds viewSwitcher to the views so that all views can access the values of viewSwitcher
+        .environmentObject(viewSwitcher)
     }
 }
 
