@@ -10,6 +10,10 @@ var currentLoggedInUser: String? = nil
 private var isTeacherLogin = false
 
 struct LoginView: View {
+    @State private var email = ""
+    @State private var password = ""
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     public var keychain = KeychainSwift()
     
     // MARK: - State Variables
@@ -241,6 +245,7 @@ struct LoginView: View {
                                     .foregroundColor(.blue)
                             }
                             .padding(.leading, 235.0)
+                            .padding(.top, 10)
                         }
                         
                         HStack {
@@ -252,76 +257,103 @@ struct LoginView: View {
                             
                             Spacer()
                             
-                            Button(action: {
-                                let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
-                                let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
-                                let username = (showTextFields ? usernameText : studentUsernameText).lowercased()
-                                let password = (showTextFields ? passwordText : studentPasswordText)
-                                let isSuccessful = username == registeredUsername && password == registeredPassword
-                                
-                                if isSuccessful {
-                                    isTeacherLogin = showTextFields
-                                    currentLoggedInUser = username
-                                    if isTwoFactorEnabled {
-                                        emailFor2FA = username
-                                        show2FAInput = true
-                                    } else {
-                                        showNextView = isTeacherLogin ? .mainTeacher : .mainStudent
-                                    }
-                                } else {
-                                    withAnimation(.easeInOut(duration: 0.05).repeatCount(4, autoreverses: true)) {
-                                        shakeOffset = 6
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                            shakeOffset = 0
-                                        }
-                                    }
-                                    performShakeAnimation()
-                                }
-                                
-                                if (buttonColorTop == buttonColorTopActive) {
-                                    self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
-                                }
-                                
-                                if (buttonColorBottom == buttonColorBottomActive) {
-                                    self.buttonColorBottom = isSuccessful ? buttonColorTopSucess : buttonColorLogin
-                                }
-                            }) {
-                                Text("Login")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(width: 275, height: 20, alignment: .center)
-                            }
-                            .padding()
-                            .background(Color.black)
-                            .cornerRadius(10)
-                            .offset(x: shakeOffset)
+                            // Login button
                             
+                            Button {
+                                Task {
+                                    try await viewModel.signIn(withEmail: email, password: password)
+                                }
+                            } label: {
+                                HStack {
+                                    Text("Login")
+                                        .fontWeight(.bold)
+                                }
+                                .foregroundColor(.white)
+                                .frame(width: UIScreen.main.bounds.width - 85, height: 48)
+                            }
+                            .background(Color(.black))
+                            .disabled(!formIsValid)
+                            .opacity(formIsValid ? 1.0 : 0.5)
+                            .cornerRadius(10)
+                            //.padding(.top, 10)
+                            
+                            // FaceID button
                             Button(action: authenticateWithFaceID) {
                                 HStack {
                                     Image(systemName: "faceid")
                                         .imageScale(.large)
-                                        .foregroundColor(.white)
                                 }
-                                .frame(width: 20, height: 20, alignment: .center)
+                                .foregroundColor(.white)
+                                .frame(width: UIScreen.main.bounds.width - 345, height: 48)
                             }
-                            .padding()
-                            .background(Color.black)
-                            .cornerRadius(100)                            .alert(isPresented: $showAlert) {
+                            .background(Color(.black))
+                            .cornerRadius(100)
+                            //.padding(.top, 10)
+                            .alert(isPresented: $showAlert) {
                                 Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                             }
+
                             Spacer()
                         }
+                        .padding(.top, 10)
+                        
+                        /*
+                         Button(action: {
+                         let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
+                         let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
+                         let username = (showTextFields ? usernameText : studentUsernameText).lowercased()
+                         let password = (showTextFields ? passwordText : studentPasswordText)
+                         let isSuccessful = username == registeredUsername && password == registeredPassword
+                         
+                         if isSuccessful {
+                         isTeacherLogin = showTextFields
+                         currentLoggedInUser = username
+                         if isTwoFactorEnabled {
+                         emailFor2FA = username
+                         show2FAInput = true
+                         } else {
+                         showNextView = isTeacherLogin ? .mainTeacher : .mainStudent
+                         }
+                         } else {
+                         withAnimation(.easeInOut(duration: 0.05).repeatCount(4, autoreverses: true)) {
+                         shakeOffset = 6
+                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                         shakeOffset = 0
+                         }
+                         }
+                         performShakeAnimation()
+                         }
+                         
+                         if (buttonColorTop == buttonColorTopActive) {
+                         self.buttonColorTop = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                         }
+                         
+                         if (buttonColorBottom == buttonColorBottomActive) {
+                         self.buttonColorBottom = isSuccessful ? buttonColorTopSucess : buttonColorLogin
+                         }
+                         }) {
+                         Text("Login")
+                         .fontWeight(.bold)
+                         .foregroundColor(.white)
+                         .frame(width: 275, height: 20, alignment: .center)
+                         }
+                         .padding()
+                         .background(Color.black)
+                         .cornerRadius(10)
+                         .offset(x: shakeOffset)
+                         
+                         */
                         
                         HStack {
                             Spacer()
                             Text("Don't have an account?")
-                                //.padding(.leading, 15)
+                            //.padding(.top, 10)
                             
                             Button(action: {
                                 let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
                                 let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
                                 withAnimation {
-                                    showNextView = .selectRegistration
+                                    showNextView = .studentRegister
                                 }
                             }) {
                                 Text("Sign up here!")
@@ -329,6 +361,7 @@ struct LoginView: View {
                             }
                             Spacer()
                         }
+                        .padding(.top, 10)
                         
                     }
                 }
@@ -436,6 +469,17 @@ struct LoginView: View {
                 }
             }
         }
+    }
+}
+
+// MARK: - AuthenticationFormProtocol
+
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
     }
 }
 

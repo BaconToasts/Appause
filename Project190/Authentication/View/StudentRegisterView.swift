@@ -11,15 +11,20 @@ import KeychainSwift // used to save registration data
 
 
 struct StudentRegisterView: View {
+    @State private var email = ""
+    @State private var fullname = ""
+    @State private var password = ""
+    @State private var confirmPassword = ""
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     //Add this binding state for transitions from view to view
     @Binding var showNextView: DisplayState
     
     //variables used to store registration data before being sent to the keychain
     @State private var firstName: String = ""
     @State private var lastName: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var passConfirm: String = ""
+    //@State private var email: String = ""
+    //@State private var password: String = ""
     
     //String variable used in error messages
     @State private var registerError: String = " "
@@ -56,8 +61,8 @@ struct StudentRegisterView: View {
                 .foregroundColor(.red)
             
             TextField(
-                "First Name",
-                text: $firstName
+                "Full Name",
+                text: $fullname
             )
             .disableAutocorrection(true)
             .padding(10)
@@ -67,7 +72,7 @@ struct StudentRegisterView: View {
             .padding([.trailing, .leading], 50)
             .padding(.bottom, 5)
 
-            
+            /*
             TextField(
                 "Last Name",
                 text: $lastName
@@ -79,6 +84,7 @@ struct StudentRegisterView: View {
             .cornerRadius(10)
             .padding([.trailing, .leading], 50)
             .padding(.bottom, 5)
+             */
             
             TextField(
                 "Email Address",
@@ -130,7 +136,7 @@ struct StudentRegisterView: View {
             }
             if(confirmStatus=="visible"){
                 HStack{
-                    TextField("Confirm Password", text: $passConfirm)
+                    TextField("Confirm Password", text: $confirmPassword)
                         .padding(10)
                         .background(Color.gray.opacity(0.2))
                         .multilineTextAlignment(.leading)
@@ -148,7 +154,7 @@ struct StudentRegisterView: View {
             }
             else{
                 HStack{
-                    SecureField("Confirm Password", text: $passConfirm)
+                    SecureField("Confirm Password", text: $confirmPassword)
                         .padding(10)
                         .background(Color.gray.opacity(0.2))
                         .multilineTextAlignment(.leading)
@@ -165,14 +171,31 @@ struct StudentRegisterView: View {
                 .padding(.bottom, 5)
             }
             
+            Button {
+                Task {
+                    try await viewModel.createUser(withEmail: email, password: password, fullname: fullname)
+                }
+            } label: {
+                HStack {
+                    Text("SIGN UP")
+                        .fontWeight(.bold)
+                }
+                .foregroundColor(.white)
+                .frame(width: UIScreen.main.bounds.width - 95, height: 48)
+            }
+            .background(Color(.black))
+            .cornerRadius(10)
+            .padding(.top, 24)
+            
+            /*
             Button(action: {
-                if (firstName == "" || lastName == "" || email == "" || password == "" || passConfirm == ""){
+                if (firstName == "" || lastName == "" || email == "" || password == "" || confirmPassword == ""){
                     registerError = "Please fill in all of the fields."
                 }
                 else if (validateEmail(email) == false){
                     registerError = "Please enter a valid email address."
                 }
-                else if (password != passConfirm){
+                else if (password != confirmPassword){
                     registerError = "Passwords do not match. Try again."
                 }
                 else{
@@ -199,12 +222,26 @@ struct StudentRegisterView: View {
                     .padding(.leading, 200)
                     .padding(.bottom, 100)
             }
+            */
         }
     }
     
     func validateEmail(_ email: String) -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$", options: [.caseInsensitive])
         return regex.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil
+    }
+}
+
+// MARK: - AuthenticationFormProtocol
+
+extension StudentRegisterView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+        && confirmPassword == password
+        && !fullname.isEmpty
     }
 }
 

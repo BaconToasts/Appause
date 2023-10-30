@@ -96,6 +96,7 @@ struct StudentMainView: View {
             .padding(.bottom, 335)
             // When pressed, will take the student back to the main login page
             Button(action: {
+                //viewModel.signOut()
                 withAnimation {
                     //show nextView .whateverViewYouWantToShow defined in ContentView Enum
                     showNextView = .logout}
