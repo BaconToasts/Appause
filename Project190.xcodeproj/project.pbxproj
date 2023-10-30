@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0068778929F23E300007F94A /* StudentDeleteAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778829F23E300007F94A /* StudentDeleteAdminView.swift */; };
 		0068778B29F23F720007F94A /* TeacherManageUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068778A29F23F720007F94A /* TeacherManageUsers.swift */; };
+		00B089972AEF21ED0047E374 /* Project190UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE47922AE8B8EF00720A68 /* Project190UITests.swift */; };
+		00B089982AEF21ED0047E374 /* Project190UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE47942AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift */; };
+		00B089992AEF21ED0047E374 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */; };
+		00B0899A2AEF21ED0047E374 /* LoginEmailCodeUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCCA032AE9752600DF9A2A /* LoginEmailCodeUITest.swift */; };
 		00CE9AF829F2FF2000AAEE3C /* StudentRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */; };
 		31035C182AECA082006348D1 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31035C172AECA082006348D1 /* TimerViewModel.swift */; };
 		31256F992AB547EA008A38C6 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */; };
@@ -43,7 +47,6 @@
 		BE2EB6ED2AEC5C7D00FC854D /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2EB6EC2AEC5C7D00FC854D /* RequestData.swift */; };
 		BE7C4E832AC0F5270091E6F1 /* TeacherAppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */; };
 		BED1FA242AD9DC93005CCD24 /* TeacherAllRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */; };
-		BEF999E22AEDD61900B7FD1C /* RequestsUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */; };
 		CE1046942AB4F56D00D0BCB0 /* GlobalStyleVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */; };
 		CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7165942AEB27E2009A18BD /* Project190Tests.swift */; };
 		CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */; };
@@ -170,8 +173,8 @@
 				70C01AF72ADA4BA30056340A /* PWCodeVerificationView.swift */,
 				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
 				4D87CD522AC55C5400E7912F /* SelectRegistrationView.swift */,
-				00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */,
 				3197738929E51F5A00596D4C /* StudentMainView.swift */,
+				00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */,
 				BE0FDCDB29F0D82200D9EBE3 /* StudentChooseAdminView.swift */,
 				BE0FDCDD29F0D8FC00D9EBE3 /* StudentAppRequestView.swift */,
 				0068778829F23E300007F94A /* StudentDeleteAdminView.swift */,
@@ -411,10 +414,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FDE47932AE8B8EF00720A68 /* Project190UITests.swift in Sources */,
-				7FDE47952AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift in Sources */,
-				7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
-				7FDCCA052AE975F900DF9A2A /* LoginEmailCodeUITest.swift in Sources */,
+				00B089972AEF21ED0047E374 /* Project190UITests.swift in Sources */,
+				00B089982AEF21ED0047E374 /* Project190UITestsLaunchTests.swift in Sources */,
+				00B089992AEF21ED0047E374 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
+				00B0899A2AEF21ED0047E374 /* LoginEmailCodeUITest.swift in Sources */,
 				CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */,
 				CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */,
 			);
