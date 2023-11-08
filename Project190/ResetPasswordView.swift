@@ -139,7 +139,7 @@ struct ResetPasswordView: View{
             Button(action:{
                 let npass = newPassword
                 let cNPass = confirmNewPassword
-                let passCheck = npass==cNPass
+                let passCheck = passwordEquality(_newPass: npass, _confirmPass: cNPass)
                 let studentName = kc.get("studentUserKey")
                 /*These variables are supposed to store whether or not if the student's new password
                  or the teacher's new password matches their previous password. If it does then it will
@@ -156,6 +156,8 @@ struct ResetPasswordView: View{
                         }
                         else if (validatePassword(npass) == false){
                             displayText = "At least 6 Characters and a Number"
+                            nextView = .resetPassword
+                            confirmColor = Color.red
                         }
                         else if (passCheck == true && studentDiffPassword == false){
                             displayText = "Enter Unique Password"
@@ -177,6 +179,8 @@ struct ResetPasswordView: View{
                         }
                         else if (validatePassword(npass) == false){
                             displayText = "At least 6 Characters and a Number"
+                            nextView = .resetPassword
+                            confirmColor = Color.red
                         }
                         else if (passCheck == true && teacherDiffPassword == false){
                             displayText = "Enter Unique Password"
@@ -223,6 +227,42 @@ struct ResetPasswordView: View{
         
         return result
     }
+    /*
+     This function is used to verify if what was entered into the 2 textfields present on the page
+     are not only valid but also the exact same.
+     */
+    func passwordEquality(_newPass: String, _confirmPass: String) ->Bool{
+        let newValidity = Validate().validatePassword(_newPass)
+        let confirmValidity = Validate().validatePassword(_confirmPass)
+        var output = true
+        let password = _newPass
+        let confirm = _confirmPass
+        if(newValidity==true&&confirmValidity==true){
+            if(password==confirm){
+                output=true
+            }
+            else{
+                output.toggle()
+            }
+        }
+        else if(newValidity==false&&confirmValidity==false){
+            if(password==confirm){
+                output.toggle()
+            }
+            else{
+                output.toggle()
+            }
+        }
+        else if((newValidity==true&&confirmValidity==false)||(newValidity==false&&confirmValidity==true)){
+            if(password==confirm){
+                output.toggle()
+            }
+            else{
+                output.toggle()
+            }
+        }
+        return output
+    }
 }
 
 struct ResetPasswordView_Previews: PreviewProvider{
@@ -232,3 +272,37 @@ struct ResetPasswordView_Previews: PreviewProvider{
         ResetPasswordView(showNextView: $showNextView)
     }
 }
+struct Equality{
+    func passwordEquality(_newPass: String, _confirmPass: String) ->Bool{
+        let newValidity = Validate().validatePassword(_newPass)
+        let confirmValidity = Validate().validatePassword(_confirmPass)
+        var output = true
+        let password = _newPass
+        let confirm = _confirmPass
+        if(newValidity==true&&confirmValidity==true){
+            if(password==confirm){
+                output=true
+            }
+            else{
+                output.toggle()
+            }
+        }
+        else if(newValidity==false&&confirmValidity==false){
+            if(password==confirm){
+                output.toggle()
+            }
+            else{
+                output.toggle()
+            }
+        }
+        else if((newValidity==true&&confirmValidity==false)||(newValidity==false&&confirmValidity==true)){
+            if(password==confirm){
+                output.toggle()
+            }
+            else{
+                output.toggle()
+            }
+        }
+        return output
+    }
+ }
