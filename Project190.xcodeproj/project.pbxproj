@@ -38,6 +38,7 @@
 		7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */; };
 		7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */; };
 		7F9ACC452AB14C02006A6762 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */; };
+		7FAC25292AF82BE80005E3C9 /* NewPasswordConfirmationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAC25282AF82BE80005E3C9 /* NewPasswordConfirmationTest.swift */; };
 		7FDCCA052AE975F900DF9A2A /* LoginEmailCodeUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCCA032AE9752600DF9A2A /* LoginEmailCodeUITest.swift */; };
 		7FDE47932AE8B8EF00720A68 /* Project190UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE47922AE8B8EF00720A68 /* Project190UITests.swift */; };
 		7FDE47952AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE47942AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift */; };
@@ -53,6 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7F0B7CA32AFB13CE00F31136 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3197736929E51DF000596D4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3197737029E51DF000596D4C;
+			remoteInfo = Project190;
+		};
 		7FDE47962AE8B8EF00720A68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3197736929E51DF000596D4C /* Project object */;
@@ -93,10 +101,12 @@
 		70C01AF72ADA4BA30056340A /* PWCodeVerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWCodeVerificationView.swift; sourceTree = "<group>"; };
 		7B4D40A92AC6538400175A30 /* TeacherWhitelist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherWhitelist.swift; sourceTree = "<group>"; };
 		7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSettingsView.swift; sourceTree = "<group>"; };
+		7F0B7C9F2AFB13CE00F31136 /* Project190Tests_1.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190Tests_1.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherDeleteStudentView.swift; sourceTree = "<group>"; };
 		7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordBlankTextFieldUITest.swift; sourceTree = "<group>"; };
 		7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSettingsView.swift; sourceTree = "<group>"; };
 		7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		7FAC25282AF82BE80005E3C9 /* NewPasswordConfirmationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordConfirmationTest.swift; sourceTree = "<group>"; };
 		7FDCCA032AE9752600DF9A2A /* LoginEmailCodeUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailCodeUITest.swift; sourceTree = "<group>"; };
 		7FDE47902AE8B8EF00720A68 /* Project190UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDE47922AE8B8EF00720A68 /* Project190UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project190UITests.swift; sourceTree = "<group>"; };
@@ -121,6 +131,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3197738829E51F2E00596D4C /* KeychainSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F0B7C9C2AFB13CE00F31136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +174,7 @@
 				3197737129E51DF000596D4C /* Project190.app */,
 				7FDE47902AE8B8EF00720A68 /* Project190UITests.xctest */,
 				CE7165922AEB27E2009A18BD /* Project190Tests.xctest */,
+				7F0B7C9F2AFB13CE00F31136 /* Project190Tests_1.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7165942AEB27E2009A18BD /* Project190Tests.swift */,
+				7FAC25282AF82BE80005E3C9 /* NewPasswordConfirmationTest.swift */,
 				CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */,
 			);
 			path = Project190Tests;
@@ -252,6 +271,24 @@
 			productName = Project190;
 			productReference = 3197737129E51DF000596D4C /* Project190.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7F0B7C9E2AFB13CE00F31136 /* Project190Tests_1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F0B7CA72AFB13CE00F31136 /* Build configuration list for PBXNativeTarget "Project190Tests_1" */;
+			buildPhases = (
+				7F0B7C9B2AFB13CE00F31136 /* Sources */,
+				7F0B7C9C2AFB13CE00F31136 /* Frameworks */,
+				7F0B7C9D2AFB13CE00F31136 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F0B7CA42AFB13CE00F31136 /* PBXTargetDependency */,
+			);
+			name = Project190Tests_1;
+			productName = Project190Tests_1;
+			productReference = 7F0B7C9F2AFB13CE00F31136 /* Project190Tests_1.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		7FDE478F2AE8B8EF00720A68 /* Project190UITests */ = {
 			isa = PBXNativeTarget;
@@ -302,6 +339,10 @@
 					3197737029E51DF000596D4C = {
 						CreatedOnToolsVersion = 14.3;
 					};
+					7F0B7C9E2AFB13CE00F31136 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 3197737029E51DF000596D4C;
+					};
 					7FDE478F2AE8B8EF00720A68 = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 3197737029E51DF000596D4C;
@@ -331,6 +372,7 @@
 				3197737029E51DF000596D4C /* Project190 */,
 				7FDE478F2AE8B8EF00720A68 /* Project190UITests */,
 				CE7165912AEB27E2009A18BD /* Project190Tests */,
+				7F0B7C9E2AFB13CE00F31136 /* Project190Tests_1 */,
 			);
 		};
 /* End PBXProject section */
@@ -342,6 +384,13 @@
 			files = (
 				3197737C29E51DF200596D4C /* Preview Assets.xcassets in Resources */,
 				3197737929E51DF200596D4C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F0B7C9D2AFB13CE00F31136 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +448,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F0B7C9B2AFB13CE00F31136 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7FDE478C2AE8B8EF00720A68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FAC25292AF82BE80005E3C9 /* NewPasswordConfirmationTest.swift in Sources */,
 				00B089972AEF21ED0047E374 /* Project190UITests.swift in Sources */,
 				00B089982AEF21ED0047E374 /* Project190UITestsLaunchTests.swift in Sources */,
 				00B089992AEF21ED0047E374 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
@@ -426,6 +483,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7F0B7CA42AFB13CE00F31136 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3197737029E51DF000596D4C /* Project190 */;
+			targetProxy = 7F0B7CA32AFB13CE00F31136 /* PBXContainerItemProxy */;
+		};
 		7FDE47972AE8B8EF00720A68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3197737029E51DF000596D4C /* Project190 */;
@@ -627,6 +689,42 @@
 			};
 			name = Release;
 		};
+		7F0B7CA52AFB13CE00F31136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Macrosoft.Project190Tests-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project190.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Project190";
+			};
+			name = Debug;
+		};
+		7F0B7CA62AFB13CE00F31136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Macrosoft.Project190Tests-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project190.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Project190";
+			};
+			name = Release;
+		};
 		7FDE47982AE8B8EF00720A68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -714,6 +812,15 @@
 			buildConfigurations = (
 				3197738029E51DF200596D4C /* Debug */,
 				3197738129E51DF200596D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F0B7CA72AFB13CE00F31136 /* Build configuration list for PBXNativeTarget "Project190Tests_1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F0B7CA52AFB13CE00F31136 /* Debug */,
+				7F0B7CA62AFB13CE00F31136 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
