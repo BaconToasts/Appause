@@ -11,6 +11,7 @@ struct StudentConnectCodeView: View
 {
     //Add this binding state for transitions from view to view
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var connectCode: String = ""
     
@@ -18,14 +19,15 @@ struct StudentConnectCodeView: View
     {
         VStack
         {
-            Button(action: {dismiss()}) {
-                Text("MAIN / CLASSES / ADD CLASS")
-                    .fontWeight(btnStyle.getFont())
-                    .foregroundColor(btnStyle.getPathFontColor())
-                    .frame(width: btnStyle.getWidth(),
-                           height: btnStyle.getHeight(),
-                           alignment: btnStyle.getAlignment())
-            }
+            Text("MAIN / CLASSES / ADD CLASS")
+                .onTapGesture {withAnimation{self.presentationMode.wrappedValue.dismiss()}}
+                .fontWeight(btnStyle.getFont())
+                .foregroundColor(btnStyle.getPathFontColor())
+                .frame(width: btnStyle.getWidth(),
+                        height: btnStyle.getHeight(),
+                        alignment: btnStyle.getAlignment())
+                
+            
             .padding()
             .background(btnStyle.getPathColor())
             .cornerRadius(btnStyle.getPathRadius())
