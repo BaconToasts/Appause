@@ -42,7 +42,7 @@ struct LoginView: View {
     @Binding var showNextView: DisplayState
     
     // Teacher login button properties
-    @State var buttonNameTop = "Teacher Login"
+    @State var buttonNameTop = "Teacher"
     @State var buttonColorTopIdle = Color.gray
     @State var buttonColorTopActive = Color.black
     
@@ -50,7 +50,7 @@ struct LoginView: View {
     @State var buttonColorLogin = Color.black
     
     // Student login button properties
-    @State var buttonNameBottom = "Student Login"
+    @State var buttonNameBottom = "Student"
     @State var buttonColorBottomIdle = Color.gray
     @State var buttonColorBottomActive = Color.black
     
@@ -272,8 +272,8 @@ struct LoginView: View {
                                 .frame(width: UIScreen.main.bounds.width - 85, height: 48)
                             }
                             .background(Color(.black))
-                            .disabled(!formIsValid)
-                            .opacity(formIsValid ? 1.0 : 0.5)
+                            //.disabled(!formIsValid)
+                            //.opacity(formIsValid ? 1.0 : 0.5)
                             .cornerRadius(10)
                             //.padding(.top, 10)
                             
@@ -293,6 +293,23 @@ struct LoginView: View {
                                 Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                             }
 
+                            Spacer()
+                        }
+                        .padding(.top, 10)
+                        
+                        HStack {
+                            Spacer()
+                            Text("Don't have an account?")
+                            Button(action: {
+                                let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
+                                let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
+                                withAnimation {
+                                    showNextView = .studentRegister
+                                }
+                            }) {
+                                Text("Sign up here!")
+                                    .foregroundColor(.blue)
+                            }
                             Spacer()
                         }
                         .padding(.top, 10)
@@ -344,24 +361,8 @@ struct LoginView: View {
                          
                          */
                         
-                        HStack {
-                            Spacer()
-                            Text("Don't have an account?")
-                            //.padding(.top, 10)
-                            
-                            Button(action: {
-                                let registeredUsername = showTextFields ? keychain.get("teacherUserKey") : keychain.get("studentUserKey")
-                                let registeredPassword = showTextFields ? keychain.get("teacherPassKey") : keychain.get("studentPassKey")
-                                withAnimation {
-                                    showNextView = .studentRegister
-                                }
-                            }) {
-                                Text("Sign up here!")
-                                    .foregroundColor(.blue)
-                            }
-                            Spacer()
-                        }
-                        .padding(.top, 10)
+                        
+                        //.padding(.top, 10)
                         
                     }
                 }
@@ -374,6 +375,7 @@ struct LoginView: View {
                     }, show2FAInput: $show2FAInput)
                 }
             }
+            
             Spacer()
             
             Image("")

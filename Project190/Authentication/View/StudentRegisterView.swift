@@ -64,7 +64,6 @@ struct StudentRegisterView: View {
                 "Full Name",
                 text: $fullname
             )
-            .disableAutocorrection(true)
             .padding(10)
             .background(Color.gray.opacity(0.2))
             .multilineTextAlignment(.leading)
@@ -90,7 +89,7 @@ struct StudentRegisterView: View {
                 "Email Address",
                 text: $email
             )
-            .disableAutocorrection(true)
+            .autocapitalization(.none)
             .padding(10)
             .background(Color.gray.opacity(0.2))
             .multilineTextAlignment(.leading)
@@ -100,7 +99,8 @@ struct StudentRegisterView: View {
             
             if(passwordStatus == "visible"){
                 HStack{
-                    TextField("Password", text: $password)
+                    TextField("Password",
+                              text: $password)
                         .padding(10)
                         .background(Color.gray.opacity(0.2))
                         .multilineTextAlignment(.leading)
