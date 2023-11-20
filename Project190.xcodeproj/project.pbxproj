@@ -34,6 +34,7 @@
 		70C01AF82ADA4BA30056340A /* PWCodeVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C01AF72ADA4BA30056340A /* PWCodeVerificationView.swift */; };
 		7B4D40AA2AC6538400175A30 /* TeacherWhitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D40A92AC6538400175A30 /* TeacherWhitelist.swift */; };
 		7F0987C429EF1C8300D7ABFA /* TeacherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */; };
+		7F2A994D2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2A994C2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift */; };
 		7F3ACD9029F0D83900EB12B4 /* TeacherDeleteStudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */; };
 		7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */; };
 		7F6B482C29EE461D000D2997 /* StudentSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */; };
@@ -102,6 +103,7 @@
 		7B4D40A92AC6538400175A30 /* TeacherWhitelist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherWhitelist.swift; sourceTree = "<group>"; };
 		7F0987C329EF1C8300D7ABFA /* TeacherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSettingsView.swift; sourceTree = "<group>"; };
 		7F0B7C9F2AFB13CE00F31136 /* Project190Tests_1.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190Tests_1.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F2A994C2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToTeacherMainScreenUITest.swift; sourceTree = "<group>"; };
 		7F3ACD8F29F0D83900EB12B4 /* TeacherDeleteStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherDeleteStudentView.swift; sourceTree = "<group>"; };
 		7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordBlankTextFieldUITest.swift; sourceTree = "<group>"; };
 		7F6B482B29EE461D000D2997 /* StudentSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSettingsView.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				7FDE47942AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift */,
 				7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */,
 				BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */,
+				7F2A994C2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift */,
 			);
 			path = Project190UITests;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F2A994D2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift in Sources */,
 				7FDE47932AE8B8EF00720A68 /* Project190UITests.swift in Sources */,
 				7FDE47952AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift in Sources */,
 				7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
