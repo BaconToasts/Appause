@@ -208,11 +208,11 @@ struct SelectRegistrationView: View
 
                 if(confirmStatus=="visible")
                 {
-                    TextFieldWithEyeIcon(placeholder: "Password", text: $teacherPassConfirm, isSecure: false, visibility: $confirmStatus)
+                    TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $teacherPassConfirm, isSecure: false, visibility: $confirmStatus)
                 }
                 else
                 {
-                    TextFieldWithEyeIcon(placeholder: "Password", text: $teacherPassConfirm, isSecure: true, visibility: $confirmStatus)
+                    TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $teacherPassConfirm, isSecure: true, visibility: $confirmStatus)
                 }
                 Button(action:
                 {
@@ -310,11 +310,11 @@ struct SelectRegistrationView: View
 
                     if(confirmStatus=="visible")
                     {
-                        TextFieldWithEyeIcon(placeholder: "Password", text: $studentPassConfirm, isSecure: false, visibility: $confirmStatus)
+                        TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $studentPassConfirm, isSecure: false, visibility: $confirmStatus)
                     }
                     else
                     {
-                        TextFieldWithEyeIcon(placeholder: "Password", text: $studentPassConfirm, isSecure: true, visibility: $confirmStatus)
+                        TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $studentPassConfirm, isSecure: true, visibility: $confirmStatus)
                     }
                     
                     Button(action: {

@@ -41,7 +41,7 @@ struct LoginView: View {
     @Binding var showNextView: DisplayState
     
     // Teacher login button properties
-    @State var buttonNameTop = "Teacher Login"
+    @State var buttonNameTop = "Teacher"
     @State var buttonColorTopIdle = Color.gray
     @State var buttonColorTopActive = Color.black
     
@@ -49,7 +49,7 @@ struct LoginView: View {
     @State var buttonColorLogin = Color.black
     
     // Student login button properties
-    @State var buttonNameBottom = "Student Login"
+    @State var buttonNameBottom = "Student"
     @State var buttonColorBottomIdle = Color.gray
     @State var buttonColorBottomActive = Color.black
     
