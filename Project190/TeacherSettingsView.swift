@@ -65,6 +65,8 @@ struct TeacherSettingsView: View {
                     UserDefaults.standard.set(newValue, forKey: "\(user)_teacherIsTwoFactorEnabled")
                 }
             }
+            .accessibilityLabel("Enable 2-Factor Authentication")
+            .accessibilityIdentifier("Enable 2-Factor Authentication Toggle")
             .padding()
             
             
