@@ -28,6 +28,7 @@
 		3197738C29E51FA300596D4C /* TeacherConnectCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738B29E51FA300596D4C /* TeacherConnectCodeView.swift */; };
 		3197738E29E51FF100596D4C /* TeacherMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738D29E51FF100596D4C /* TeacherMainView.swift */; };
 		3197739029E5203B00596D4C /* TeacherMasterControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */; };
+		31A6FCEB2B0D49D800A6DC32 /* 2FA-UI-Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6FCEA2B0D49D800A6DC32 /* 2FA-UI-Test.swift */; };
 		31B14E4329E5346D006F1031 /* StudentConnectCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */; };
 		4D87CD532AC55C5400E7912F /* SelectRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87CD522AC55C5400E7912F /* SelectRegistrationView.swift */; };
 		4DE605A22AB6AED100620120 /* TeacherRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE605A12AB6AED100620120 /* TeacherRegisterView.swift */; };
@@ -96,6 +97,7 @@
 		3197738B29E51FA300596D4C /* TeacherConnectCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherConnectCodeView.swift; sourceTree = "<group>"; };
 		3197738D29E51FF100596D4C /* TeacherMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherMainView.swift; sourceTree = "<group>"; };
 		3197738F29E5203B00596D4C /* TeacherMasterControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherMasterControlView.swift; sourceTree = "<group>"; };
+		31A6FCEA2B0D49D800A6DC32 /* 2FA-UI-Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2FA-UI-Test.swift"; sourceTree = "<group>"; };
 		31B14E4229E5346D006F1031 /* StudentConnectCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConnectCodeView.swift; sourceTree = "<group>"; };
 		4D87CD522AC55C5400E7912F /* SelectRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegistrationView.swift; sourceTree = "<group>"; };
 		4DE605A12AB6AED100620120 /* TeacherRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherRegisterView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				3197737629E51DF000596D4C /* ContentView.swift */,
 				3197738229E51E7400596D4C /* EULAView.swift */,
 				3197738429E51EF500596D4C /* LoginView.swift */,
+				31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */,
 				31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */,
 				70C01AF72ADA4BA30056340A /* PWCodeVerificationView.swift */,
 				7F9ACC442AB14C02006A6762 /* ResetPasswordView.swift */,
@@ -213,7 +216,6 @@
 				3197737829E51DF200596D4C /* Assets.xcassets */,
 				BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */,
 				31035C172AECA082006348D1 /* TimerViewModel.swift */,
-				31256F9A2AC61BDB008A38C6 /* 2FactorAuthentication.swift */,
 				BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */,
 				BE2EB6EC2AEC5C7D00FC854D /* RequestData.swift */,
 				3197737A29E51DF200596D4C /* Preview Content */,
@@ -238,6 +240,7 @@
 				7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */,
 				BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */,
 				7F2A994C2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift */,
+				31A6FCEA2B0D49D800A6DC32 /* 2FA-UI-Test.swift */,
 			);
 			path = Project190UITests;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				7F2A994D2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift in Sources */,
 				7FDE47932AE8B8EF00720A68 /* Project190UITests.swift in Sources */,
 				7FDE47952AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift in Sources */,
+				31A6FCEB2B0D49D800A6DC32 /* 2FA-UI-Test.swift in Sources */,
 				7F477EA72AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */,
 				7FDCCA052AE975F900DF9A2A /* LoginEmailCodeUITest.swift in Sources */,
 			);
