@@ -13,6 +13,7 @@
 		00B089982AEF21ED0047E374 /* Project190UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDE47942AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift */; };
 		00B089992AEF21ED0047E374 /* ForgotPasswordBlankTextFieldUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */; };
 		00B0899A2AEF21ED0047E374 /* LoginEmailCodeUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCCA032AE9752600DF9A2A /* LoginEmailCodeUITest.swift */; };
+		00B193792B1857650030BB79 /* EmailValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B193782B1857650030BB79 /* EmailValidationTest.swift */; };
 		00CE9AF829F2FF2000AAEE3C /* StudentRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */; };
 		31035C182AECA082006348D1 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31035C172AECA082006348D1 /* TimerViewModel.swift */; };
 		31256F992AB547EA008A38C6 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		0068778829F23E300007F94A /* StudentDeleteAdminView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDeleteAdminView.swift; sourceTree = "<group>"; };
 		0068778A29F23F720007F94A /* TeacherManageUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherManageUsers.swift; sourceTree = "<group>"; };
+		00B193782B1857650030BB79 /* EmailValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationTest.swift; sourceTree = "<group>"; };
 		00CE9AF729F2FF2000AAEE3C /* StudentRegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentRegisterView.swift; sourceTree = "<group>"; };
 		31035C172AECA082006348D1 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		31256F982AB547EA008A38C6 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -121,7 +123,6 @@
 		BE2EB6EC2AEC5C7D00FC854D /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		BE7C4E822AC0F5270091E6F1 /* TeacherAppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAppDescription.swift; sourceTree = "<group>"; };
 		BED1FA232AD9DC93005CCD24 /* TeacherAllRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherAllRequestsView.swift; sourceTree = "<group>"; };
-		BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsUITest.swift; sourceTree = "<group>"; };
 		CE1046932AB4F56D00D0BCB0 /* GlobalStyleVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyleVar.swift; sourceTree = "<group>"; };
 		CE2886E52AD7732300BEBF64 /* Project190.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project190.entitlements; sourceTree = "<group>"; };
 		CE7165922AEB27E2009A18BD /* Project190Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project190Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,7 +239,6 @@
 				7FDCCA032AE9752600DF9A2A /* LoginEmailCodeUITest.swift */,
 				7FDE47942AE8B8EF00720A68 /* Project190UITestsLaunchTests.swift */,
 				7F477EA62AEB23B70042DC36 /* ForgotPasswordBlankTextFieldUITest.swift */,
-				BEF999E12AEDD61900B7FD1C /* RequestsUITest.swift */,
 				7F2A994C2B083C9B003F0690 /* ToTeacherMainScreenUITest.swift */,
 				31A6FCEA2B0D49D800A6DC32 /* 2FA-UI-Test.swift */,
 			);
@@ -251,6 +251,7 @@
 				CE7165942AEB27E2009A18BD /* Project190Tests.swift */,
 				7FAC25282AF82BE80005E3C9 /* NewPasswordConfirmationTest.swift */,
 				CEF4C7AC2AEB47A8009F7444 /* PasswordRequirementsTests.swift */,
+				00B193782B1857650030BB79 /* EmailValidationTest.swift */,
 			);
 			path = Project190Tests;
 			sourceTree = "<group>";
@@ -485,6 +486,7 @@
 				00B0899A2AEF21ED0047E374 /* LoginEmailCodeUITest.swift in Sources */,
 				CEF4C7AD2AEB47A8009F7444 /* PasswordRequirementsTests.swift in Sources */,
 				CE7165952AEB27E2009A18BD /* Project190Tests.swift in Sources */,
+				00B193792B1857650030BB79 /* EmailValidationTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
