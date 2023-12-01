@@ -10,7 +10,7 @@
 <h3>Luis Campos ()</h3>
 <h3>Anthony Kabanets ()</h3>
 <h3>Eduardo Mariano ()</h3>
-<h3>Mark Zhang ()</h3>
+<h3>Mark Zhang <a href="https://github.com/AbyssalMager">Github</a></h3>
 <h3>Alec Lobato ()</h3>
 <h3>William Moosakhanian ()</h3><br/><br/>
 
@@ -35,5 +35,6 @@
 <h3>The test scripts can be found in these folders Project190Tests and Project190UITests. As for how you are supposed to run them and test the app you need to have installed XCode on your Mac device* and then go to the respected test file and click on a diamond right next to the test function in that file. That runs the respective unit/UI test and will run until it has either passed or failed. </h3>
 
 <h2>Deployment:</h2>
+<h3> To fully deploy this app to the iOS App Store, a review request must be sent to verify that the app meets all of Apple's developer guidelines for apps looking to be added to the App Store. All of the relevant information can be found here: <a href="https://developer.apple.com/ios/submit/">https://developer.apple.com/ios/submit/</a> </h3>
 
 <h2>Developer Instructions:</h2>
