@@ -11,7 +11,7 @@
 <h3>Anthony Kabanets ()</h3>
 <h3>Eduardo Mariano ()</h3>
 <h3>Mark Zhang <a href="https://github.com/AbyssalMager">Github</a></h3>
-<h3>Alec Lobato ()</h3>
+<h3>Alec Lobato <a href="https://github.com/Wamuu-21">GitHub</a></h3>
 <h3>William Moosakhanian ()</h3><br/><br/>
 
 <h2>Product Description:</h2>
