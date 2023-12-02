@@ -6,7 +6,7 @@
  
 <h1>Team Members and Contact:</h1> 
 <h3>Vladislav Puriy (<a href="https://github.com/BaconToasts">GitHub</a>)</</h3>
-<h3>Nav Bernal ()</h3>
+<h3>Nav Bernal (<a href="https://github.com/NavBernal">GitHub</a>)</h3>
 <h3>Luis Campos (<a href="https://github.com/lukelobo">GitHub</a>)</h3>
 <h3>Anthony Kabanets (<a href="https://github.com/TheWizland">GitHub</a>)</h3>
 <h3>Eduardo Mariano  (<a href="https://github.com/Ranger-72">GitHub</a>)</</h3>
