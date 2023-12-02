@@ -8,7 +8,7 @@
 <h3>Vladislav Puriy (<a href="https://github.com/BaconToasts">GitHub</a>)</</h3>
 <h3>Nav Bernal ()</h3>
 <h3>Luis Campos (<a href="https://github.com/lukelobo">GitHub</a>)</h3>
-<h3>Anthony Kabanets ()</h3>
+<h3>Anthony Kabanets (<a href="https://github.com/TheWizland">GitHub</a>)</h3>
 <h3>Eduardo Mariano  (<a href="https://github.com/Ranger-72">GitHub</a>)</</h3>
 <h3>Mark Zhang (<a href="https://github.com/AbyssalMager">Github</a>)</h3>
 <h3>Alec Lobato (<a href="https://github.com/Wamuu-21">GitHub</a>)</h3>
