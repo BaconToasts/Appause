@@ -5,7 +5,7 @@
 <h1>Appause</h1><br/><br/>
  
 <h1>Team Members and Contact:</h1> 
-<h3>Vladislav Puriy ()</h3> 
+<h3>Vladislav Puriy (<a href="https://github.com/BaconToasts">GitHub</a>)</</h3>
 <h3>Nav Bernal ()</h3>
 <h3>Luis Campos (<a href="https://github.com/lukelobo">GitHub</a>)</h3>
 <h3>Anthony Kabanets ()</h3>
