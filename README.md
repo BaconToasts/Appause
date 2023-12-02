@@ -12,7 +12,7 @@
 <h3>Eduardo Mariano  (<a href="https://github.com/Ranger-72">GitHub</a>)</</h3>
 <h3>Mark Zhang (<a href="https://github.com/AbyssalMager">Github</a>)</h3>
 <h3>Alec Lobato (<a href="https://github.com/Wamuu-21">GitHub</a>)</h3>
-<h3>William Moosakhanian ()</h3><br/><br/>
+<h3>William Moosakhanian (<a href="https://github.com/WillMoose23">GitHub</a>)</h3><br/><br/>
 
 <h2>Product Description:</h2>
 <h3>Our product is a mobile application that teachers like our client Mr. Brimberry can use to limit their students' access to non-educational phone apps. Essentially students would need to send requests that the teacher can then either approve fully or temporarily or deny access altogether as shown in Figures 2, and 3</h3>
