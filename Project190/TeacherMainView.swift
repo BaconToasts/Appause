@@ -164,7 +164,9 @@ struct TeacherMainView: View {
                 .background(btnStyle.getBtnColor())
                 .border(btnStyle.getBorderColor(), width: btnStyle.getBtnRadius())
                 .cornerRadius(btnStyle.getBtnRadius())
-                .padding(.bottom, 100)
+                //.padding(.bottom, 100)
+                
+                Spacer()
                 
                 Button(action: {
                     withAnimation {

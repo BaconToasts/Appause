@@ -25,12 +25,13 @@ struct PWCodeVerificationView: View
     
     var body: some View
     {
-        VStack
-        {
+        VStack {
+            Spacer()
             HStack{
+                Spacer()
                 Button(action:{
                     /* depending on which page the user leaves when resetting their password, the back button brings them
-                       to the same page that they were at before they entered the password reset process */
+                     to the same page that they were at before they entered the password reset process */
                     if(viewSwitcher.lastView == "studentSettings"){
                         withAnimation {
                             showNextView = .studentSettings
@@ -50,33 +51,38 @@ struct PWCodeVerificationView: View
                     Image(systemName: "arrow.left")
                         .foregroundColor(Color.black)
                         .fontWeight(.bold)
-                        .font(.system(size: 19))
+                        .font(.system(size: 20))
                 }
-                .padding(.top, 210)
-                .padding(.trailing, 335)
-                .padding(.bottom, 100)
+                .padding(.top, 200)
+                .padding(.trailing, 350)
+                .padding(.bottom, 90)
+                //Spacer()
             }
+            
+            Spacer()
+            
             Text(timerViewModel.timeString)
-                 .font(.system(size: 20))
-                 .foregroundColor(Color.green)
-                 .padding(.top, 20) // Adjust padding as needed
+                .font(.system(size: 50))
+                .foregroundColor(Color.green)
+                .padding(.bottom, 20) // Adjust padding as needed
+            
             Text("Verify Email")
                 .padding()
                 .fontWeight(.bold)
-                .font(.system(size: 30))
-                .padding(.bottom, 30)
+                .font(.system(size: 45))
             
-            Image(systemName: "magnifyingglass")
+            Image(systemName: "mail.and.text.magnifyingglass")
                 .fontWeight(.bold)
                 .font(.system(size:100))
-                .padding(.bottom, 50)
+                .padding(.bottom)
             
-            Text("To verify yourself please enter the reset code.")
+            Text("To verify yourself, please enter the code that was sent to your email")
                 .font(.body)
                 .multilineTextAlignment(.center)
+                .lineLimit(2, reservesSpace: true)
                 .fontWeight(.bold)
             
-            TextField("Insert Reset Code ", text:$resetCode)
+            TextField("Insert Reset Code", text:$resetCode)
                 .padding()
                 .disabled(false)
                 .background(Color.gray.opacity(0.2))
@@ -98,37 +104,38 @@ struct PWCodeVerificationView: View
                     showAlert = true
                 }
             }) {
-                Text("Submit")
+                Text("Submit Code")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                    .frame(width: 275, height: 20, alignment: .center)
+                    .frame(width: 340)
                     .padding()
                     .background(Color.black)
-                    .border(Color.black, width: 5)
                     .cornerRadius(10)
+                .padding(.top, -15.0)
             }
-            .disabled(resetCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) // This disables the button when resetCode is empty or just contains whitespace.
-
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("ERROR"), message: Text(alertMessage), dismissButton: .default(Text("OKAY")))
-            }
+            Spacer()
+                .disabled(resetCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) // This disables the button when resetCode is empty or just contains whitespace.
+            
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("ERROR"), message: Text(alertMessage), dismissButton: .default(Text("OKAY")))
+                }
         }
         .padding(.bottom, 300)
-            .cornerRadius(100)
-            .onAppear {
-                timerViewModel.startTimer()  // Start the timer when the view appears
-            }
-            .onDisappear {
-                timerViewModel.stopTimer()  // Stop the timer when the view disappears
-            }
+        .cornerRadius(100)
+        .onAppear {
+            timerViewModel.startTimer()  // Start the timer when the view appears
         }
-
-        
-        func isSameCode(_ code: String) -> Bool {
-            return code == ForgotPassword.shared.codeIn
+        .onDisappear {
+            timerViewModel.stopTimer()  // Stop the timer when the view disappears
         }
-
     }
+    
+    
+    func isSameCode(_ code: String) -> Bool {
+        return code == ForgotPassword.shared.codeIn
+    }
+    
+}
 
 struct FiveBoxesShape: Shape {
     func path(in rect: CGRect) -> Path {
@@ -147,7 +154,7 @@ struct FiveBoxesShape: Shape {
 
 struct PWCodeVerificationView_Previews: PreviewProvider {
     @State static private var showNextView: DisplayState = .pwCodeVerification
-
+    
     static var previews: some View {
         PWCodeVerificationView(showNextView: $showNextView)
     }

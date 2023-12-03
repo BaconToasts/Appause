@@ -248,6 +248,7 @@ struct LoginView: View {
                                 Text("Forgot password?")
                                     .foregroundColor(.blue)
                             }
+                            .padding(.vertical, 10.0)
                             .padding(.leading, 235.0)
                         }
                         
@@ -332,10 +333,11 @@ struct LoginView: View {
                             }) {
                                 Text("Sign up here!")
                                     .foregroundColor(.blue)
+                                    .padding(.leading, -4.0)
                             }
                             Spacer()
                         }
-                        
+                        .padding(.top, 10)
                     }
                 }
                 

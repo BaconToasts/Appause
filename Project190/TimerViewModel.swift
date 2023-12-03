@@ -7,8 +7,8 @@
 
 import Foundation
 class TimerViewModel: ObservableObject {
-    @Published var timeRemaining: Int = 180 // 3 minutes * 60 seconds
-    @Published var timeString: String = "3:00"
+    @Published var timeRemaining: Int = 600 // 10 minutes * 60 seconds
+    @Published var timeString: String = "10:00"
     var timer: Timer?
 
     func startTimer() {

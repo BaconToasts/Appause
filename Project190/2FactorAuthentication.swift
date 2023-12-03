@@ -19,34 +19,43 @@ struct TwoFactorAuthView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    // Navigate back to login page
-                    showNextView = .login
-                    show2FAInput = false
-                }) {
-                    Text("Back")
-                }
+            HStack{
                 Spacer()
+                Button(action:{
+                    withAnimation {
+                            showNextView = .login
+                    }
+                    show2FAInput = false
+                }){
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(Color.black)
+                        .fontWeight(.bold)
+                        .font(.system(size: 20))
+                }
+                .padding(.trailing, 350)
             }
-            .padding(.top, 20)
-            
             Spacer()
             
             Text("\(remainingTime / 60):\(String(format: "%02d", remainingTime % 60))")
                 .font(.system(size: 50))
                 .foregroundColor(.green)
+                .padding(.bottom, 1)
                 .onReceive(timer) { _ in
                     if remainingTime > 0 {
                         remainingTime -= 1
                     }
                 }
             
-            Spacer()
+            //Spacer()
+            
+            Text("Enter Your Registered Email")
+                .font(.title)
+                .fontWeight(.bold)
             
             HStack {
                 TextField("Email Address", text: .constant(email)) // Email text field
                     .padding()
+                    .foregroundColor(Color.black.opacity(0.3))
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
                     .keyboardType(.emailAddress)
@@ -64,18 +73,16 @@ struct TwoFactorAuthView: View {
                     
                     // Reset the timer
                     remainingTime = 600
-                    
-                    
-
                 }) {
                     Text("Send")
                 }
 
             }
             
-            Text("Enter 2FA Code")
+            Text("Enter Your 2FA Code")
                 .font(.title)
-                .padding(.bottom, 20)
+                .fontWeight(.bold)
+                .padding(.vertical, 10.0)
             
             TextField("Enter Code", text: $code)
                 .padding()
@@ -94,13 +101,16 @@ struct TwoFactorAuthView: View {
               }) {
                   Text("Verify")
                       .foregroundColor(.white)
+                      .frame(width: 330)
                       .padding()
-                      .background(Color.blue)
+                      .background(Color.black)
                       .cornerRadius(10)
+                      .padding(.top, 10)
               }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
+            Spacer()
         }
         .padding()
     }

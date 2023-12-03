@@ -56,10 +56,12 @@ struct ResetPasswordView: View{
             .textInputAutocapitalization(TextInputAutocapitalization.never)
         }
     }
+    
     var body: some View{
         VStack{
-            
+            Spacer()
             HStack{
+                Spacer()
                 Button(action:{
                     /* Depending on which page the user leaves when resetting their password, the back button brings them
                       to the same page that they were at before resetting their password. */
@@ -84,7 +86,7 @@ struct ResetPasswordView: View{
                         .fontWeight(.bold)
                         .font(.system(size:20))
                 }
-                .padding(.top, 150)
+                .padding(.top, 100)
                 .padding(.trailing, 350)
                 .padding(.bottom, 100)
             }
@@ -102,7 +104,8 @@ struct ResetPasswordView: View{
             Text(displayText)
                 .fontWeight(.bold)
                 .padding(.top, 5)
-                .padding(.bottom, 10)
+                //Spacer()
+                .padding(.bottom, 40)
             
             /*These if else statements are supposed to help display the text field entry
              for the users new password and depending on if the user clicks on the show
@@ -204,12 +207,14 @@ struct ResetPasswordView: View{
                 Text("Confirm")
                     .foregroundColor(Color.white)
                     .fontWeight(.bold)
+                    .frame(width: 340)
             }
             .padding()
-            .background(confirmColor)
-            .cornerRadius(100)
-            .padding()
-            .padding(.bottom, 300)
+            .background(.black)
+            .cornerRadius(10)
+            .padding(.bottom, 250)
+            //Spacer()
+            //.padding()
         }
     }
     

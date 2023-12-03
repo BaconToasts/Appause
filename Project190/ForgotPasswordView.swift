@@ -71,8 +71,6 @@ struct ForgotPasswordView: View {
                 .font(.body)
                 .fontWeight(.bold)
             
-            
-            
             TextField("Email", text: $email)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
@@ -80,7 +78,8 @@ struct ForgotPasswordView: View {
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
                 .frame(width: 370)
-                .padding(.vertical, 25.0)
+                .padding(.top, 25)
+                .padding(.bottom, 10)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
             
@@ -105,7 +104,7 @@ struct ForgotPasswordView: View {
                 Text("Send Code")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                    .frame(width: 275, height: 20, alignment: .center)
+                    .frame(width: 340, height: 20, alignment: .center)
                     .padding()
                     .background(Color.black)
                     .cornerRadius(10)

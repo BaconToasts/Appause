@@ -40,7 +40,7 @@ struct StudentConnectCodeView: View
             
             
             TextField("Insert Connect Code Here: ", text:$connectCode)
-            .padding(25.0)
+            .padding()
             .frame(width: 250.0, height: 100.0)
             .disabled(false)
             .textFieldStyle(.roundedBorder)
@@ -51,9 +51,9 @@ struct StudentConnectCodeView: View
                 .background(btnStyle.getPathColor())
                 .foregroundColor(btnStyle.getPathFontColor())
                 .cornerRadius(100)
-            
+            Spacer()
         }
-        .padding(.bottom, 400)
+        //.padding(.bottom, 400)
         .cornerRadius(100)
         .preferredColorScheme(btnStyle.getStudentScheme() == 0 ? .light : .dark)
     }

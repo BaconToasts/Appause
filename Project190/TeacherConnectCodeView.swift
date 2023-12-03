@@ -74,7 +74,8 @@ struct TeacherConnectCodeView: View {
                     .foregroundColor(btnStyle.getPathFontColor())
                     .cornerRadius(100)
             }
-            .padding(.bottom, 400)
+            //.padding(.bottom, 400)
+            Spacer()
         }
         .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
