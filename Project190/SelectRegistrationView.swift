@@ -83,8 +83,10 @@ struct SelectRegistrationView: View
     
     var body: some View {
         VStack{
-            Text("Are you a student or a teacher?")
-                .font(.custom("large", size: 25))
+            Text("Are you a teacher or a student?")
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
                 .padding([.top, .bottom], 15)
             
             Text(registerError)
@@ -153,7 +155,7 @@ struct SelectRegistrationView: View
                 .background(buttonColorBottom)
                 .cornerRadius(10)
             }
-            .padding(.bottom, 50)
+            //.padding(.bottom, 50)
             
             if showTeacherRegistrationFields
             {
@@ -244,6 +246,7 @@ struct SelectRegistrationView: View
                     {
                         Text("Register")
                             .padding()
+                            .frame(width: 370)
                             .fontWeight(.bold)
                             .background(Color.black)
                             .foregroundColor(.white)
@@ -252,18 +255,22 @@ struct SelectRegistrationView: View
                             .frame(minWidth: 2000)
                     }
                     
-                    Button(action:
-                            {
-                        withAnimation
-                        {
-                            showNextView = .login
+                    HStack {
+                        Spacer()
+                        Text("Already have an account?")
+                            //.padding(.leading, 15)
+                        
+                        Button(action: {
+                            withAnimation {
+                                showNextView = .login
+                            }
+                        }) {
+                            Text("Sign in here!")
+                                .foregroundColor(.blue)
+                                .padding(.leading, -4.0)
                         }
-                    })
-                    {
-                        Text("Already have an account? Sign in here!")
-                            .foregroundColor(.blue)
-                    }
-                }
+                        Spacer()
+                    }                }
             }
             
             if showStudentRegistrationFields
@@ -339,9 +346,12 @@ struct SelectRegistrationView: View
                                 showNextView = .login
                             }
                         }
-                    }) {
+                    })
+                    //.padding(.bottom)
+                    {
                         Text("Register")
                             .padding()
+                            .frame(width: 370)
                             .fontWeight(.bold)
                             .background(Color.black)
                             .foregroundColor(.white)
@@ -350,16 +360,21 @@ struct SelectRegistrationView: View
                             .padding(.bottom, 25)
                     }
                     
-                    Button(action:
-                            {
-                        withAnimation
-                        {
-                            showNextView = .login
+                    HStack {
+                        Spacer()
+                        Text("Already have an account?")
+                            //.padding(.leading, 15)
+                        
+                        Button(action: {
+                            withAnimation {
+                                showNextView = .login
+                            }
+                        }) {
+                            Text("Sign in here!")
+                                .foregroundColor(.blue)
+                                .padding(.leading, -4.0)
                         }
-                    })
-                    {
-                        Text("Already have an account? Sign in here!")
-                            .foregroundColor(.blue)
+                        Spacer()
                     }
                 }
             }
@@ -402,8 +417,6 @@ struct SelectRegistrationView: View
         return result
     }
 }
-
-
 
 struct SelectRegistrationView_Previews: PreviewProvider
 {

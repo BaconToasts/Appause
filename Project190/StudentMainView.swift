@@ -91,7 +91,8 @@ struct StudentMainView: View {
                 .background(btnStyle.getBtnColor())
                 .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
                 .cornerRadius(btnStyle.getBtnRadius())
-                .padding(.bottom, 335)
+                //.padding(.bottom, 335)
+                Spacer()
                 // When pressed, will take the student back to the main login page
                 Button(action: {
                     withAnimation {

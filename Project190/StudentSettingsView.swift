@@ -102,7 +102,8 @@ struct StudentSettingsView: View {
             .background(btnStyle.getBtnColor())
             .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
             .cornerRadius(btnStyle.getBtnRadius())
-            .padding(.bottom, 300)
+            //.padding(.bottom, 300)
+            Spacer()
         }
         .preferredColorScheme(colorScheme == 0 ? .light : .dark)
     }

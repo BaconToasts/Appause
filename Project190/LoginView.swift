@@ -333,7 +333,7 @@ struct LoginView: View {
                             }) {
                                 Text("Sign up here!")
                                     .foregroundColor(.blue)
-                                    .padding(.leading, -2.0)
+                                    .padding(.leading, -4.0)
                             }
                             Spacer()
                         }
