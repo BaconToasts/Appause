@@ -95,18 +95,17 @@ struct SelectRegistrationView: View
             HStack
             {
                 Button(action:
-                {
+                        {
                     let registeredUsername = keychain.get("teacherUserKey")
                     let registeredPassword = keychain.get("teacherPassKey")
-
+                    
                     withAnimation
                     {
                         showTeacherRegistrationFields.toggle()
                         showStudentRegistrationFields = false
-                        buttonColorTop = showTeacherRegistrationFields ? .gray : .black
-                        buttonColorBottom = showTeacherRegistrationFields ? .black : .gray
+                        updateButtonColors()
                     }
-
+                    
                 })
                 {
                     VStack
@@ -125,21 +124,17 @@ struct SelectRegistrationView: View
                 .background(buttonColorTop)
                 .cornerRadius(10)
                 
-                
-                
                 Button(action:
-                {
+                        {
                     let registeredUsername = keychain.get("studentUserKey")
                     let registeredPassword = keychain.get("studentPassKey")
-                        
+                    
                     withAnimation
                     {
                         //showNextView = .login
                         showStudentRegistrationFields.toggle()
                         showTeacherRegistrationFields = false
-                        buttonColorTop = showTeacherRegistrationFields ? .gray : .black
-                        buttonColorBottom = showTeacherRegistrationFields ? .black : .gray
-                    }
+                        updateButtonColors()                    }
                 })
                 {
                     VStack{
@@ -165,57 +160,57 @@ struct SelectRegistrationView: View
                 VStack
                 {
                     TextField(
-                    "First Name",
-                    text: $teacherFirstName
-                )
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .frame(width: 370)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                
-                TextField(
-                    "Last Name",
-                    text: $teacherLastName
-                )
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .frame(width: 370)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
+                        "First Name",
+                        text: $teacherFirstName
+                    )
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                    .frame(width: 370)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
                     
-                TextField(
-                    "Email",
-                    text: $teacherEmail
-                )
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .frame(width: 370)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                
-                if passwordStatus == "visible"
-                {
-                    TextFieldWithEyeIcon(placeholder: "Password", text: $teacherPassword, isSecure: false, visibility: $passwordStatus)
-                }
-                else
-                {
-                    TextFieldWithEyeIcon(placeholder: "Password", text: $teacherPassword, isSecure: true, visibility: $passwordStatus)
-                }
-
-                if(confirmStatus=="visible")
-                {
-                    TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $teacherPassConfirm, isSecure: false, visibility: $confirmStatus)
-                }
-                else
-                {
-                    TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $teacherPassConfirm, isSecure: true, visibility: $confirmStatus)
-                }
-                Button(action:
-                {
+                    TextField(
+                        "Last Name",
+                        text: $teacherLastName
+                    )
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                    .frame(width: 370)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    
+                    TextField(
+                        "Email",
+                        text: $teacherEmail
+                    )
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                    .frame(width: 370)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    
+                    if passwordStatus == "visible"
+                    {
+                        TextFieldWithEyeIcon(placeholder: "Password", text: $teacherPassword, isSecure: false, visibility: $passwordStatus)
+                    }
+                    else
+                    {
+                        TextFieldWithEyeIcon(placeholder: "Password", text: $teacherPassword, isSecure: true, visibility: $passwordStatus)
+                    }
+                    
+                    if(confirmStatus=="visible")
+                    {
+                        TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $teacherPassConfirm, isSecure: false, visibility: $confirmStatus)
+                    }
+                    else
+                    {
+                        TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $teacherPassConfirm, isSecure: true, visibility: $confirmStatus)
+                    }
+                    Button(action:
+                            {
                         if (teacherFirstName == "" || teacherLastName == "" || teacherEmail == "" || teacherPassword == "" || teacherPassConfirm == "")
                         {
                             registerError = "Please fill in all of the fields."
@@ -256,9 +251,9 @@ struct SelectRegistrationView: View
                             .padding(.bottom, 25)
                             .frame(minWidth: 2000)
                     }
-
+                    
                     Button(action:
-                    {
+                            {
                         withAnimation
                         {
                             showNextView = .login
@@ -270,7 +265,7 @@ struct SelectRegistrationView: View
                     }
                 }
             }
-                
+            
             if showStudentRegistrationFields
             {
                 VStack
@@ -307,7 +302,7 @@ struct SelectRegistrationView: View
                     {
                         TextFieldWithEyeIcon(placeholder: "Password", text: $studentPassword, isSecure: true, visibility: $passwordStatus)
                     }
-
+                    
                     if(confirmStatus=="visible")
                     {
                         TextFieldWithEyeIcon(placeholder: "Confirm Password", text: $studentPassConfirm, isSecure: false, visibility: $confirmStatus)
@@ -351,12 +346,12 @@ struct SelectRegistrationView: View
                             .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(10)
-                            //.padding(.leading, 200)
+                        //.padding(.leading, 200)
                             .padding(.bottom, 25)
                     }
                     
                     Button(action:
-                    {
+                            {
                         withAnimation
                         {
                             showNextView = .login
@@ -370,6 +365,21 @@ struct SelectRegistrationView: View
             }
         }
     }
+    
+    // Function to update button colors based on selection
+    private func updateButtonColors() {
+        if showTeacherRegistrationFields && !showStudentRegistrationFields {
+            buttonColorTop = .black
+            buttonColorBottom = .gray
+        } else if !showTeacherRegistrationFields && showStudentRegistrationFields {
+            buttonColorTop = .gray
+            buttonColorBottom = .black
+        } else {
+            buttonColorTop = .black
+            buttonColorBottom = .black
+        }
+    }
+
     func validateEmail(_ email: String) -> Bool
     {
         let regex = try! NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$", options: [.caseInsensitive])
@@ -392,7 +402,7 @@ struct SelectRegistrationView: View
         return result
     }
 }
-    
+
 
 
 struct SelectRegistrationView_Previews: PreviewProvider
