@@ -77,6 +77,7 @@ struct TeacherConnectCodeView: View {
             //.padding(.bottom, 400)
             Spacer()
         }
+        .navigationBarBackButtonHidden(true)
         .preferredColorScheme(btnStyle.getTeacherScheme() == 0 ? .light : .dark)
     }
 }

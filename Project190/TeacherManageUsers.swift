@@ -58,7 +58,7 @@ struct TeacherManageUsers: View
                 
                 List($studentList.students) {
                     $student in
-                    if(student.name.isEmpty || student.name.contains(student.name))
+                    if studentName.isEmpty || student.name.lowercased().contains(studentName.lowercased())
                     {
                         NavigationLink(
                             destination:TeacherUserRequestView(stackingPermitted: self.$activeNavigationLink, student: student)

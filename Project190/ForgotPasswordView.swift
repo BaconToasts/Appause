@@ -131,10 +131,10 @@ struct ForgotPasswordView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("api-XXXXXXXXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
+        request.addValue("api-F199C926535F11EE96AEF23C91C88F4E", forHTTPHeaderField: "Key") // Replace with your API key
         
         let body: [String: Any] = [
-            "api_key": "api-XXXXXXXXXXXXXXXXXXXXXXXX", // Your API key
+            "api_key": "api-F199C926535F11EE96AEF23C91C88F4E", // Your API key
             "to": ["<\(email)>"], // The recipient's email address, formatted correctly
             "sender": "appaused.service@gmail.com", // Your email address
             "subject": "Your Verification Code",

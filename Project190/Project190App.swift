@@ -13,6 +13,8 @@ class ViewSwitcher: ObservableObject{
     @Published var lastView = ""
 }
 
+
+
 @main
 struct Project190App: App {
     var body: some Scene {

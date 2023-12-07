@@ -69,20 +69,7 @@ struct TeacherSettingsView: View {
             .accessibilityIdentifier("Enable 2-Factor Authentication Toggle")
             .padding()
             
-            
-            Button(action: {}) {
-                Text(fourthButton)
-                    .fontWeight(btnStyle.getFont())
-                    .foregroundColor(btnStyle.getBtnFontColor())
-                    .frame(width: btnStyle.getWidth(),
-                           height: btnStyle.getHeight(),
-                           alignment: btnStyle.getAlignment())
-            }
-            .padding()
-            .background(btnStyle.getBtnColor())
-            .border(btnStyle.getBorderColor(), width: btnStyle.getBorderWidth())
-            .cornerRadius(btnStyle.getBtnRadius())
-            .padding(.bottom, 10)
+
             
             Button(action: {
                 btnStyle.setTeacherScheme()

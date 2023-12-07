@@ -1,4 +1,3 @@
-import Foundation
 import SwiftUI
 import Combine
 
@@ -9,24 +8,24 @@ struct TwoFactorAuthView: View {
     @Binding var show2FAInput: Bool
 
     @State private var code: String = ""
- //   @State private var email: String = "" // Email state
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var storedCodes: [String: (code: String, expiration: Date)] = [:]
-    @State private var remainingTime: Int = 600 // 10 minutes in seconds
+    @State private var remainingTime: Int = 30 // 10 minutes in seconds
+    @State private var timerActive = false // Controls the timer's activation
 
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
-            HStack{
+            HStack {
                 Spacer()
-                Button(action:{
+                Button(action: {
                     withAnimation {
-                            showNextView = .login
+                        showNextView = .login
                     }
                     show2FAInput = false
-                }){
+                }) {
                     Image(systemName: "arrow.left")
                         .foregroundColor(Color.black)
                         .fontWeight(.bold)
@@ -35,78 +34,71 @@ struct TwoFactorAuthView: View {
                 .padding(.trailing, 350)
             }
             Spacer()
-            
-            Text("\(remainingTime / 60):\(String(format: "%02d", remainingTime % 60))")
-                .font(.system(size: 50))
-                .foregroundColor(.green)
-                .padding(.bottom, 1)
-                .onReceive(timer) { _ in
-                    if remainingTime > 0 {
-                        remainingTime -= 1
+
+            if timerActive {
+                Text("\(remainingTime / 60):\(String(format: "%02d", remainingTime % 60))")
+                    .font(.system(size: 50))
+                    .foregroundColor(remainingTime > 0 ? .green : .red) // Color changes to red when time is 0
+                    .padding(.bottom, 1)
+                    .onReceive(timer) { _ in
+                        if remainingTime > 0 {
+                            remainingTime -= 1
+                        }
                     }
-                }
-            
-            //Spacer()
-            
+            }
+
             Text("Enter Your Registered Email")
                 .font(.title)
                 .fontWeight(.bold)
-            
+
             HStack {
-                TextField("Email Address", text: .constant(email)) // Email text field
+                TextField("Email Address", text: .constant(email))
                     .padding()
                     .foregroundColor(Color.black.opacity(0.3))
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
-                
+
                 Button(action: {
-                    // Generate a random code
                     let generatedCode = generateRandomCode()
-                    
-                    // Store the generated code
                     storeCode(email: email, code: generatedCode)
-                    
-                    // Send the generated code to the email
                     sendEmail(code: generatedCode, email: email)
-                    
-                    // Reset the timer
-                    remainingTime = 600
+                    remainingTime = 30 // Reset the timer
+                    timerActive = true // Activate the timer
                 }) {
                     Text("Send")
                 }
-
             }
-            
+
             Text("Enter Your 2FA Code")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.vertical, 10.0)
-            
+
             TextField("Enter Code", text: $code)
                 .padding()
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
                 .keyboardType(.numberPad)
-            
+
             Button(action: {
-                  if verifyCode(code) {
-                      showNextView = .mainTeacher
-                      onVerificationSuccess()  
-                  } else {
-                      showAlert = true
-                      alertMessage = "Invalid code. Please try again."
-                  }
-              }) {
-                  Text("Verify")
-                      .foregroundColor(.white)
-                      .frame(width: 330)
-                      .padding()
-                      .background(Color.black)
-                      .cornerRadius(10)
-                      .padding(.top, 10)
-              }
+                if verifyCode(code) {
+                    showNextView = .mainTeacher
+                    onVerificationSuccess()
+                } else {
+                    showAlert = true
+                    alertMessage = "Invalid code. Please try again."
+                }
+            }) {
+                Text("Verify")
+                    .foregroundColor(.white)
+                    .frame(width: 330)
+                    .padding()
+                    .background(Color.black)
+                    .cornerRadius(10)
+                    .padding(.top, 10)
+            }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
@@ -114,14 +106,13 @@ struct TwoFactorAuthView: View {
         }
         .padding()
     }
-    
+
     func storeCode(email: String, code: String) {
-        let expiration = Calendar.current.date(byAdding: .minute, value: 10, to: Date())!
+        let expiration = Calendar.current.date(byAdding: .second, value: 30, to: Date())!
         storedCodes[email] = (code: code, expiration: expiration)
     }
-    
+
     func verifyCode(_ enteredCode: String) -> Bool {
-        let email = email
         guard let storedCode = storedCodes[email] else { return false }
         if Date() > storedCode.expiration {
             storedCodes[email] = nil
@@ -148,10 +139,10 @@ func sendEmail(code: String, email: String) {
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("api-XXXXXXXXXXXXXXXXXXXXXXXX", forHTTPHeaderField: "Key") // Replace with your API key
+    request.addValue("api-F199C926535F11EE96AEF23C91C88F4E", forHTTPHeaderField: "Key") // Replace with your API key
 
     let body: [String: Any] = [
-        "api_key": "api-XXXXXXXXXXXXXXXXXXXXXXXX", // Your API key
+        "api_key": "api-F199C926535F11EE96AEF23C91C88F4E", // Your API key
         "to": ["<\(email)>"], // The recipient's email address, formatted correctly
         "sender": "appaused.service@gmail.com", // Our service email address
         "subject": "Your Verification Code",
